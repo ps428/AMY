@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "542220855483",
+    "project_id": "amy-a-meal-by-me",
+    "storage_bucket": "amy-a-meal-by-me.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542220855483:android:294294c9eb574fc336219e",
+        "android_client_info": {
+          "package_name": "com.example.amy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542220855483-613ush5a04rtohrmgb1v8mj8crlcm4bf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8bWYrirDXyC43M6tqprxJauFy_4s5OKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542220855483-613ush5a04rtohrmgb1v8mj8crlcm4bf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
