@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:amy/all.dart';
 import 'package:amy/routes/admin/ahome.dart';
 import 'package:amy/routes/admin/aordered.dart';
@@ -52,9 +54,10 @@ class LoadingScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text('AMY'),
         ),
-        body: Center(
-          child: Column(children: [
-            ElevatedButton(
+        body: SafeArea(
+            child: Center(
+              child: Column(children: [
+                ElevatedButton(
               // Within the `LoadingScreen` widget
               onPressed: () {
                 // Navigate to the second screen using a named route.
@@ -71,6 +74,6 @@ class LoadingScreen extends StatelessWidget {
               child: const Text('All Screen'),
             ),
           ]),
-        ));
+        )));
   }
 }
