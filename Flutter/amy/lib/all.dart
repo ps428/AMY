@@ -1,3 +1,4 @@
+import 'package:amy/constants.dart';
 import 'package:flutter/material.dart';
 
 class AllScreen extends StatelessWidget {
@@ -6,8 +7,10 @@ class AllScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: pista,
         appBar: AppBar(
           title: const Text('All page access screen'),
+          // backgroundColor: pista,
         ),
         body: Center(
           child: Column(children: [
