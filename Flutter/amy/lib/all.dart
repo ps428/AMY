@@ -7,9 +7,17 @@ class AllScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: pista,
+        backgroundColor: lightGreen,
         appBar: AppBar(
-          title: const Text('All page access screen'),
+          backgroundColor: greenAmy,
+          title: const Text(
+            'All page access screens',
+            style: TextStyle(
+                // fontWeight: FontWeight.bold,
+                color: bar,
+                fontFamily: 'Caveat',
+                fontSize: 40),
+          ),
           // backgroundColor: pista,
         ),
         body: Center(
@@ -21,7 +29,11 @@ class AllScreen extends StatelessWidget {
                 // off the stack.
                 Navigator.pushNamed(context, '/');
               },
-              child: const Text('Go to main!'),
+              child: const Text(
+                'Go to main!',
+                style: TextStyle(fontFamily: 'Caveat', color: apricotWhite),
+              ),
+              // style: ElevatedButton.styleFrom(primary: japanBlush),
             ),
             ElevatedButton(
               // Within the AllScreen widget

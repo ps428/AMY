@@ -1,3 +1,4 @@
+import 'package:amy/constants.dart';
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -6,6 +7,7 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: parchmentPaper,
       appBar: AppBar(
         title: const Text('Signup Screen'),
       ),

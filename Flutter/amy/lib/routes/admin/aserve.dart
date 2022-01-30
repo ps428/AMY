@@ -1,3 +1,4 @@
+import 'package:amy/constants.dart';
 import 'package:flutter/material.dart';
 
 class AServeScreen extends StatelessWidget {
@@ -6,6 +7,7 @@ class AServeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: apricotWhite,
       appBar: AppBar(
         title: const Text('AServe Screen'),
       ),

@@ -1,3 +1,4 @@
+import 'package:amy/constants.dart';
 import 'package:flutter/material.dart';
 
 class UThanksScreen extends StatelessWidget {
@@ -6,6 +7,7 @@ class UThanksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: pistaliter,
       appBar: AppBar(
         title: const Text('UThanks Screen'),
       ),

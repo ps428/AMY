@@ -1,3 +1,4 @@
+import 'package:amy/constants.dart';
 import 'package:flutter/material.dart';
 
 class UHomeScreen extends StatelessWidget {
@@ -6,6 +7,7 @@ class UHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: lightGreen,
       appBar: AppBar(
         title: const Text('UHome Screen'),
       ),
