@@ -60,7 +60,13 @@ class LoadingScreen extends StatelessWidget {
           ),
         ),
         child: Column(
-          children: const [SpinKitCircle(color: apricotWhite, size: 50.0)],
+          children:  [
+            StyledButton(
+                child: const Text('All'),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/all');
+                }),SpinKitCircle(color: apricotWhite, size: 50.0),]
+            ,
         ) /* add child content here */,
       ),
     );

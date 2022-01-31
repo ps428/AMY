@@ -23,19 +23,19 @@ class AllScreen extends StatelessWidget {
         ),
         body: Center(
           child: Column(children: [
-            // ElevatedButton(
-            //   // Within the AllScreen widget
-            //   onPressed: () {
-            //     // Navigate back to the first screen by popping the current route
-            //     // off the stack.
-            //     Navigator.pushNamed(context, '/');
-            //   },
-            //   child: const Text(
-            //     'Go to main!',
-            //     style: TextStyle(fontFamily: 'Caveat', color: apricotWhite),
-            //   ),
-            //   // style: ElevatedButton.styleFrom(primary: japanBlush),
-            // ),
+            ElevatedButton(
+              // Within the AllScreen widget
+              onPressed: () {
+                // Navigate back to the first screen by popping the current route
+                // off the stack.
+                Navigator.pushNamed(context, '/');
+              },
+              child: const Text(
+                'Go to main!',
+                style: TextStyle(fontFamily: 'Caveat', color: apricotWhite),
+              ),
+              // style: ElevatedButton.styleFrom(primary: japanBlush),
+            ),
             ElevatedButton(
               // Within the AllScreen widget
               onPressed: () {
@@ -45,83 +45,83 @@ class AllScreen extends StatelessWidget {
               },
               child: const Text('Go to Home!'),
             ),
-            // ElevatedButton(
-            //   // Within the AllScreen widget
-            //   onPressed: () {
-            //     // Navigate back to the first screen by popping the current route
-            //     // off the stack.
-            //     Navigator.pushNamed(context, '/login');
-            //   },
-            //   child: const Text('Go to Login'),
-            // ),
-            // ElevatedButton(
-            //   // Within the AllScreen widget
-            //   onPressed: () {
-            //     // Navigate back to the first screen by popping the current route
-            //     // off the stack.
-            //     Navigator.pushNamed(context, '/signup');
-            //   },
-            //   child: const Text('Go to Signup!'),
-            // ),
-            // ElevatedButton(
-            //   // Within the AllScreen widget
-            //   onPressed: () {
-            //     // Navigate back to the first screen by popping the current route
-            //     // off the stack.
-            //     Navigator.pushNamed(context, '/ahome');
-            //   },
-            //   child: const Text('Go to Admin Home!'),
-            // ),
-            // ElevatedButton(
-            //   // Within the AllScreen widget
-            //   onPressed: () {
-            //     // Navigate back to the first screen by popping the current route
-            //     // off the stack.
-            //     Navigator.pushNamed(context, '/aordered');
-            //   },
-            //   child: const Text('Go to Admin Ordered!'),
-            // ),
-            // ElevatedButton(
-            //   // Within the AllScreen widget
-            //   onPressed: () {
-            //     // Navigate back to the first screen by popping the current route
-            //     // off the stack.
-            //     Navigator.pushNamed(context, '/aserve');
-            //   },
-            //   child: const Text('Go to Admin serve!'),
-            // ),
-            // ElevatedButton(
-            //   // Within the AllScreen widget
-            //   onPressed: () {
-            //     // Navigate back to the first screen by popping the current route
-            //     // off the stack.
-            //     Navigator.pushNamed(context, '/udonate');
-            //   },
-            // child: const Text('Go to User Donate!'),
-            // ),
-            // ElevatedButton(
-            //   // Within the AllScreen widget
-            //   onPressed: () {
-            //     // Navigate back to the first screen by popping the current route
-            //     // off the stack.
-            //     Navigator.pushNamed(context, '/uhome');
-            //   },
-            //   child: const Text('Go to User Home!'),
-            // ),
-            // ElevatedButton(
-            //   // Within the AllScreen widget
-            //   onPressed: () {
-            //     // Navigate back to the first screen by popping the current route
-            //     // off the stack.
-            //     Navigator.pushNamed(context, '/uthanks');
-            //   },
-            //   child: const Text('Go to User Thanks!'),
-            // ),
-            // StyledButton(
-            //     child: const Text('User thanks'),
-            //     onPressed: () {
-            //       Navigator.pushNamed(context, '/uthanks');
-            //     }),
+            ElevatedButton(
+              // Within the AllScreen widget
+              onPressed: () {
+                // Navigate back to the first screen by popping the current route
+                // off the stack.
+                Navigator.pushNamed(context, '/login');
+              },
+              child: const Text('Go to Login'),
+            ),
+            ElevatedButton(
+              // Within the AllScreen widget
+              onPressed: () {
+                // Navigate back to the first screen by popping the current route
+                // off the stack.
+                Navigator.pushNamed(context, '/signup');
+              },
+              child: const Text('Go to Signup!'),
+            ),
+            ElevatedButton(
+              // Within the AllScreen widget
+              onPressed: () {
+                // Navigate back to the first screen by popping the current route
+                // off the stack.
+                Navigator.pushNamed(context, '/ahome');
+              },
+              child: const Text('Go to Admin Home!'),
+            ),
+            ElevatedButton(
+              // Within the AllScreen widget
+              onPressed: () {
+                // Navigate back to the first screen by popping the current route
+                // off the stack.
+                Navigator.pushNamed(context, '/aordered');
+              },
+              child: const Text('Go to Admin Ordered!'),
+            ),
+            ElevatedButton(
+              // Within the AllScreen widget
+              onPressed: () {
+                // Navigate back to the first screen by popping the current route
+                // off the stack.
+                Navigator.pushNamed(context, '/aserve');
+              },
+              child: const Text('Go to Admin serve!'),
+            ),
+            ElevatedButton(
+              // Within the AllScreen widget
+              onPressed: () {
+                // Navigate back to the first screen by popping the current route
+                // off the stack.
+                Navigator.pushNamed(context, '/udonate');
+              },
+            child: const Text('Go to User Donate!'),
+            ),
+            ElevatedButton(
+              // Within the AllScreen widget
+              onPressed: () {
+                // Navigate back to the first screen by popping the current route
+                // off the stack.
+                Navigator.pushNamed(context, '/uhome');
+              },
+              child: const Text('Go to User Home!'),
+            ),
+            ElevatedButton(
+              // Within the AllScreen widget
+              onPressed: () {
+                // Navigate back to the first screen by popping the current route
+                // off the stack.
+                Navigator.pushNamed(context, '/uthanks');
+              },
+              child: const Text('Go to User Thanks!'),
+            ),
+            StyledButton(
+                child: const Text('User thanks'),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/uthanks');
+                }),
             const Header('A custom heading'),
             const Paragraph(
                 'A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph! A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph! A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph! A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!'),
