@@ -24,3 +24,46 @@ const pistaliter = Color(0xffECF9F2);
 const lightGreen = Color(0xffF1FFDB);
 const greenAmy = Color(0xffA1D444);
 const bar = Color(0xffE10032);
+
+class Header extends StatelessWidget {
+  const Header(this.heading);
+  final String heading;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          heading,
+          style: const TextStyle(fontSize: 24, fontFamily: 'Playfair'),
+        ),
+      );
+}
+
+class Paragraph extends StatelessWidget {
+  const Paragraph(this.content);
+  final String content;
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: Text(
+          content,
+          style: const TextStyle(fontSize: 18, fontFamily: 'Caveat'),
+        ),
+      );
+}
+
+class StyledButton extends StatelessWidget {
+  const StyledButton({required this.child, required this.onPressed});
+  final Widget child;
+  final void Function() onPressed;
+
+  @override
+  Widget build(BuildContext context) => ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: pineGreen, // background (button) color
+          onPrimary: apricotWhite, // foreground (text) color
+        ),
+        onPressed: onPressed,
+        child: child,
+      );
+}
