@@ -23,7 +23,9 @@ samples, guidance on mobile development, and a full API reference.
 - [X] Flutter Setup
 - [X] Connect Firebase and Configure
 - [X] Routing and Internal link test
-- [ ] Add a Loading Screen
+- [X] Add a Loading Screen
+- [ ] Home Screen
+- [X] Donate Now Screen
 - [ ] Login and Signup Pages
 - [ ] Firebase Auth on Login and Signup
 - [ ] User side page creation
@@ -31,3 +33,8 @@ samples, guidance on mobile development, and a full API reference.
 - [ ] Admin side page creation
 - [ ] Admin side DB work
 - [ ] Generation of Slip and Details (needs more thoughts on this)
+- [ ] Food bowl increment on donation (Slider {Chakra})
+- [ ] Global counter
+- [ ] Video/Gif/Slideshow as gratitue
+- [ ] Confetti and Thanking features (Quote, Badge etc)
+- [ ] User's record of donation
