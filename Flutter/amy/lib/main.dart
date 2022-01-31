@@ -1,4 +1,5 @@
 import 'package:amy/all.dart';
+import 'package:amy/constants.dart';
 import 'package:amy/routes/admin/ahome.dart';
 import 'package:amy/routes/admin/aordered.dart';
 import 'package:amy/routes/admin/aserve.dart';
@@ -9,6 +10,7 @@ import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
 import 'package:amy/routes/user/uthanks.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 void main() {
   runApp(
@@ -47,30 +49,20 @@ class LoadingScreen extends StatelessWidget {
   const LoadingScreen({Key? key}) : super(key: key);
 
   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('AMY'),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/bg1.png"),
+            fit: BoxFit.cover,
+          ),
         ),
-        body: Center(
-          child: Column(children: [
-            ElevatedButton(
-              // Within the `LoadingScreen` widget
-              onPressed: () {
-                // Navigate to the second screen using a named route.
-                Navigator.pushNamed(context, '/home');
-              },
-              child: const Text('Loading Screen'),
-            ),
-            ElevatedButton(
-              // Within the `LoadingScreen` widget
-              onPressed: () {
-                // Navigate to the second screen using a named route.
-                Navigator.pushNamed(context, '/all');
-              },
-              child: const Text('All Screen'),
-            ),
-          ]),
-        ));
+        child: Column(
+          children: const [SpinKitCircle(color: apricotWhite, size: 50.0)],
+        ) /* add child content here */,
+      ),
+    );
   }
 }

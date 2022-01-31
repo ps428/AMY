@@ -11,7 +11,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        alignment: Alignment(1, 1),
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/bg1.png"),
