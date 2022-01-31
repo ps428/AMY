@@ -39,6 +39,57 @@ class Header extends StatelessWidget {
       );
 }
 
+class HeaderPlayfair extends StatelessWidget {
+  const HeaderPlayfair(this.heading);
+  final String heading;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          heading,
+          style: const TextStyle(
+              fontSize: 24,
+              fontFamily: 'Playfair',
+              fontWeight: FontWeight.bold),
+        ),
+      );
+}
+
+class HeaderOpenSans extends StatelessWidget {
+  const HeaderOpenSans(this.heading);
+  final String heading;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          heading,
+          style: const TextStyle(
+              fontSize: 24,
+              fontFamily: 'OpenSans',
+              fontWeight: FontWeight.bold),
+        ),
+      );
+}
+
+class HeaderMontserrat extends StatelessWidget {
+  const HeaderMontserrat(this.heading);
+  final String heading;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          heading,
+          style: const TextStyle(
+              fontSize: 24,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.bold),
+        ),
+      );
+}
+
 class Paragraph extends StatelessWidget {
   const Paragraph(this.content);
   final String content;
@@ -48,6 +99,54 @@ class Paragraph extends StatelessWidget {
         child: Text(
           content,
           style: const TextStyle(fontSize: 18, fontFamily: 'Caveat'),
+        ),
+      );
+}
+
+class ParagraphPlayfair extends StatelessWidget {
+  const ParagraphPlayfair(this.content);
+  final String content;
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: Text(
+          content,
+          style: const TextStyle(
+              fontSize: 18,
+              fontFamily: 'Playfair',
+              fontWeight: FontWeight.bold),
+        ),
+      );
+}
+
+class ParagraphMontserrat extends StatelessWidget {
+  const ParagraphMontserrat(this.content);
+  final String content;
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: Text(
+          content,
+          style: const TextStyle(
+              fontSize: 18,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.bold),
+        ),
+      );
+}
+
+class ParagraphOpenSans extends StatelessWidget {
+  const ParagraphOpenSans(this.content);
+  final String content;
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: Text(
+          content,
+          style: const TextStyle(
+              fontSize: 18,
+              fontFamily: 'OpenSans',
+              fontWeight: FontWeight.bold),
         ),
       );
 }
@@ -65,5 +164,62 @@ class StyledButton extends StatelessWidget {
         ),
         onPressed: onPressed,
         child: child,
+      );
+}
+
+class StyledButtonOpenSans extends StatelessWidget {
+  const StyledButtonOpenSans({required this.text, required this.onPressed});
+  final String text;
+  final void Function() onPressed;
+
+  @override
+  Widget build(BuildContext context) => ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: pineGreen, // background (button) color
+          onPrimary: apricotWhite, // foreground (text) color
+        ),
+        onPressed: onPressed,
+        child: Text(
+          text,
+          style: const TextStyle(fontFamily: 'OpenSans', color: apricotWhite),
+        ),
+      );
+}
+
+class StyledButtonPlayfair extends StatelessWidget {
+  const StyledButtonPlayfair({required this.text, required this.onPressed});
+  final String text;
+  final void Function() onPressed;
+
+  @override
+  Widget build(BuildContext context) => ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: pineGreen, // background (button) color
+          onPrimary: apricotWhite, // foreground (text) color
+        ),
+        onPressed: onPressed,
+        child: Text(
+          text,
+          style: const TextStyle(fontFamily: 'Playfair', color: apricotWhite),
+        ),
+      );
+}
+
+class StyledButtonMonterrsat extends StatelessWidget {
+  const StyledButtonMonterrsat({required this.text, required this.onPressed});
+  final String text;
+  final void Function() onPressed;
+
+  @override
+  Widget build(BuildContext context) => ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: pineGreen, // background (button) color
+          onPrimary: apricotWhite, // foreground (text) color
+        ),
+        onPressed: onPressed,
+        child: Text(
+          text,
+          style: const TextStyle(fontFamily: 'Montserrat', color: apricotWhite),
+        ),
       );
 }

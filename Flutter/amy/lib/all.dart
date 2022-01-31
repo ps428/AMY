@@ -97,7 +97,7 @@ class AllScreen extends StatelessWidget {
                 // off the stack.
                 Navigator.pushNamed(context, '/udonate');
               },
-            child: const Text('Go to User Donate!'),
+              child: const Text('Go to User Donate!'),
             ),
             ElevatedButton(
               // Within the AllScreen widget
@@ -122,30 +122,33 @@ class AllScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, '/uthanks');
                 }),
-            const Header('A custom heading'),
-            const Paragraph(
-                'A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph! A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph! A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph! A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!'),
-            StyledButton(
-                child: const Text('User thanks'),
+            const HeaderOpenSans('OPEN SANS Header'),
+            const ParagraphOpenSans(
+                'A demo paraghaph!A demo  paraghaph!A demo paraghaph!A demo paraghaph!'),
+            StyledButtonPlayfair(
+                text: 'User thanks',
                 onPressed: () {
                   Navigator.pushNamed(context, '/uthanks');
                 }),
-            const Header('A custom heading'),
-            const Paragraph(
-                'A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph! A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph! A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph! A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!A demo paraghaph!'),
-            StyledButton(
-                child: const Text('User thanks'),
+            const HeaderPlayfair('Playfair heading'),
+            const ParagraphPlayfair(
+                'A demo paraghaph!A demo  paraghaph!A demo paraghaph!A demo paraghaph!'),
+            StyledButtonMonterrsat(
+                text: 'User thanks',
                 onPressed: () {
                   Navigator.pushNamed(context, '/uthanks');
                 }),
-            StyledButton(
-                child: const Text("Button Name"),
+            StyledButtonOpenSans(
+                text: "Button Name",
                 onPressed: () {
                   //fnc
                   //change the page
                   //ref in main.dart
                   Navigator.pushNamed(context, '/uthanks');
-                })
+                }),
+            const HeaderMontserrat('Montersat heading'),
+            const ParagraphMontserrat(
+                'A demo paraghaph!A demo  paraghaph!A demo paraghaph!A demo paraghaph!'),
           ]),
         ));
   }

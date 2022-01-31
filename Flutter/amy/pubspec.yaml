@@ -105,6 +105,16 @@ flutter:
       fonts:
         - asset: assets/fonts/PlayfairDisplay-Regular.ttf
           weight: 700
+    
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/OpenSans-Medium.ttf
+          weight: 700
+
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
+          weight: 700
 
   #
   # For details regarding fonts from package dependencies,
