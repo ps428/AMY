@@ -1,4 +1,4 @@
-# AMY: A Meal by Me
+# AMY: A Meal by You
 
 AMY is an innovative food bank app designed by keeping SNU’s current mess ecosystem in consideration. AMY allows the students to make efficient use of their about to be lapsed mess card balance by making meal donations for the people for whom affording the meals is not that simple, eg. gardeners, nurserymen, guards working in night shifts etc.
 
