@@ -7,13 +7,13 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: cavernPink,
+      backgroundColor: parchmentPaper,
       appBar: AppBar(
-        title: const Text('Login Screen'),
+        title: const Text('Signup Screen'),
       ),
       body: Center(
         child: ElevatedButton(
-          // Within the LoginScreen widget
+          // Within the SignupScreen widget
           onPressed: () {
             // Navigate back to the first screen by popping the current route
             // off the stack.
