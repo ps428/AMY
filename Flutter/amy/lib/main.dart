@@ -23,7 +23,7 @@ void main() {
       title: 'AMY: A Meal by You',
       // Start the app with the "/" named route. In this case, the app starts
       // on the LoadingScreen widget.
-      initialRoute: '/test',
+      initialRoute: '/',
       routes: {
         // When navigating to the "/" route, build the LoadingScreen widget.
         '/': (context) => const LoadingScreen(),

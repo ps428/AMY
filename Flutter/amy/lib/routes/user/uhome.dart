@@ -38,7 +38,9 @@ class UHomeScreen extends StatelessWidget {
                 widthFactor: .30,
                 child: StyledButtonOpenSans(
                     text: "Log In",
-                    onPressed: () => {Navigator.pushNamed(context, '/login')}),
+                    onPressed: () => {
+                      Navigator.pushNamed(context, '/login')
+                      }),
               )),
               Expanded(
                   child: Align(
