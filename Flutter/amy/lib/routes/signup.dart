@@ -1,105 +1,156 @@
-import 'package:amy/constants.dart';
-import 'package:amy/routes/user/uhome.dart';
+import 'package:amy/routes/user/donation_page.dart';
 import 'package:flutter/material.dart';
 
-class SignupScreen extends StatelessWidget {
+import 'package:firebase_auth/firebase_auth.dart';
+
+import '../authentication_service.dart';
+import '../validator.dart';
+
+class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
 
   @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<SignupScreen> {
+  final _registerFormKey = GlobalKey<FormState>();
+
+  final _nameTextController = TextEditingController();
+  final _emailTextController = TextEditingController();
+  final _passwordTextController = TextEditingController();
+
+  final _focusName = FocusNode();
+  final _focusEmail = FocusNode();
+  final _focusPassword = FocusNode();
+
+  bool _isProcessing = false;
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: lightGreen,
-      appBar: AppBar(
-        title: const Text(
-          'Sign Up Page',
-          style: TextStyle(
-              // fontWeight: FontWeight.bold,
-              color: lightGreen,
-              fontFamily: 'OpenSans',
-              fontSize: 40),
+    return GestureDetector(
+      onTap: () {
+        _focusName.unfocus();
+        _focusEmail.unfocus();
+        _focusPassword.unfocus();
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Register'),
         ),
-        backgroundColor: pineGreen,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 60.0),
-              child: Center(
-                child: SizedBox(
-                    width: 200,
-                    height: 150,
-                    /*decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(50.0)),*/
-                    child: Image.asset('assets/amy_logo.png')),
-              ),
+        body: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Form(
+                  key: _registerFormKey,
+                  child: Column(
+                    children: <Widget>[
+                      TextFormField(
+                        controller: _nameTextController,
+                        focusNode: _focusName,
+                        validator: (value) => Validator.validateName(
+                          name: value,
+                        ),
+                        decoration: InputDecoration(
+                          hintText: "Name",
+                          errorBorder: UnderlineInputBorder(
+                            borderRadius: BorderRadius.circular(6.0),
+                            borderSide: BorderSide(
+                              color: Colors.red,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 16.0),
+                      TextFormField(
+                        controller: _emailTextController,
+                        focusNode: _focusEmail,
+                        validator: (value) => Validator.validateEmail(
+                          email: value,
+                        ),
+                        decoration: InputDecoration(
+                          hintText: "Email",
+                          errorBorder: UnderlineInputBorder(
+                            borderRadius: BorderRadius.circular(6.0),
+                            borderSide: BorderSide(
+                              color: Colors.red,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 16.0),
+                      TextFormField(
+                        controller: _passwordTextController,
+                        focusNode: _focusPassword,
+                        obscureText: true,
+                        validator: (value) => Validator.validatePassword(
+                          password: value,
+                        ),
+                        decoration: InputDecoration(
+                          hintText: "Password",
+                          errorBorder: UnderlineInputBorder(
+                            borderRadius: BorderRadius.circular(6.0),
+                            borderSide: BorderSide(
+                              color: Colors.red,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 32.0),
+                      _isProcessing
+                          ? CircularProgressIndicator()
+                          : Row(
+                              children: [
+                                Expanded(
+                                  child: ElevatedButton(
+                                    onPressed: () async {
+                                      setState(() {
+                                        _isProcessing = true;
+                                      });
+
+                                      if (_registerFormKey.currentState!
+                                          .validate()) {
+                                        User? user = await FireAuth
+                                            .registerUsingEmailPassword(
+                                          name: _nameTextController.text,
+                                          email: _emailTextController.text,
+                                          password:
+                                              _passwordTextController.text,
+                                        );
+
+                                        setState(() {
+                                          _isProcessing = false;
+                                        });
+
+                                        if (user != null) {
+                                          Navigator.of(context)
+                                              .pushAndRemoveUntil(
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ProfilePage(user: user),
+                                            ),
+                                            ModalRoute.withName('/'),
+                                          );
+                                        }
+                                      }
+                                    },
+                                    child: Text(
+                                      'Sign up',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                    ],
+                  ),
+                )
+              ],
             ),
-            const Padding(
-              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Name ',
-                ),
-              ),
-            ),
-            const Padding(
-              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding:
-                  EdgeInsets.only(left: 15.0, right: 15.0, top: 15, bottom: 0),
-              child: TextField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'snu mail id',
-                    hintText: 'Enter valid email id as abc@gmail.com'),
-              ),
-            ),
-            const Padding(
-              padding:
-                  EdgeInsets.only(left: 15.0, right: 15.0, top: 15, bottom: 0),
-              //padding: EdgeInsets.symmetric(horizontal: 15),
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Password',
-                    hintText: 'Enter secure password'),
-              ),
-            ),
-            const Padding(
-              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding:
-                  EdgeInsets.only(left: 15.0, right: 15.0, top: 15, bottom: 0),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Mess Card number',
-                ),
-              ),
-            ),
-            const Padding(
-              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding:
-                  EdgeInsets.only(left: 15.0, right: 15.0, top: 15, bottom: 0),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Contact number',
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            StyledButtonOpenSans(
-                text: "Sign Me up",
-                onPressed: () => {Navigator.pushNamed(context, '/uhome')}),
-            const SizedBox(
-              height: 130,
-            ),
-          ],
+          ),
         ),
       ),
     );
