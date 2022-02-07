@@ -36,32 +36,6 @@ class RunAmy extends StatefulWidget {
 }
 
 class _RunAmy extends State<RunAmy> {
-  // late User CurrUser;
-
-  // Future<User?> _initializeFirebase() async {
-  //   FirebaseApp firebaseApp = await Firebase.initializeApp();
-
-  //   User? user = FirebaseAuth.instance.currentUser;
-
-  //   if (user != null) {
-  //     Navigator.of(context).pushReplacement(
-  //       MaterialPageRoute(
-  //         builder: (context) => UHomeScreen(user: user),
-  //       ),
-  //     );
-  //   }
-
-  //   return user;
-  // }
-
-  @override
-  void initState() {
-    // Future<User?> CurrUser = _initializeFirebase();
-
-    // _currentUser = widget.user;
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -131,24 +105,25 @@ class _LoadingScreenState extends State<LoadingScreen> {
             filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.3),
+                color: Colors.black.withOpacity(0.1),
               ),
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(top: 100.0),
-                      child: Text(
-                        'AMY: A Meal by You',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 25.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'OpenSans'),
-                      ),
-                    ),
+                    // Removing the text above logo
+                    // const Padding(
+                    //   padding: EdgeInsets.only(top: 100.0),
+                    //   child: Text(
+                    //     'AMY: A Meal by You',
+                    //     textAlign: TextAlign.center,
+                    //     style: TextStyle(
+                    //         fontSize: 25.0,
+                    //         color: Colors.white,
+                    //         fontWeight: FontWeight.bold,
+                    //         fontFamily: 'OpenSans'),
+                    //   ),
+                    // ),
                     Padding(
                       padding: const EdgeInsets.only(top: 15.0),
                       child: Image.asset(
