@@ -1,8 +1,24 @@
 import 'package:amy/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class UHomeScreen extends StatelessWidget {
-  const UHomeScreen({Key? key}) : super(key: key);
+class UHomeScreen extends StatefulWidget {
+  final User user;
+
+  const UHomeScreen({required this.user});
+
+  @override
+  _UHomeScreen createState() => _UHomeScreen();
+}
+
+class _UHomeScreen extends State<UHomeScreen> {
+  late User _currentUser;
+
+  @override
+  void initState() {
+    _currentUser = widget.user;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +43,9 @@ class UHomeScreen extends StatelessWidget {
             color: Colors.grey,
           ),
           const Header("Welcome to AMY"),
+          Text(
+            'NAME: ${_currentUser.displayName}',
+          ),
           const Paragraph(
             'Some cool quote!',
           ),

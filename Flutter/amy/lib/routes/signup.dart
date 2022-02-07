@@ -132,7 +132,7 @@ class _RegisterPageState extends State<SignupScreen> {
                                               builder: (context) =>
                                                   ProfilePage(user: user),
                                             ),
-                                            ModalRoute.withName('/'),
+                                            ModalRoute.withName('/uhome'),
                                           );
                                         }
                                       }

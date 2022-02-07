@@ -30,12 +30,13 @@ class _LoginScreen extends State<LoginScreen> {
   Future<FirebaseApp> _initializeFirebase() async {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
 
-    User? user = FirebaseAuth.instance.currentUser;
+    User? user = await FirebaseAuth.instance.currentUser;
 
     if (user != null) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => ProfilePage(user: user),
+          // builder: (context) => const SignupScreen(),
+          builder: (context) => UHomeScreen(user: user),
         ),
       );
     }
@@ -143,7 +144,9 @@ class _LoginScreen extends State<LoginScreen> {
                                                   .pushReplacement(
                                                 MaterialPageRoute(
                                                   builder: (context) =>
-                                                      ProfilePage(user: user),
+                                                      UHomeScreen(user: user),
+                                                  // builder: (context) =>
+                                                  //     const SignupScreen(),
                                                 ),
                                               );
                                             }

@@ -12,8 +12,10 @@ import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
 import 'package:amy/routes/user/uthanks.dart';
 import 'package:amy/test.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'firebase_options.dart';
@@ -23,8 +25,46 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(
-    MaterialApp(
+  runApp(const RunAmy());
+}
+
+class RunAmy extends StatefulWidget {
+  const RunAmy({Key? key}) : super(key: key);
+
+  @override
+  _RunAmy createState() => _RunAmy();
+}
+
+class _RunAmy extends State<RunAmy> {
+  // late User CurrUser;
+
+  // Future<User?> _initializeFirebase() async {
+  //   FirebaseApp firebaseApp = await Firebase.initializeApp();
+
+  //   User? user = FirebaseAuth.instance.currentUser;
+
+  //   if (user != null) {
+  //     Navigator.of(context).pushReplacement(
+  //       MaterialPageRoute(
+  //         builder: (context) => UHomeScreen(user: user),
+  //       ),
+  //     );
+  //   }
+
+  //   return user;
+  // }
+
+  @override
+  void initState() {
+    // Future<User?> CurrUser = _initializeFirebase();
+
+    // _currentUser = widget.user;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
 
       title: 'AMY: A Meal by You',
@@ -42,17 +82,19 @@ Future<void> main() async {
         '/signup': (context) => const SignupScreen(),
 
         //Admin routes
-        '/ahome': (context) => const AHomeScreen(),
-        '/aserve': (context) => const AServeScreen(),
-        '/aordered': (context) => const AOrderedScreen(),
+        // '/ahome': (context) => const AHomeScreen(),
+        // '/aserve': (context) => const AServeScreen(),
+        // '/aordered': (context) => const AOrderedScreen(),
 
         //User routes
-        '/uhome': (context) => const UHomeScreen(),
-        '/udonate': (context) => const UDonateScreen(),
-        '/uthanks': (context) => const UThanksScreen(),
+        // '/uhome': (context) => const UHomeScreen(
+        //       user: CurrUser,
+        //     ),
+        // '/udonate': (context) => const UDonateScreen(),
+        // '/uthanks': (context) => const UThanksScreen(),
       },
-    ),
-  );
+    );
+  }
 }
 
 class LoadingScreen extends StatefulWidget {
