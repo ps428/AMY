@@ -28,7 +28,8 @@ samples, guidance on mobile development, and a full API reference.
 - [X] Donate Now Screen
 - [X] Login and Signup Pages
 - [X] Firebase Auth on Login and Signup
-- [ ] Work on DB
+- [X] Work on DB
+- [ ] Design a final flow for everything
 - [ ] Work on SRS doc
 - [ ] Finalize the flow of the app
 - [ ] User side page creation
@@ -43,3 +44,8 @@ samples, guidance on mobile development, and a full API reference.
 - [ ] User's record of donation
 - [ ] Add a user manual
 - [ ] Add a QnA page
+- [ ] Confirmation button upon donation
+- [ ] Timestamp of donation and serving 
+- [ ] In an notification on meal serving
+- [ ] Use group by kind of something to get superstar from the bill table
+- [ ] Add a graph. Can use sunc_fusion_flutter_charts
