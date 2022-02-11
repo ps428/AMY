@@ -24,10 +24,13 @@ samples, guidance on mobile development, and a full API reference.
 - [X] Connect Firebase and Configure
 - [X] Routing and Internal link test
 - [X] Add a Loading Screen
-- [ ] Home Screen
+- [X] Home Screen
 - [X] Donate Now Screen
-- [ ] Login and Signup Pages
-- [ ] Firebase Auth on Login and Signup
+- [X] Login and Signup Pages
+- [X] Firebase Auth on Login and Signup
+- [ ] Work on DB
+- [ ] Work on SRS doc
+- [ ] Finalize the flow of the app
 - [ ] User side page creation
 - [ ] User side DB work
 - [ ] Admin side page creation
@@ -38,3 +41,5 @@ samples, guidance on mobile development, and a full API reference.
 - [ ] Video/Gif/Slideshow as gratitue
 - [ ] Confetti and Thanking features (Quote, Badge etc)
 - [ ] User's record of donation
+- [ ] Add a user manual
+- [ ] Add a QnA page
