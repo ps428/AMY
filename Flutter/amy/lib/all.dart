@@ -1,9 +1,22 @@
 import 'package:amy/constants.dart';
+import 'package:amy/routes/admin/ahome.dart';
+import 'package:amy/routes/admin/aordered.dart';
+import 'package:amy/routes/admin/aserve.dart';
+import 'package:amy/routes/home.dart';
+import 'package:amy/routes/login.dart';
+import 'package:amy/routes/signup.dart';
+import 'package:amy/routes/user/udonate.dart';
+import 'package:amy/routes/user/uhome.dart';
 import 'package:flutter/material.dart';
 
-class AllScreen extends StatelessWidget {
+class AllScreen extends StatefulWidget {
   const AllScreen({Key? key}) : super(key: key);
 
+  @override
+  _AllScreen createState() => _AllScreen();
+}
+
+class _AllScreen extends State<AllScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +53,11 @@ class AllScreen extends StatelessWidget {
           onPressed: () {
             // Navigate back to the first screen by popping the current route
             // off the stack.
-            Navigator.pushNamed(context, '/home');
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const HomeScreen(),
+              ),
+            );
           },
           child: const Text('Go to Home!'),
         ),
@@ -49,7 +66,11 @@ class AllScreen extends StatelessWidget {
           onPressed: () {
             // Navigate back to the first screen by popping the current route
             // off the stack.
-            Navigator.pushNamed(context, '/login');
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const LoginScreen(),
+              ),
+            );
           },
           child: const Text('Go to Login'),
         ),
@@ -58,7 +79,11 @@ class AllScreen extends StatelessWidget {
           onPressed: () {
             // Navigate back to the first screen by popping the current route
             // off the stack.
-            Navigator.pushNamed(context, '/signup');
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const SignupScreen(),
+              ),
+            );
           },
           child: const Text('Go to Signup!'),
         ),
@@ -67,7 +92,11 @@ class AllScreen extends StatelessWidget {
           onPressed: () {
             // Navigate back to the first screen by popping the current route
             // off the stack.
-            Navigator.pushNamed(context, '/ahome');
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const AHomeScreen(),
+              ),
+            );
           },
           child: const Text('Go to Admin Home!'),
         ),
@@ -76,7 +105,11 @@ class AllScreen extends StatelessWidget {
           onPressed: () {
             // Navigate back to the first screen by popping the current route
             // off the stack.
-            Navigator.pushNamed(context, '/aordered');
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const AOrderedScreen(),
+              ),
+            );
           },
           child: const Text('Go to Admin Ordered!'),
         ),
@@ -85,66 +118,14 @@ class AllScreen extends StatelessWidget {
           onPressed: () {
             // Navigate back to the first screen by popping the current route
             // off the stack.
-            Navigator.pushNamed(context, '/aserve');
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const AServeScreen(),
+              ),
+            );
           },
           child: const Text('Go to Admin serve!'),
         ),
-        ElevatedButton(
-          // Within the AllScreen widget
-          onPressed: () {
-            // Navigate back to the first screen by popping the current route
-            // off the stack.
-            Navigator.pushNamed(context, '/udonate');
-          },
-          child: const Text('Go to User Donate!'),
-        ),
-        ElevatedButton(
-          // Within the AllScreen widget
-          onPressed: () {
-            // Navigate back to the first screen by popping the current route
-            // off the stack.
-            Navigator.pushNamed(context, '/uhome');
-          },
-          child: const Text('Go to User Home!'),
-        ),
-        ElevatedButton(
-          // Within the AllScreen widget
-          onPressed: () {
-            // Navigate back to the first screen by popping the current route
-            // off the stack.
-            Navigator.pushNamed(context, '/uthanks');
-          },
-          child: const Text('Go to User Thanks!'),
-        ),
-        StyledButton(
-            child: const Text('User thanks'),
-            onPressed: () {
-              Navigator.pushNamed(context, '/uthanks');
-            }),
-        const HeaderOpenSans('OPEN SANS Header'),
-        const ParagraphOpenSans(
-            'A demo paraghaph!A demo  paraghaph!A demo paraghaph!A demo paraghaph!'),
-        StyledButtonPlayfair(
-            text: 'User thanks',
-            onPressed: () {
-              Navigator.pushNamed(context, '/uthanks');
-            }),
-        const HeaderPlayfair('Playfair heading'),
-        const ParagraphPlayfair(
-            'A demo paraghaph!A demo  paraghaph!A demo paraghaph!A demo paraghaph!'),
-        StyledButtonMonterrsat(
-            text: 'User thanks',
-            onPressed: () {
-              Navigator.pushNamed(context, '/uthanks');
-            }),
-        StyledButtonOpenSans(
-            text: "Button Name",
-            onPressed: () {
-              //fnc
-              //change the page
-              //ref in main.dart
-              Navigator.pushNamed(context, '/uthanks');
-            }),
         const HeaderMontserrat('Montersat heading'),
         const ParagraphMontserrat(
             'A demo paraghaph!A demo  paraghaph!A demo paraghaph!A demo paraghaph!'),

@@ -14,6 +14,56 @@ class UHomeScreen extends StatefulWidget {
 class _UHomeScreen extends State<UHomeScreen> {
   late User _currentUser;
 
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Business',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: School',
+      style: optionStyle,
+    ),
+  ];
+
+//  void _onItemTapped(int index) {
+//     if (index == 0) {
+//       Navigator.of(context).push(
+//         MaterialPageRoute(
+//           builder: (context) => UHomeScreen(
+//             user: _currentUser,
+//           ),
+//         ),
+//       );
+//     } else if (index == 1) {
+//       Navigator.of(context).push(
+//         MaterialPageRoute(
+//           builder: (context) => UHomeScreen(
+//             user: _currentUser,
+//           ),
+//         ),
+//       );
+//     } else if (index == 2) {
+//       Navigator.of(context).push(
+//         MaterialPageRoute(
+//           builder: (context) => UDonateScreen(),
+//         ),
+//       );
+//     }
+//   }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   void initState() {
     _currentUser = widget.user;
@@ -23,6 +73,7 @@ class _UHomeScreen extends State<UHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: lightGreen,
       appBar: AppBar(
         title: const Text(
@@ -31,10 +82,8 @@ class _UHomeScreen extends State<UHomeScreen> {
         ),
         backgroundColor: pineGreen,
       ),
-      body: Column(
+      body: ListView(
         children: <Widget>[
-          Image.asset('assets/images/hands.jpg'),
-          const SizedBox(height: 8),
           const Divider(
             height: 8,
             thickness: 1,
@@ -49,27 +98,26 @@ class _UHomeScreen extends State<UHomeScreen> {
           const Paragraph(
             'Some cool quote!',
           ),
-          Row(
-            children: [
-              Expanded(
-                  child: Align(
-                heightFactor: .30,
-                widthFactor: .30,
-                child: StyledButtonOpenSans(
-                    text: "Log In",
-                    onPressed: () => {Navigator.pushNamed(context, '/login')}),
-              )),
-              Expanded(
-                  child: Align(
-                heightFactor: .30,
-                widthFactor: .30,
-                child: StyledButtonOpenSans(
-                    text: "Sign Up",
-                    onPressed: () => {Navigator.pushNamed(context, '/signup')}),
-              )),
-            ],
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Business',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'School',
           ),
         ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
     );
   }

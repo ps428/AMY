@@ -19,10 +19,10 @@ samples, guidance on mobile development, and a full API reference.
 
 ## File Structure
 ### 1. Public
-* Loading page: main.dart -> LoadingScreen
-* Login Sign up Page
-* Login Page
-* Sign Up Page
+* Loading page: main.dart -> LoadingScreen => DONE
+* Login Sign up Page: home.dart -> HomeScreen => Backend fine UI Needs to be adjusted
+* Login Page: login.dart -> LoginScreen => Backend fine UI Needs to be adjusted
+* Sign Up Page: signin.dart -> SignupScreen => Backend fine UI Needs to be adjusted
 
 ### 2. User
 * User Home
@@ -36,6 +36,14 @@ samples, guidance on mobile development, and a full API reference.
 * Serve Meal
 * Bill
 * Inventory
+
+### 4. Backend Pages
+* To access all pages: all.dart
+* Firebase Authentication and other services: authentication_service.dart
+* Default constants: constants.dart
+* Testing file: test.dart
+* Validate Firebase authentications: validate.dart
+* Deafut Firebase generated: firebase_options.dart, generated_plugin_registrant.dart
 
 ## ToDo List
 - [X] Basic Ideation
