@@ -17,7 +17,27 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-## ToDO List
+## File Structure
+### Public
+Loading page: main.dart -> LoadingScreen
+Login Sign up Page
+Login Page
+Sign Up Page
+
+### User
+User Home
+Donate Now
+Confirm Donation
+My Account
+Confetti / Thanks page
+
+### Admin
+Admin Home
+Serve Meal
+Bill
+Inventory
+
+## ToDo List
 - [X] Basic Ideation
 - [X] Problem Statement Definition and Proposal
 - [X] Flutter Setup
@@ -29,8 +49,8 @@ samples, guidance on mobile development, and a full API reference.
 - [X] Login and Signup Pages
 - [X] Firebase Auth on Login and Signup
 - [X] Work on DB
-- [ ] Design a final flow for everything
-- [ ] Work on SRS doc
+- [X] Design a final flow for everything
+- [X] Work on SRS doc
 - [ ] Finalize the flow of the app
 - [ ] User side page creation
 - [ ] User side DB work
@@ -46,6 +66,6 @@ samples, guidance on mobile development, and a full API reference.
 - [ ] Add a QnA page
 - [ ] Confirmation button upon donation
 - [ ] Timestamp of donation and serving 
-- [ ] In an notification on meal serving
+- [ ] In app notification on meal serving
 - [ ] Use group by kind of something to get superstar from the bill table
 - [ ] Add a graph. Can use sunc_fusion_flutter_charts
