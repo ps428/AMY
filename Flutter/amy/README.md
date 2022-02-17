@@ -18,24 +18,24 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 ## File Structure
-### Public
-Loading page: main.dart -> LoadingScreen
-Login Sign up Page
-Login Page
-Sign Up Page
+### 1. Public
+* Loading page: main.dart -> LoadingScreen
+* Login Sign up Page
+* Login Page
+* Sign Up Page
 
-### User
-User Home
-Donate Now
-Confirm Donation
-My Account
-Confetti / Thanks page
+### 2. User
+* User Home
+* Donate Now
+* Confirm Donation
+* My Account
+* Confetti / Thanks page
 
-### Admin
-Admin Home
-Serve Meal
-Bill
-Inventory
+### 3. Admin
+* Admin Home
+* Serve Meal
+* Bill
+* Inventory
 
 ## ToDo List
 - [X] Basic Ideation
