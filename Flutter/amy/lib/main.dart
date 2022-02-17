@@ -64,7 +64,7 @@ class _RunAmy extends State<RunAmy> {
         // '/uhome': (context) => const UHomeScreen(
         //       user: CurrUser,
         //     ),
-        '/udonate': (context) => const UDonateScreen(),
+        // '/udonate': (context) => const UDonateScreen(),
         // '/uthanks': (context) => const UThanksScreen(),
       },
     );

@@ -1,20 +1,19 @@
 import 'package:amy/constants.dart';
-import 'package:amy/routes/user/uaccount.dart';
 import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class UDonateScreen extends StatefulWidget {
+class UAccountScreen extends StatefulWidget {
   final User user;
 
-  const UDonateScreen({required this.user});
+  const UAccountScreen({required this.user});
 
   @override
-  _UDonateScreen createState() => _UDonateScreen();
+  _UAccountScreen createState() => _UAccountScreen();
 }
 
-class _UDonateScreen extends State<UDonateScreen> {
+class _UAccountScreen extends State<UAccountScreen> {
   late User _currentUser;
 
   int _selectedIndex = 0;
@@ -69,7 +68,7 @@ class _UDonateScreen extends State<UDonateScreen> {
       backgroundColor: lightGreen,
       appBar: AppBar(
         title: const Text(
-          'Donate Now',
+          'My Account',
           style: TextStyle(color: lightGreen, fontFamily: 'OpenSans'),
         ),
         backgroundColor: pineGreen,
@@ -83,7 +82,7 @@ class _UDonateScreen extends State<UDonateScreen> {
             endIndent: 8,
             color: Colors.grey,
           ),
-          const Header("BLD Stuff"),
+          const Header("Account Details"),
           Text(
             'NAME: ${_currentUser.displayName}',
           ),

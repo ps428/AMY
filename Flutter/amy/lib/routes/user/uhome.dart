@@ -1,4 +1,6 @@
 import 'package:amy/constants.dart';
+import 'package:amy/routes/user/uaccount.dart';
+import 'package:amy/routes/user/udonate.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -15,54 +17,43 @@ class _UHomeScreen extends State<UHomeScreen> {
   late User _currentUser;
 
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-  ];
-
-//  void _onItemTapped(int index) {
-//     if (index == 0) {
-//       Navigator.of(context).push(
-//         MaterialPageRoute(
-//           builder: (context) => UHomeScreen(
-//             user: _currentUser,
-//           ),
-//         ),
-//       );
-//     } else if (index == 1) {
-//       Navigator.of(context).push(
-//         MaterialPageRoute(
-//           builder: (context) => UHomeScreen(
-//             user: _currentUser,
-//           ),
-//         ),
-//       );
-//     } else if (index == 2) {
-//       Navigator.of(context).push(
-//         MaterialPageRoute(
-//           builder: (context) => UDonateScreen(),
-//         ),
-//       );
-//     }
-//   }
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+    if (index == 0) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => UHomeScreen(
+            user: _currentUser,
+          ),
+        ),
+      );
+    } else if (index == 1) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => UDonateScreen(
+            user: _currentUser,
+          ),
+        ),
+      );
+    } else if (index == 2) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => UAccountScreen(
+            user: _currentUser,
+          ),
+        ),
+      );
+    }
   }
+
+  // void _onItemTapped(int index) {
+  //   setState(() {
+  //     _selectedIndex = index;
+  //   });
+  // }
 
   @override
   void initState() {
@@ -107,12 +98,12 @@ class _UHomeScreen extends State<UHomeScreen> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.food_bank),
+            label: 'Donate',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.account_circle),
+            label: 'My Account',
           ),
         ],
         currentIndex: _selectedIndex,
