@@ -1,6 +1,8 @@
 import 'package:amy/constants.dart';
+import 'package:amy/routes/admin/abill.dart';
 import 'package:amy/routes/user/uaccount.dart';
 import 'package:amy/routes/user/udonate.dart';
+import 'package:amy/routes/user/uthanks.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -89,6 +91,17 @@ class _UHomeScreen extends State<UHomeScreen> {
           const Paragraph(
             'Some cool quote!',
           ),
+          StyledButtonPlayfair(
+              text: "Show confett page",
+              onPressed: () => {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => UThanksScreen(
+                          user: _currentUser,
+                        ),
+                      ),
+                    )
+                  })
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

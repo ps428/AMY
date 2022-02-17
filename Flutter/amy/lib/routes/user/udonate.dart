@@ -17,7 +17,7 @@ class UDonateScreen extends StatefulWidget {
 class _UDonateScreen extends State<UDonateScreen> {
   late User _currentUser;
 
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
     setState(() {

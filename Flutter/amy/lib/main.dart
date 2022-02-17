@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:amy/all.dart';
 import 'package:amy/constants.dart';
 import 'package:amy/routes/admin/ahome.dart';
-import 'package:amy/routes/admin/aordered.dart';
 import 'package:amy/routes/admin/aserve.dart';
 import 'package:amy/routes/home.dart';
 import 'package:amy/routes/login.dart';

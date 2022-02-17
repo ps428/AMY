@@ -1,6 +1,7 @@
 import 'package:amy/constants.dart';
+import 'package:amy/routes/admin/abill.dart';
 import 'package:amy/routes/admin/ahome.dart';
-import 'package:amy/routes/admin/aordered.dart';
+import 'package:amy/routes/admin/ainventory.dart';
 import 'package:amy/routes/admin/aserve.dart';
 import 'package:amy/routes/home.dart';
 import 'package:amy/routes/login.dart';
@@ -107,11 +108,11 @@ class _AllScreen extends State<AllScreen> {
             // off the stack.
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const AOrderedScreen(),
+                builder: (context) => const ABillScreen(),
               ),
             );
           },
-          child: const Text('Go to Admin Ordered!'),
+          child: const Text('Go to Admin Bill Screen!'),
         ),
         ElevatedButton(
           // Within the AllScreen widget
@@ -125,6 +126,19 @@ class _AllScreen extends State<AllScreen> {
             );
           },
           child: const Text('Go to Admin serve!'),
+        ),
+        ElevatedButton(
+          // Within the AllScreen widget
+          onPressed: () {
+            // Navigate back to the first screen by popping the current route
+            // off the stack.
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const AInventoryScreen(),
+              ),
+            );
+          },
+          child: const Text('Go to Admin Inventory!'),
         ),
         const HeaderMontserrat('Montersat heading'),
         const ParagraphMontserrat(

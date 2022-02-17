@@ -1,21 +1,17 @@
 import 'package:amy/constants.dart';
-import 'package:amy/routes/user/udonate.dart';
-import 'package:amy/routes/user/uhome.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class UAccountScreen extends StatefulWidget {
-  final User user;
+import 'ahome.dart';
+import 'aserve.dart';
 
-  const UAccountScreen({required this.user});
+class AInventoryScreen extends StatefulWidget {
+  const AInventoryScreen({Key? key}) : super(key: key);
 
   @override
-  _UAccountScreen createState() => _UAccountScreen();
+  _AInventoryScreen createState() => _AInventoryScreen();
 }
 
-class _UAccountScreen extends State<UAccountScreen> {
-  late User _currentUser;
-
+class _AInventoryScreen extends State<AInventoryScreen> {
   int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
@@ -24,27 +20,15 @@ class _UAccountScreen extends State<UAccountScreen> {
     });
     if (index == 0) {
       Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => UHomeScreen(
-            user: _currentUser,
-          ),
-        ),
+        MaterialPageRoute(builder: (context) => const AHomeScreen()),
       );
     } else if (index == 1) {
       Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => UDonateScreen(
-            user: _currentUser,
-          ),
-        ),
+        MaterialPageRoute(builder: (context) => const AServeScreen()),
       );
     } else if (index == 2) {
       Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (context) => UAccountScreen(
-            user: _currentUser,
-          ),
-        ),
+        MaterialPageRoute(builder: (context) => const AInventoryScreen()),
       );
     }
   }
@@ -57,7 +41,6 @@ class _UAccountScreen extends State<UAccountScreen> {
 
   @override
   void initState() {
-    _currentUser = widget.user;
     super.initState();
   }
 
@@ -68,25 +51,25 @@ class _UAccountScreen extends State<UAccountScreen> {
       backgroundColor: lightGreen,
       appBar: AppBar(
         title: const Text(
-          'My Account',
+          'Inventory',
           style: TextStyle(color: lightGreen, fontFamily: 'OpenSans'),
         ),
         backgroundColor: pineGreen,
       ),
       body: ListView(
-        children: <Widget>[
-          const Divider(
+        children: const <Widget>[
+          Divider(
             height: 8,
             thickness: 1,
             indent: 8,
             endIndent: 8,
             color: Colors.grey,
           ),
-          const Header("Account Details"),
+          Header("List items"),
           Text(
-            'NAME: ${_currentUser.displayName}',
+            'Records: ',
           ),
-          const Paragraph(
+          Paragraph(
             'Tables!',
           ),
         ],
@@ -99,11 +82,11 @@ class _UAccountScreen extends State<UAccountScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.food_bank),
-            label: 'Donate',
+            label: 'Serve Meal',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'My Account',
+            icon: Icon(Icons.poll),
+            label: 'Show Records',
           ),
         ],
         currentIndex: _selectedIndex,

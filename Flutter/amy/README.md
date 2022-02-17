@@ -25,17 +25,17 @@ samples, guidance on mobile development, and a full API reference.
 * Sign Up Page: signin.dart -> SignupScreen => Backend fine UI Needs to be adjusted
 
 ### 2. User
-* User Home
-* Donate Now
-* Confirm Donation
-* My Account
-* Confetti / Thanks page
+* User Home: uhome.dart -> UHomeScreen => Backend fine UI Needs to be adjusted
+* Donate Now: udonate.dart -> UDonateScreen => Backend fine UI Needs to be adjusted
+* Confirm Donation: a pop up kind of somthing will be done
+* My Account: uaccount.dart -> UAccountScreen => Backend fine UI Needs to be adjusted
+* Confetti / Thanks page: uthanks.dart -> UThanksScreen => Backend fine UI Needs to be adjusted
 
 ### 3. Admin
-* Admin Home
-* Serve Meal
-* Bill
-* Inventory
+* Admin Home: ahome.dart -> AHomeScreen => Backend fine UI Needs to be adjusted
+* Serve Meal: aserve.dart -> AServeScreen => Backend fine UI Needs to be adjusted
+* Bill: abill -> ABillScreen => Backend fine UI Needs to be adjusted
+* Inventory: ainventory.dart -> AInventoryScreen => Backend fine UI Needs to be adjusted
 
 ### 4. Backend Pages
 * To access all pages: all.dart
