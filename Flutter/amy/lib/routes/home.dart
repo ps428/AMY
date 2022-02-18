@@ -59,8 +59,17 @@ class _HomeScreen extends State<HomeScreen> {
         _focusPassword.unfocus();
       },
       child: Scaffold(
+        backgroundColor: lightGreen,
         appBar: AppBar(
-          title: const Text('Home'),
+          backgroundColor: pineGreen,
+          title: const Text(
+            'Home',
+            style: TextStyle(
+                // fontWeight: FontWeight.bold,
+                color: lightGreen,
+                fontFamily: 'Monterrsat',
+                fontSize: 36),
+          ),
         ),
         body: FutureBuilder(
           future: _initializeFirebase(),
@@ -72,16 +81,23 @@ class _HomeScreen extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
+                      padding: const EdgeInsets.only(top: 5.0),
+                      child: Image.asset(
+                        'assets/amy_logo.png',
+                        height: 280.0,
+                        fit: BoxFit.scaleDown,
+                      ),
+                    ),
+                    Padding(
                       padding: const EdgeInsets.only(bottom: 24.0),
-                      child: Text(
+                      child: HeaderMontserrat(
                         'Home',
-                        style: Theme.of(context).textTheme.headline1,
                       ),
                     ),
                     Row(
                       children: [
                         Expanded(
-                          child: ElevatedButton(
+                          child: StyledButtonMonterrsat(
                             onPressed: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
@@ -89,15 +105,12 @@ class _HomeScreen extends State<HomeScreen> {
                                 ),
                               );
                             },
-                            child: Text(
-                              'Login',
-                              style: TextStyle(color: Colors.white),
-                            ),
+                            text: 'Log In',
                           ),
                         ),
                         SizedBox(width: 24.0),
                         Expanded(
-                          child: ElevatedButton(
+                          child: StyledButtonMonterrsat(
                             onPressed: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
@@ -105,10 +118,7 @@ class _HomeScreen extends State<HomeScreen> {
                                 ),
                               );
                             },
-                            child: Text(
-                              'Register',
-                              style: TextStyle(color: Colors.white),
-                            ),
+                            text: 'Sign Up',
                           ),
                         ),
                       ],

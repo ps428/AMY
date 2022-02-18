@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../authentication_service.dart';
+import '../constants.dart';
 import '../validator.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -35,8 +36,17 @@ class _RegisterPageState extends State<SignupScreen> {
         _focusPassword.unfocus();
       },
       child: Scaffold(
+        backgroundColor: lightGreen,
         appBar: AppBar(
-          title: Text('Register'),
+          backgroundColor: pineGreen,
+          title: const Text(
+            'Log In',
+            style: TextStyle(
+                // fontWeight: FontWeight.bold,
+                color: lightGreen,
+                fontFamily: 'Monterrsat',
+                fontSize: 36),
+          ),
         ),
         body: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -48,6 +58,14 @@ class _RegisterPageState extends State<SignupScreen> {
                   key: _registerFormKey,
                   child: Column(
                     children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5.0),
+                        child: Image.asset(
+                          'assets/amy_logo.png',
+                          height: 280.0,
+                          fit: BoxFit.scaleDown,
+                        ),
+                      ),
                       TextFormField(
                         controller: _nameTextController,
                         focusNode: _focusName,
@@ -105,7 +123,7 @@ class _RegisterPageState extends State<SignupScreen> {
                           : Row(
                               children: [
                                 Expanded(
-                                  child: ElevatedButton(
+                                  child: StyledButtonMonterrsat(
                                     onPressed: () async {
                                       setState(() {
                                         _isProcessing = true;
@@ -137,10 +155,7 @@ class _RegisterPageState extends State<SignupScreen> {
                                         }
                                       }
                                     },
-                                    child: Text(
-                                      'Sign up',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
+                                    text: 'Sign Up',
                                   ),
                                 ),
                               ],

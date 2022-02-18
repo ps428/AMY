@@ -52,8 +52,17 @@ class _LoginScreen extends State<LoginScreen> {
         _focusPassword.unfocus();
       },
       child: Scaffold(
+        backgroundColor: lightGreen,
         appBar: AppBar(
-          title: const Text('Login'),
+          backgroundColor: pineGreen,
+          title: const Text(
+            'Log In',
+            style: TextStyle(
+                // fontWeight: FontWeight.bold,
+                color: lightGreen,
+                fontFamily: 'Monterrsat',
+                fontSize: 36),
+          ),
         ),
         body: FutureBuilder(
           future: _initializeFirebase(),
@@ -65,10 +74,17 @@ class _LoginScreen extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 24.0),
-                      child: Text(
-                        'Login',
-                        style: Theme.of(context).textTheme.headline1,
+                      padding: const EdgeInsets.only(top: 5.0),
+                      child: Image.asset(
+                        'assets/amy_logo.png',
+                        height: 280.0,
+                        fit: BoxFit.scaleDown,
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 24.0),
+                      child: HeaderMontserrat(
+                        'Log In',
                       ),
                     ),
                     Form(
@@ -117,7 +133,7 @@ class _LoginScreen extends State<LoginScreen> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Expanded(
-                                      child: ElevatedButton(
+                                      child: StyledButtonMonterrsat(
                                         onPressed: () async {
                                           _focusEmail.unfocus();
                                           _focusPassword.unfocus();
@@ -152,27 +168,21 @@ class _LoginScreen extends State<LoginScreen> {
                                             }
                                           }
                                         },
-                                        child: Text(
-                                          'Sign In',
-                                          style: TextStyle(color: Colors.white),
-                                        ),
+                                        text: 'Log In',
                                       ),
                                     ),
                                     SizedBox(width: 24.0),
                                     Expanded(
-                                      child: ElevatedButton(
+                                      child: StyledButtonMonterrsat(
                                         onPressed: () {
                                           Navigator.of(context).push(
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  SignupScreen(),
+                                                  const SignupScreen(),
                                             ),
                                           );
                                         },
-                                        child: Text(
-                                          'Register',
-                                          style: TextStyle(color: Colors.white),
-                                        ),
+                                        text: 'Sign Up',
                                       ),
                                     ),
                                   ],
