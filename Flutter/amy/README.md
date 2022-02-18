@@ -20,9 +20,9 @@ samples, guidance on mobile development, and a full API reference.
 ## File Structure
 ### 1. Public
 * Loading page: main.dart -> LoadingScreen => DONE
-* Login Sign up Page: home.dart -> HomeScreen => Backend fine UI Needs to be adjusted
-* Login Page: login.dart -> LoginScreen => Backend fine UI Needs to be adjusted
-* Sign Up Page: signin.dart -> SignupScreen => Backend fine UI Needs to be adjusted
+* Login Sign up Page: home.dart -> HomeScreen => DONE
+* Login Page: login.dart -> LoginScreen => DONE
+* Sign Up Page: signin.dart -> SignupScreen => DONE, just need to add new fields now
 
 ### 2. User
 * User Home: uhome.dart -> UHomeScreen => Backend fine UI Needs to be adjusted
