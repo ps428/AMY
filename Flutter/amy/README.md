@@ -22,7 +22,7 @@ samples, guidance on mobile development, and a full API reference.
 * Loading page: main.dart -> LoadingScreen => DONE
 * Login Sign up Page: home.dart -> HomeScreen => DONE
 * Login Page: login.dart -> LoginScreen => DONE
-* Sign Up Page: signin.dart -> SignupScreen => DONE, just need to add new fields now
+* Sign Up Page: signin.dart -> SignupScreen => DONE
 
 ### 2. User
 * User Home: uhome.dart -> UHomeScreen => Backend fine UI Needs to be adjusted
