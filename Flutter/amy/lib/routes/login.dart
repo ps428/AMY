@@ -23,6 +23,9 @@ class _LoginScreen extends State<LoginScreen> {
   final _emailTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
 
+  bool isEmailVerified = true;
+  bool _attempetd = false;
+
   final _focusEmail = FocusNode();
   final _focusPassword = FocusNode();
 
@@ -33,12 +36,16 @@ class _LoginScreen extends State<LoginScreen> {
     User? user = await FirebaseAuth.instance.currentUser;
 
     if (user != null) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          // builder: (context) => const SignupScreen(),
-          builder: (context) => UHomeScreen(user: user),
-        ),
-      );
+      if (user.emailVerified) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            // builder: (context) => const SignupScreen(),
+            builder: (context) => UHomeScreen(user: user),
+          ),
+        );
+      } else {
+        isEmailVerified = false;
+      }
     }
 
     return firebaseApp;
@@ -126,6 +133,14 @@ class _LoginScreen extends State<LoginScreen> {
                             ),
                           ),
                           SizedBox(height: 24.0),
+                          isEmailVerified
+                              ? _attempetd
+                                  ? const ParagraphMontserrat(
+                                      "Error! Plese enter correct credentials.")
+                                  : const ParagraphMontserrat(
+                                      "Plese enter your credentials.")
+                              : const ParagraphMontserrat(
+                                  "Error! Mail not verified"),
                           _isProcessing
                               ? CircularProgressIndicator()
                               : Row(
@@ -142,6 +157,8 @@ class _LoginScreen extends State<LoginScreen> {
                                               .validate()) {
                                             setState(() {
                                               _isProcessing = true;
+                                              _attempetd = true;
+                                              isEmailVerified = true;
                                             });
 
                                             User? user = await FireAuth
@@ -156,15 +173,18 @@ class _LoginScreen extends State<LoginScreen> {
                                             });
 
                                             if (user != null) {
-                                              Navigator.of(context)
-                                                  .pushReplacement(
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      UHomeScreen(user: user),
-                                                  // builder: (context) =>
-                                                  //     const SignupScreen(),
-                                                ),
-                                              );
+                                              if (!user.emailVerified) {
+                                                Navigator.of(context)
+                                                    .pushReplacement(
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        // HomeScreen()
+                                                        UHomeScreen(user: user),
+                                                    // builder: (context) =>
+                                                    //     const SignupScreen(),
+                                                  ),
+                                                );
+                                              } else {}
                                             }
                                           }
                                         },

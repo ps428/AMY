@@ -1,8 +1,11 @@
 import 'package:amy/constants.dart';
+import 'package:amy/routes/home.dart';
 import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../../authentication_service.dart';
 
 class UAccountScreen extends StatefulWidget {
   final User user;
@@ -89,6 +92,18 @@ class _UAccountScreen extends State<UAccountScreen> {
           const Paragraph(
             'Tables!',
           ),
+          StyledButtonMonterrsat(
+              text: "Sign Out",
+              onPressed: () => {
+                    FireAuth.signOut(),
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                        // builder: (context) =>
+                        //     const SignupScreen(),
+                      ),
+                    )
+                  })
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

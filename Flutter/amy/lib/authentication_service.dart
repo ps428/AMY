@@ -2,11 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class FireAuth {
   // For registering a new user
-  static Future<User?> registerUsingEmailPassword({
-    required String name,
-    required String email,
-    required String password,
-  }) async {
+  static Future<List> registerUsingEmailPassword(
+      {required String name,
+      required String email,
+      required String password,
+      required bool isDuplicateID}) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user;
 
@@ -25,12 +25,13 @@ class FireAuth {
         print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
         print('The account already exists for that email.');
+        isDuplicateID = true;
       }
     } catch (e) {
       print(e);
     }
 
-    return user;
+    return [user, isDuplicateID];
   }
 
   // For signing in an user (have already registered)
@@ -47,6 +48,20 @@ class FireAuth {
         password: password,
       );
       user = userCredential.user;
+      if (user != null) {
+        if (user.emailVerified) {
+          print(user.displayName);
+          print("verified section");
+          print(user.emailVerified);
+          return user;
+        } else {
+          print(user.displayName);
+          print("unverified section");
+          print(user.emailVerified);
+
+          return null;
+        }
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -54,8 +69,11 @@ class FireAuth {
         print('Wrong password provided.');
       }
     }
+    print(user?.displayName);
+    print(user?.emailVerified);
+    print("yoo");
 
-    return user;
+    return null;
   }
 
   static Future<User?> refreshUser(User user) async {
@@ -65,5 +83,9 @@ class FireAuth {
     User? refreshedUser = auth.currentUser;
 
     return refreshedUser;
+  }
+
+  static void signOut() async {
+    await FirebaseAuth.instance.signOut();
   }
 }

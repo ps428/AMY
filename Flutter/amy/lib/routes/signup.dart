@@ -1,4 +1,5 @@
 import 'package:amy/routes/user/donation_page.dart';
+import 'package:amy/routes/user/uhome.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,6 +30,10 @@ class _RegisterPageState extends State<SignupScreen> {
   final _focusMessID = FocusNode();
   final _focusPhoneNumber = FocusNode();
 
+  bool _isSendingVerification = false;
+  bool _isDuplicateID = false;
+  bool _attemptedSignUp = false;
+
   bool _isProcessing = false;
 
   @override
@@ -44,7 +49,7 @@ class _RegisterPageState extends State<SignupScreen> {
         appBar: AppBar(
           backgroundColor: pineGreen,
           title: const Text(
-            'Log In',
+            'Sign Up',
             style: TextStyle(
                 // fontWeight: FontWeight.bold,
                 color: lightGreen,
@@ -131,7 +136,7 @@ class _RegisterPageState extends State<SignupScreen> {
                             messID: value,
                           ),
                           decoration: InputDecoration(
-                            hintText: "MESS ID",
+                            hintText: "Mess ID",
                             errorBorder: UnderlineInputBorder(
                               borderRadius: BorderRadius.circular(6.0),
                               borderSide: BorderSide(
@@ -159,6 +164,13 @@ class _RegisterPageState extends State<SignupScreen> {
                         ),
                         //TODO above this
                         SizedBox(height: 32.0),
+                        _isDuplicateID
+                            ? HeaderMontserrat(
+                                "Error! This email id is already taken.")
+                            : _attemptedSignUp
+                                ? HeaderMontserrat("Please verify your id!")
+                                : ParagraphMontserrat(
+                                    "Please enter Your details."),
                         _isProcessing
                             ? CircularProgressIndicator()
                             : Row(
@@ -166,33 +178,54 @@ class _RegisterPageState extends State<SignupScreen> {
                                   Expanded(
                                     child: StyledButtonMonterrsat(
                                       onPressed: () async {
-                                        setState(() {
-                                          _isProcessing = true;
-                                        });
+                                        if (_registerFormKey.currentState!
+                                            .validate()) {
+                                          setState(() {
+                                            _isProcessing = true;
+                                            _isSendingVerification = true;
+                                            _isDuplicateID = false;
+                                          });
+                                        }
 
                                         if (_registerFormKey.currentState!
                                             .validate()) {
-                                          User? user = await FireAuth
+                                          List l = await FireAuth
                                               .registerUsingEmailPassword(
                                             name: _nameTextController.text,
                                             email: _emailTextController.text,
                                             password:
                                                 _passwordTextController.text,
+                                            isDuplicateID: _isDuplicateID,
                                           );
+                                          User? user = await l[0];
+                                          _isDuplicateID = l[1];
 
                                           setState(() {
                                             _isProcessing = false;
+                                            _attemptedSignUp = true;
                                           });
 
                                           if (user != null) {
-                                            Navigator.of(context)
-                                                .pushAndRemoveUntil(
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ProfilePage(user: user),
-                                              ),
-                                              ModalRoute.withName('/uhome'),
-                                            );
+                                            await user.sendEmailVerification();
+                                            setState(() {
+                                              _isSendingVerification = false;
+                                            });
+                                            if (_isDuplicateID == false &&
+                                                user.emailVerified) {
+                                              Navigator.of(context)
+                                                  .pushReplacement(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      // HomeScreen()
+                                                      UHomeScreen(user: user),
+                                                  // builder: (context) =>
+                                                  //     const SignupScreen(),
+                                                ),
+                                              );
+                                            } else {}
+                                            setState(() {
+                                              _isProcessing = false;
+                                            });
                                           }
                                         }
                                       },
