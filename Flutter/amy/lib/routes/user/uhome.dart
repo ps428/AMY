@@ -21,8 +21,9 @@ class _UHomeScreen extends State<UHomeScreen> {
   late User _currentUser;
 
   int _selectedIndex = 0;
-  bool countersUpdated = false;
+  bool isFirebaseCalled = false;
   var counters;
+  var messData;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -64,15 +65,19 @@ class _UHomeScreen extends State<UHomeScreen> {
   @override
   void initState() {
     _currentUser = widget.user;
-    updateCounter();
+    getDataFromFirebase();
     super.initState();
   }
 
-  Future<void> updateCounter() async {
-    var tmp = await FirebaseUserClass.getCounters();
+  Future<void> getDataFromFirebase() async {
+    var counterTmp = await FirebaseUserClass.getCounters();
+    var messDataTmp =
+        await FirebaseUserClass.getUserMessDeatils(widget.user.uid);
+
     setState(() {
-      counters = tmp;
-      countersUpdated = true;
+      counters = counterTmp;
+      messData = messDataTmp;
+      isFirebaseCalled = true;
       print(counters[0]);
     });
   }
@@ -116,12 +121,24 @@ class _UHomeScreen extends State<UHomeScreen> {
                       ),
                     )
                   }),
-          countersUpdated
+          StyledButtonMonterrsat(
+              text: "Get Data",
+              onPressed: () =>
+                  {FirebaseUserClass.getUserMessDeatils(_currentUser.uid)}),
+          isFirebaseCalled
               ? ParagraphMontserrat("Total meals donated: " +
                   counters[0].toString() +
                   " Total meals served: " +
                   counters[1].toString())
-              : ParagraphMontserrat("Loading data")
+              : const ParagraphMontserrat("Loading counters"),
+          isFirebaseCalled
+              ? ParagraphMontserrat("Hello " +
+                  messData[0] +
+                  "! Your mess id is: " +
+                  messData[1].toString() +
+                  " Your account balance is: INR " +
+                  messData[2].toString())
+              : ParagraphMontserrat("Loading user data")
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -22,22 +22,28 @@ class FirebaseUserClass {
     returnList.add(tmp['mealsDonated']);
     returnList.add(tmp['mealsServed']);
 
-    // mealsDonated
-    // print(returnList);
-    // Map<String, dynamic> data = userDonations.;
-    print(returnList);
     return returnList;
   }
 
   static Future<List> getUserMessDeatils(String uID) async {
-    //TODO read data from firestore
-    messData
-        .doc(uID)
-        .set({
-          'uID': uID, // John Doe
-        })
-        .then((value) => print("User Added"))
-        .catchError((error) => print("Failed to add user: $error"));
-    return [];
+    var returnList;
+    var tmp;
+    await FirebaseFirestore.instance
+        .collection('messData')
+        .get()
+        .then((querySnapshot) {
+      querySnapshot.docs.forEach((result) {
+        if (result.data()['uID'] == uID) {
+          // print(result.data());
+          tmp = result.data();
+        }
+      });
+    });
+    returnList = [];
+    returnList.add(tmp['full_name']);
+    returnList.add(tmp['messID']);
+    returnList.add(tmp['balance']);
+    print(returnList);
+    return returnList;
   }
 }

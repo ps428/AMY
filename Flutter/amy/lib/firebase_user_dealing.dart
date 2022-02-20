@@ -33,8 +33,6 @@ class FirebaseUser {
           'uID': uID, // John Doe
           'full_name': fullName, // John Doe
           'messID': messID, // Stokes and Sons
-          'phone': phoneNumber, // 42
-          'email': email, // 42
           'balance': 3800
         })
         .then((value) => print("Mess Data Added"))
