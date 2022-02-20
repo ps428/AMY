@@ -1,9 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirebaseUserClass {
-  static CollectionReference messData =
-      FirebaseFirestore.instance.collection('messData');
-
   static CollectionReference userDonations =
       FirebaseFirestore.instance.collection('userDonations');
 
