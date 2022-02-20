@@ -59,7 +59,7 @@ samples, guidance on mobile development, and a full API reference.
 - [X] Work on DB
 - [X] Design a final flow for everything
 - [X] Work on SRS doc
-- [ ] Finalize the flow of the app
+- [X] Finalize the flow of the app
 - [ ] User side page creation
 - [ ] User side DB work
 - [ ] Admin side page creation
