@@ -1,5 +1,6 @@
 import 'package:amy/authentication_service.dart';
 import 'package:amy/constants.dart';
+import 'package:amy/routes/admin/ahome.dart';
 import 'package:amy/routes/home.dart';
 import 'package:amy/routes/signup.dart';
 import 'package:amy/routes/user/donation_page.dart';
@@ -163,33 +164,50 @@ class _LoginScreen extends State<LoginScreen> {
                                                   isEmailVerified = true;
                                                 });
 
-                                                User? user = await FireAuth
-                                                    .signInUsingEmailPassword(
-                                                  email:
-                                                      _emailTextController.text,
-                                                  password:
-                                                      _passwordTextController
-                                                          .text,
-                                                );
-
-                                                setState(() {
-                                                  _isProcessing = false;
-                                                });
-
-                                                if (user != null) {
-                                                  if (!user.emailVerified) {
-                                                    Navigator.of(context)
-                                                        .pushReplacement(
-                                                      MaterialPageRoute(
+                                                if (_emailTextController.text ==
+                                                        "admin@snu.edu.in" &&
+                                                    _passwordTextController
+                                                            .text ==
+                                                        "admin123") {
+                                                  Navigator.of(context)
+                                                      .pushReplacement(
+                                                    MaterialPageRoute(
                                                         builder: (context) =>
                                                             // HomeScreen()
-                                                            UHomeScreen(
-                                                                user: user),
+                                                            const AHomeScreen()
                                                         // builder: (context) =>
                                                         //     const SignupScreen(),
-                                                      ),
-                                                    );
-                                                  } else {}
+                                                        ),
+                                                  );
+                                                } else {
+                                                  User? user = await FireAuth
+                                                      .signInUsingEmailPassword(
+                                                    email: _emailTextController
+                                                        .text,
+                                                    password:
+                                                        _passwordTextController
+                                                            .text,
+                                                  );
+
+                                                  setState(() {
+                                                    _isProcessing = false;
+                                                  });
+
+                                                  if (user != null) {
+                                                    if (!user.emailVerified) {
+                                                      Navigator.of(context)
+                                                          .pushReplacement(
+                                                        MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              // HomeScreen()
+                                                              UHomeScreen(
+                                                                  user: user),
+                                                          // builder: (context) =>
+                                                          //     const SignupScreen(),
+                                                        ),
+                                                      );
+                                                    } else {}
+                                                  }
                                                 }
                                               }
                                             },

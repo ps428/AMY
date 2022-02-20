@@ -2,6 +2,7 @@ import 'package:amy/constants.dart';
 import 'package:amy/routes/admin/abill.dart';
 import 'package:amy/routes/admin/ainventory.dart';
 import 'package:amy/routes/admin/aserve.dart';
+import 'package:amy/routes/home.dart';
 import 'package:amy/routes/user/uaccount.dart';
 import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
@@ -85,7 +86,16 @@ class _AHomeScreen extends State<AHomeScreen> {
                 ),
               );
             },
-          )
+          ),
+          StyledButtonMonterrsat(
+              text: "Log Out",
+              onPressed: () => {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
+                    )
+                  })
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

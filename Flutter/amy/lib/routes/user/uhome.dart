@@ -6,6 +6,8 @@ import 'package:amy/routes/user/uthanks.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'firebaseUserClass.dart';
+
 class UHomeScreen extends StatefulWidget {
   final User user;
 
@@ -19,6 +21,8 @@ class _UHomeScreen extends State<UHomeScreen> {
   late User _currentUser;
 
   int _selectedIndex = 0;
+  bool countersUpdated = false;
+  var counters;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -60,7 +64,17 @@ class _UHomeScreen extends State<UHomeScreen> {
   @override
   void initState() {
     _currentUser = widget.user;
+    updateCounter();
     super.initState();
+  }
+
+  Future<void> updateCounter() async {
+    var tmp = await FirebaseUserClass.getCounters();
+    setState(() {
+      counters = tmp;
+      countersUpdated = true;
+      print(counters[0]);
+    });
   }
 
   @override
@@ -85,7 +99,7 @@ class _UHomeScreen extends State<UHomeScreen> {
             color: Colors.grey,
           ),
           const Header("Welcome to AMY"),
-          Text(
+          ParagraphMontserrat(
             'NAME: ${_currentUser.displayName}',
           ),
           const Paragraph(
@@ -101,7 +115,13 @@ class _UHomeScreen extends State<UHomeScreen> {
                         ),
                       ),
                     )
-                  })
+                  }),
+          countersUpdated
+              ? ParagraphMontserrat("Total meals donated: " +
+                  counters[0].toString() +
+                  " Total meals served: " +
+                  counters[1].toString())
+              : ParagraphMontserrat("Loading data")
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
