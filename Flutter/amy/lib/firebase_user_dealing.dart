@@ -27,7 +27,7 @@ class FirebaseUser {
   static Future<void> addUserMess(String uID, String fullName, String messID,
       String phoneNumber, String email) async {
     // Call the user's CollectionReference to add a new user
-    users
+    messData
         .doc(uID)
         .set({
           'uID': uID, // John Doe
@@ -37,7 +37,7 @@ class FirebaseUser {
           'email': email, // 42
           'balance': 3800
         })
-        .then((value) => print("User Added"))
-        .catchError((error) => print("Failed to add user: $error"));
+        .then((value) => print("Mess Data Added"))
+        .catchError((error) => print("Failed to update mess data: $error"));
   }
 }

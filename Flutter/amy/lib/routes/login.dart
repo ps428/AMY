@@ -59,168 +59,173 @@ class _LoginScreen extends State<LoginScreen> {
         _focusPassword.unfocus();
       },
       child: Scaffold(
-        backgroundColor: lightGreen,
-        appBar: AppBar(
-          backgroundColor: pineGreen,
-          title: const Text(
-            'Log In',
-            style: TextStyle(
-                // fontWeight: FontWeight.bold,
-                color: lightGreen,
-                fontFamily: 'Monterrsat',
-                fontSize: 36),
+          backgroundColor: lightGreen,
+          appBar: AppBar(
+            backgroundColor: pineGreen,
+            title: const Text(
+              'Log In',
+              style: TextStyle(
+                  // fontWeight: FontWeight.bold,
+                  color: lightGreen,
+                  fontFamily: 'Monterrsat',
+                  fontSize: 36),
+            ),
           ),
-        ),
-        body: FutureBuilder(
-          future: _initializeFirebase(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              return Padding(
-                padding: const EdgeInsets.only(left: 24.0, right: 24.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5.0),
-                      child: Image.asset(
-                        'assets/amy_logo.png',
-                        height: 280.0,
-                        fit: BoxFit.scaleDown,
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 24.0),
-                      child: HeaderMontserrat(
-                        'Log In',
-                      ),
-                    ),
-                    Form(
-                      key: _formKey,
-                      child: Column(
-                        children: <Widget>[
-                          TextFormField(
-                            controller: _emailTextController,
-                            focusNode: _focusEmail,
-                            validator: (value) => Validator.validateEmail(
-                              email: value,
-                            ),
-                            decoration: InputDecoration(
-                              hintText: "Email",
-                              errorBorder: UnderlineInputBorder(
-                                borderRadius: BorderRadius.circular(6.0),
-                                borderSide: BorderSide(
-                                  color: Colors.red,
+          body: ListView(children: <Widget>[
+            FutureBuilder(
+              future: _initializeFirebase(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return Padding(
+                    padding: const EdgeInsets.only(left: 24.0, right: 24.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5.0),
+                          child: Image.asset(
+                            'assets/amy_logo.png',
+                            height: 280.0,
+                            fit: BoxFit.scaleDown,
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(bottom: 24.0),
+                          child: HeaderMontserrat(
+                            'Log In',
+                          ),
+                        ),
+                        Form(
+                          key: _formKey,
+                          child: Column(
+                            children: <Widget>[
+                              TextFormField(
+                                controller: _emailTextController,
+                                focusNode: _focusEmail,
+                                validator: (value) => Validator.validateEmail(
+                                  email: value,
+                                ),
+                                decoration: InputDecoration(
+                                  hintText: "Email",
+                                  errorBorder: UnderlineInputBorder(
+                                    borderRadius: BorderRadius.circular(6.0),
+                                    borderSide: BorderSide(
+                                      color: Colors.red,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
-                          SizedBox(height: 8.0),
-                          TextFormField(
-                            controller: _passwordTextController,
-                            focusNode: _focusPassword,
-                            obscureText: true,
-                            validator: (value) => Validator.validatePassword(
-                              password: value,
-                            ),
-                            decoration: InputDecoration(
-                              hintText: "Password",
-                              errorBorder: UnderlineInputBorder(
-                                borderRadius: BorderRadius.circular(6.0),
-                                borderSide: const BorderSide(
-                                  color: Colors.red,
+                              SizedBox(height: 8.0),
+                              TextFormField(
+                                controller: _passwordTextController,
+                                focusNode: _focusPassword,
+                                obscureText: true,
+                                validator: (value) =>
+                                    Validator.validatePassword(
+                                  password: value,
+                                ),
+                                decoration: InputDecoration(
+                                  hintText: "Password",
+                                  errorBorder: UnderlineInputBorder(
+                                    borderRadius: BorderRadius.circular(6.0),
+                                    borderSide: const BorderSide(
+                                      color: Colors.red,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
-                          SizedBox(height: 24.0),
-                          isEmailVerified
-                              ? _attempetd
-                                  ? const ParagraphMontserrat(
-                                      "Error! Plese enter correct credentials.")
+                              SizedBox(height: 24.0),
+                              isEmailVerified
+                                  ? _attempetd
+                                      ? const ParagraphMontserrat(
+                                          "Error! Plese enter correct credentials.")
+                                      : const ParagraphMontserrat(
+                                          "Plese enter your credentials.")
                                   : const ParagraphMontserrat(
-                                      "Plese enter your credentials.")
-                              : const ParagraphMontserrat(
-                                  "Error! Mail not verified"),
-                          _isProcessing
-                              ? CircularProgressIndicator()
-                              : Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                      child: StyledButtonMonterrsat(
-                                        onPressed: () async {
-                                          _focusEmail.unfocus();
-                                          _focusPassword.unfocus();
+                                      "Error! Mail not verified"),
+                              _isProcessing
+                                  ? CircularProgressIndicator()
+                                  : Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
+                                          child: StyledButtonMonterrsat(
+                                            onPressed: () async {
+                                              _focusEmail.unfocus();
+                                              _focusPassword.unfocus();
 
-                                          if (_formKey.currentState!
-                                              .validate()) {
-                                            setState(() {
-                                              _isProcessing = true;
-                                              _attempetd = true;
-                                              isEmailVerified = true;
-                                            });
+                                              if (_formKey.currentState!
+                                                  .validate()) {
+                                                setState(() {
+                                                  _isProcessing = true;
+                                                  _attempetd = true;
+                                                  isEmailVerified = true;
+                                                });
 
-                                            User? user = await FireAuth
-                                                .signInUsingEmailPassword(
-                                              email: _emailTextController.text,
-                                              password:
-                                                  _passwordTextController.text,
-                                            );
-
-                                            setState(() {
-                                              _isProcessing = false;
-                                            });
-
-                                            if (user != null) {
-                                              if (!user.emailVerified) {
-                                                Navigator.of(context)
-                                                    .pushReplacement(
-                                                  MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        // HomeScreen()
-                                                        UHomeScreen(user: user),
-                                                    // builder: (context) =>
-                                                    //     const SignupScreen(),
-                                                  ),
+                                                User? user = await FireAuth
+                                                    .signInUsingEmailPassword(
+                                                  email:
+                                                      _emailTextController.text,
+                                                  password:
+                                                      _passwordTextController
+                                                          .text,
                                                 );
-                                              } else {}
-                                            }
-                                          }
-                                        },
-                                        text: 'Log In',
-                                      ),
-                                    ),
-                                    SizedBox(width: 24.0),
-                                    Expanded(
-                                      child: StyledButtonMonterrsat(
-                                        onPressed: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const SignupScreen(),
-                                            ),
-                                          );
-                                        },
-                                        text: 'Sign Up',
-                                      ),
-                                    ),
-                                  ],
-                                )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              );
-            }
 
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          },
-        ),
-      ),
+                                                setState(() {
+                                                  _isProcessing = false;
+                                                });
+
+                                                if (user != null) {
+                                                  if (!user.emailVerified) {
+                                                    Navigator.of(context)
+                                                        .pushReplacement(
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            // HomeScreen()
+                                                            UHomeScreen(
+                                                                user: user),
+                                                        // builder: (context) =>
+                                                        //     const SignupScreen(),
+                                                      ),
+                                                    );
+                                                  } else {}
+                                                }
+                                              }
+                                            },
+                                            text: 'Log In',
+                                          ),
+                                        ),
+                                        SizedBox(width: 24.0),
+                                        Expanded(
+                                          child: StyledButtonMonterrsat(
+                                            onPressed: () {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const SignupScreen(),
+                                                ),
+                                              );
+                                            },
+                                            text: 'Sign Up',
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                }
+
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
+            ),
+          ])),
     );
   }
 }
