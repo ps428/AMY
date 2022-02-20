@@ -1,11 +1,13 @@
 import 'package:amy/routes/user/donation_page.dart';
 import 'package:amy/routes/user/uhome.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../authentication_service.dart';
 import '../constants.dart';
+import '../firebase_user_dealing.dart';
 import '../validator.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -16,6 +18,8 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<SignupScreen> {
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
   final _registerFormKey = GlobalKey<FormState>();
 
   final _nameTextController = TextEditingController();
@@ -204,6 +208,17 @@ class _RegisterPageState extends State<SignupScreen> {
                                             _isProcessing = false;
                                             _attemptedSignUp = true;
                                           });
+
+                                          if (user != null &&
+                                              _isDuplicateID == false) {
+                                            //TODO update user details on firebase db
+                                            FirebaseUser.addUser(
+                                                user.uid,
+                                                _nameTextController.text,
+                                                _messIDTextController.text,
+                                                _phoneNumberTextController.text,
+                                                _emailTextController.text);
+                                          }
 
                                           if (user != null) {
                                             await user.sendEmailVerification();
