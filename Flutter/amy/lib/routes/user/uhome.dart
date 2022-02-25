@@ -121,23 +121,42 @@ class _UHomeScreen extends State<UHomeScreen> {
                       ),
                     )
                   }),
-          StyledButtonMonterrsat(
-              text: "Get Data",
-              onPressed: () =>
-                  {FirebaseUserClass.getUserMessDeatils(_currentUser.uid)}),
           isFirebaseCalled
-              ? ParagraphMontserrat("Total meals donated: " +
-                  counters[0].toString() +
-                  " Total meals served: " +
-                  counters[1].toString())
-              : const ParagraphMontserrat("Loading counters"),
-          isFirebaseCalled
-              ? ParagraphMontserrat("Hello " +
-                  messData[0] +
-                  "! Your mess id is: " +
-                  messData[1].toString() +
-                  " Your account balance is: INR " +
-                  messData[2].toString())
+              //     ? ParagraphMontserrat("Total meals donated: " +
+              //         counters[0].toString() +
+              //         " Total meals served: " +
+              //         counters[1].toString())
+              //     : const ParagraphMontserrat("Loading counters"),
+              // isFirebaseCalled
+              //     ? ParagraphMontserrat("Hello " +
+              //         messData[0] +
+              //         "! Your mess id is: " +
+              //         messData[1].toString() +
+              //         " Your account balance is: INR " +
+              //         messData[2].toString())
+              ? Column(children: [
+                  ProgressBar(
+                    value: counters[0] / (counters[2] / 100),
+                    size: counters[2] / (counters[2] / 100),
+                    counts: counters[0],
+                    total: counters[2],
+                  ),
+                  ParagraphMontserrat(
+                      counters[0].toString() + " meals donated so far."),
+                  ParagraphMontserrat("Target of " +
+                      counters[2].toString() +
+                      " meal donation."),
+                  ProgressBar(
+                    value: counters[1] / (counters[0] / 100),
+                    size: counters[0] / (counters[0] / 100),
+                    counts: counters[1],
+                    total: counters[0],
+                  ),
+                  ParagraphMontserrat(
+                      counters[1].toString() + " meals served so far."),
+                  ParagraphMontserrat(
+                      counters[0].toString() + " meal donated so far."),
+                ])
               : ParagraphMontserrat("Loading user data")
         ],
       ),

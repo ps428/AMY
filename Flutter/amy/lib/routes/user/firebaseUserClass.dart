@@ -18,6 +18,7 @@ class FirebaseUserClass {
     });
     returnList.add(tmp['mealsDonated']);
     returnList.add(tmp['mealsServed']);
+    returnList.add(tmp['targetDonation']);
 
     return returnList;
   }
