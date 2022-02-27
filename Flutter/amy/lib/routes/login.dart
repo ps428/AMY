@@ -96,6 +96,7 @@ class _LoginScreen extends State<LoginScreen> {
                             'Log In',
                           ),
                         ),
+                        const ParagraphMontserrat("ps205@snu.edu.in"),
                         Form(
                           key: _formKey,
                           child: Column(

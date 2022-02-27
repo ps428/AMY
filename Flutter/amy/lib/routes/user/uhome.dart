@@ -95,6 +95,8 @@ class _UHomeScreen extends State<UHomeScreen> {
         backgroundColor: pineGreen,
       ),
       body: ListView(
+        shrinkWrap: true,
+        padding: const EdgeInsets.all(20.0),
         children: <Widget>[
           const Divider(
             height: 8,
@@ -103,24 +105,17 @@ class _UHomeScreen extends State<UHomeScreen> {
             endIndent: 8,
             color: Colors.grey,
           ),
-          const Header("Welcome to AMY"),
-          ParagraphMontserrat(
-            'NAME: ${_currentUser.displayName}',
+          const Align(
+            alignment: Alignment.center,
+            child: Header("Welcome to AMY"),
           ),
-          const Paragraph(
-            'Some cool quote!',
+          const Divider(
+            height: 8,
+            thickness: 1,
+            indent: 8,
+            endIndent: 8,
+            color: Colors.grey,
           ),
-          StyledButtonPlayfair(
-              text: "Show confett page",
-              onPressed: () => {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => UThanksScreen(
-                          user: _currentUser,
-                        ),
-                      ),
-                    )
-                  }),
           isFirebaseCalled
               //     ? ParagraphMontserrat("Total meals donated: " +
               //         counters[0].toString() +
@@ -135,9 +130,29 @@ class _UHomeScreen extends State<UHomeScreen> {
               //         " Your account balance is: INR " +
               //         messData[2].toString())
               ? Column(children: [
+                  ParagraphMontserrat(
+                    'Welcome ${_currentUser.displayName}!',
+                  ),
+                  ParagraphMontserrat(
+                    'Your Mess ID is ${messData[1].toString()}',
+                  ),
+                  ParagraphMontserrat(
+                    'Your current balance is \u{20B9}${messData[2].toString()}',
+                  ),
+                  const Divider(
+                    height: 8,
+                    thickness: 1,
+                    indent: 8,
+                    endIndent: 8,
+                    color: Colors.grey,
+                  ),
+                  const ParagraphMontserrat(
+                    'AMY Status: ',
+                  ),
                   Align(
                     alignment: Alignment.center,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Column(
                           children: [
@@ -172,7 +187,18 @@ class _UHomeScreen extends State<UHomeScreen> {
                     ),
                   )
                 ])
-              : ParagraphMontserrat("Loading user data")
+              : const ParagraphMontserrat("Loading user data"),
+          StyledButtonPlayfair(
+              text: "Show confett page",
+              onPressed: () => {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => UThanksScreen(
+                          user: _currentUser,
+                        ),
+                      ),
+                    )
+                  }),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
