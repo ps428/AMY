@@ -10,6 +10,8 @@ import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
 import 'package:flutter/material.dart';
 
+import 'authentication_service.dart';
+
 class AllScreen extends StatefulWidget {
   const AllScreen({Key? key}) : super(key: key);
 
@@ -74,6 +76,22 @@ class _AllScreen extends State<AllScreen> {
             );
           },
           child: const Text('Go to Login'),
+        ),
+        ElevatedButton(
+          // Within the AllScreen widget
+          onPressed: () {
+            // Navigate back to the first screen by popping the current route
+            // off the stack.
+            FireAuth.signOut();
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) => const HomeScreen(),
+                // builder: (context) =>
+                //     const SignupScreen(),
+              ),
+            );
+          },
+          child: const Text('Log out'),
         ),
         ElevatedButton(
           // Within the AllScreen widget

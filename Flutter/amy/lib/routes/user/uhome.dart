@@ -135,27 +135,42 @@ class _UHomeScreen extends State<UHomeScreen> {
               //         " Your account balance is: INR " +
               //         messData[2].toString())
               ? Column(children: [
-                  ProgressBar(
-                    value: counters[0] / (counters[2] / 100),
-                    size: counters[2] / (counters[2] / 100),
-                    counts: counters[0],
-                    total: counters[2],
-                  ),
-                  ParagraphMontserrat(
-                      counters[0].toString() + " meals donated so far."),
-                  ParagraphMontserrat("Target of " +
-                      counters[2].toString() +
-                      " meal donation."),
-                  ProgressBar(
-                    value: counters[1] / (counters[0] / 100),
-                    size: counters[0] / (counters[0] / 100),
-                    counts: counters[1],
-                    total: counters[0],
-                  ),
-                  ParagraphMontserrat(
-                      counters[1].toString() + " meals served so far."),
-                  ParagraphMontserrat(
-                      counters[0].toString() + " meal donated so far."),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Row(
+                      children: [
+                        Column(
+                          children: [
+                            ProgressBar(
+                              value: counters[0] / (counters[2] / 100),
+                              size: counters[2] / (counters[2] / 100),
+                              counts: counters[0],
+                              total: counters[2],
+                            ),
+                            ParagraphMontserrat(counters[0].toString() +
+                                " meals donated so far."),
+                            ParagraphMontserrat("Target of " +
+                                counters[2].toString() +
+                                " meal donation."),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            ProgressBar(
+                              value: 1.0 * counters[1] / (counters[0] / 100),
+                              size: 3.0 * counters[0] / (counters[0] / 100),
+                              counts: counters[1],
+                              total: counters[0],
+                            ),
+                            ParagraphMontserrat(counters[1].toString() +
+                                " meals served so far."),
+                            ParagraphMontserrat(counters[0].toString() +
+                                " meal donated so far."),
+                          ],
+                        )
+                      ],
+                    ),
+                  )
                 ])
               : ParagraphMontserrat("Loading user data")
         ],

@@ -231,8 +231,8 @@ class ProgressBar extends StatelessWidget {
   final Color inActiveColor;
   final Color? activeColor;
   final double value;
-  final double counts;
-  final double total;
+  final int counts;
+  final int total;
 
   ProgressBar(
       {Key? key,
@@ -250,8 +250,8 @@ class ProgressBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _height = size / 2.5;
-    _cellWidth = size - (size / 2.88) / (2 * 2 * 3) - _height / (2 * 2.5);
+    _height = 20.0;
+    _cellWidth = 100 - (100 / 2.88) / (2 * 2 * 3) - _height / (2 * 2.5);
 
     return SizedBox(
       height: _height,
@@ -261,7 +261,7 @@ class ProgressBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(size / 18.5),
+            borderRadius: BorderRadius.circular(100 / 18.5),
             child: Column(children: [
               Stack(
                 children: [
