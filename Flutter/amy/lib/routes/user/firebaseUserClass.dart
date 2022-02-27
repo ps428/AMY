@@ -41,7 +41,20 @@ class FirebaseUserClass {
     returnList.add(tmp['full_name']);
     returnList.add(tmp['messID']);
     returnList.add(tmp['balance']);
-    print(returnList);
+    // print(returnList);
     return returnList;
+  }
+
+  static void updateDonations(String uID, List l) async {
+    var collection =
+        await FirebaseFirestore.instance.collection('userDonations');
+    Map<String, dynamic>? newEntry = {
+      'Donation Time': DateTime.now(),
+      'Breakfast': l[2],
+      "Lunch": l[3],
+      "Dinner": l[4],
+    };
+
+    collection.doc(uID).update(newEntry);
   }
 }

@@ -40,6 +40,7 @@ dependencies:
   firebase_core: ^1.12.0
   flutter_spinkit: ^5.1.0
   firebase_app_check: ^0.0.6+5
+  confetti: ^0.6.0
 
 flutter_icons:
   image_path: "assets/amy_logo.png" 

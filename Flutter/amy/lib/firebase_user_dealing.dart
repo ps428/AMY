@@ -8,6 +8,9 @@ class FirebaseUser {
   static CollectionReference messData =
       FirebaseFirestore.instance.collection('messData');
 
+  static CollectionReference userRecord =
+      FirebaseFirestore.instance.collection('userDonations');
+
   static Future<void> addUser(String uID, String fullName, String messID,
       String phoneNumber, String email) async {
     // Call the user's CollectionReference to add a new user
@@ -37,5 +40,17 @@ class FirebaseUser {
         })
         .then((value) => print("Mess Data Added"))
         .catchError((error) => print("Failed to update mess data: $error"));
+  }
+
+  static Future<void> addUserRecord(String uID) async {
+    // Call the user's CollectionReference to add a new user
+    userRecord
+        .doc(uID)
+        .set({
+          'uID': uID, // John Doe
+        })
+        .then((value) => print("Pesonal record Data Added"))
+        .catchError(
+            (error) => print("Failed to update personal record data: $error"));
   }
 }

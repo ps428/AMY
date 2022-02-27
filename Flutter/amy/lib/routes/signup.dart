@@ -225,6 +225,9 @@ class _RegisterPageState extends State<SignupScreen> {
                                                 _messIDTextController.text,
                                                 _phoneNumberTextController.text,
                                                 _emailTextController.text);
+
+                                            FirebaseUser.addUserRecord(
+                                                user.uid);
                                           }
 
                                           if (user != null) {

@@ -189,15 +189,10 @@ class _UHomeScreen extends State<UHomeScreen> {
                 ])
               : const ParagraphMontserrat("Loading user data"),
           StyledButtonPlayfair(
-              text: "Show confett page",
+              text: "Test donations",
               onPressed: () => {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => UThanksScreen(
-                          user: _currentUser,
-                        ),
-                      ),
-                    )
+                    FirebaseUserClass.updateDonations(
+                        _currentUser.uid.toString(), [100, 900, 1, 1, 1])
                   }),
         ],
       ),
