@@ -164,7 +164,7 @@ class _LoginScreen extends State<LoginScreen> {
                                       ? const ParagraphMontserrat(
                                           "Error! Plese enter correct credentials.")
                                       : const ParagraphMontserrat(
-                                          "Plese enter your credentials.")
+                                          "Please enter your credentials.")
                                   : const ParagraphMontserrat(
                                       "Error! Mail not verified"),
                               _isProcessing

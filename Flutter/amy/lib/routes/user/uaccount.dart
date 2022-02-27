@@ -77,6 +77,8 @@ class _UAccountScreen extends State<UAccountScreen> {
         backgroundColor: pineGreen,
       ),
       body: ListView(
+        shrinkWrap: true,
+        padding: const EdgeInsets.all(20.0),
         children: <Widget>[
           const Divider(
             height: 8,
@@ -87,23 +89,25 @@ class _UAccountScreen extends State<UAccountScreen> {
           ),
           const Header("Account Details"),
           Text(
-            'NAME: ${_currentUser.displayName}',
+            'Name: ${_currentUser.displayName}',
           ),
           const Paragraph(
             'Tables!',
           ),
-          StyledButtonMonterrsat(
-              text: "Sign Out",
-              onPressed: () => {
-                    FireAuth.signOut(),
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
-                        // builder: (context) =>
-                        //     const SignupScreen(),
-                      ),
-                    )
-                  })
+          Align(
+              alignment: Alignment.bottomCenter,
+              child: StyledButtonMonterrsat(
+                  text: "Sign Out",
+                  onPressed: () => {
+                        FireAuth.signOut(),
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                            // builder: (context) =>
+                            //     const SignupScreen(),
+                          ),
+                        )
+                      })),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

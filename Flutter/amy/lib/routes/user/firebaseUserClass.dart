@@ -57,17 +57,17 @@ class FirebaseUserClass {
         await FirebaseFirestore.instance.collection('globalCounters');
 
     var counters = await getCounters();
-    print('----------------------------');
-    print(counters);
+    // print('----------------------------');
+    // print(counters);
     var currentDonations = counters[0];
-    print(currentDonations);
+    // print(currentDonations);
     currentDonations += l[2] + l[3] + l[4];
-    print(currentDonations);
+    // print(currentDonations);
 
     var a = collection.doc('AMYFoodCounters').update({
       'mealsDonated': currentDonations,
     });
-    print(a);
+    // print(a);
 
     // collection.doc('AMYFoodCounters').set({'mealsDonated': 1});
   }

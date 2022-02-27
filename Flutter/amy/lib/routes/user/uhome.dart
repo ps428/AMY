@@ -78,7 +78,7 @@ class _UHomeScreen extends State<UHomeScreen> {
       counters = counterTmp;
       messData = messDataTmp;
       isFirebaseCalled = true;
-      print(counters[0]);
+      // print(counters[0]);
     });
   }
 
