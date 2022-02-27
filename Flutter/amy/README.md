@@ -60,20 +60,20 @@ samples, guidance on mobile development, and a full API reference.
 - [X] Design a final flow for everything
 - [X] Work on SRS doc
 - [X] Finalize the flow of the app
-- [ ] User side page creation
-- [ ] User side DB work
+- [ ] User side page creation: Just need confetti and user records
+- [X] User side DB work
 - [ ] Admin side page creation
 - [ ] Admin side DB work
 - [ ] Generation of Slip and Details (needs more thoughts on this)
 - [ ] Food bowl increment on donation (Slider {Chakra})
-- [ ] Global counter
+- [X] Global counter
 - [ ] Video/Gif/Slideshow as gratitue
 - [ ] Confetti and Thanking features (Quote, Badge etc)
-- [ ] User's record of donation
+- [X] User's record of donation
 - [ ] Add a user manual
 - [ ] Add a QnA page
-- [ ] Confirmation button upon donation
-- [ ] Timestamp of donation and serving 
+- [X] Confirmation button upon donation
+- [ ] Timestamp of donation and serving : Donation done
 - [ ] In app notification on meal serving
 - [ ] Use group by kind of something to get superstar from the bill table
 - [ ] Add a graph. Can use sunc_fusion_flutter_charts
