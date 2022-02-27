@@ -151,7 +151,7 @@ class _UHomeScreen extends State<UHomeScreen> {
                   ),
                   Align(
                     alignment: Alignment.center,
-                    child: Row(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Column(
@@ -192,7 +192,7 @@ class _UHomeScreen extends State<UHomeScreen> {
               text: "Test donations",
               onPressed: () => {
                     FirebaseUserClass.updateDonations(
-                        _currentUser.uid.toString(), [100, 900, 1, 1, 1])
+                        _currentUser.uid.toString(), [3100, 900, 1, 1, 1])
                   }),
         ],
       ),

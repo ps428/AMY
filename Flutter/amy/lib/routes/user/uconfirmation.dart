@@ -1,4 +1,5 @@
 import 'package:amy/constants.dart';
+import 'package:amy/firebase_user_dealing.dart';
 import 'package:amy/routes/admin/abill.dart';
 import 'package:amy/routes/user/uaccount.dart';
 import 'package:amy/routes/user/udonate.dart';
@@ -126,6 +127,8 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
               StyledButtonMonterrsat(
                   text: "Confirm",
                   onPressed: () {
+                    FirebaseUserClass.updateDonations(
+                        _currentUser.uid.toString(), l);
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => UThanksScreen(

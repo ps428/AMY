@@ -27,6 +27,8 @@ class _LoginScreen extends State<LoginScreen> {
   bool isEmailVerified = true;
   bool _attempetd = false;
 
+  late User default_user;
+
   final _focusEmail = FocusNode();
   final _focusPassword = FocusNode();
 
@@ -96,7 +98,27 @@ class _LoginScreen extends State<LoginScreen> {
                             'Log In',
                           ),
                         ),
-                        const ParagraphMontserrat("ps205@snu.edu.in"),
+                        StyledButtonMonterrsat(
+                            text: "Default login",
+                            onPressed: () async => {
+                                  default_user =
+                                      (await FireAuth.signInUsingEmailPassword(
+                                    email: 'ps205@snu.edu.in',
+                                    password: '123456',
+                                  ))!,
+                                  if (default_user != null)
+                                    {
+                                      Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              // HomeScreen()
+                                              UHomeScreen(user: default_user),
+                                          // builder: (context) =>
+                                          //     const SignupScreen(),
+                                        ),
+                                      )
+                                    }
+                                }),
                         Form(
                           key: _formKey,
                           child: Column(
