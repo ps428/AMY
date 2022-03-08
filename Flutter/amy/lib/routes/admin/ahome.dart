@@ -1,3 +1,4 @@
+import 'package:amy/authentication_service.dart';
 import 'package:amy/constants.dart';
 import 'package:amy/routes/admin/abill.dart';
 import 'package:amy/routes/admin/ainventory.dart';
@@ -10,7 +11,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AHomeScreen extends StatefulWidget {
-  const AHomeScreen({Key? key}) : super(key: key);
+  final User user;
+  const AHomeScreen({required this.user});
 
   @override
   _AHomeScreen createState() => _AHomeScreen();
@@ -18,6 +20,7 @@ class AHomeScreen extends StatefulWidget {
 
 class _AHomeScreen extends State<AHomeScreen> {
   int _selectedIndex = 0;
+  late User _currentUser;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -25,15 +28,20 @@ class _AHomeScreen extends State<AHomeScreen> {
     });
     if (index == 0) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const AHomeScreen()),
+        MaterialPageRoute(
+            builder: (context) => AHomeScreen(user: _currentUser)),
       );
     } else if (index == 1) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const AServeScreen()),
+        MaterialPageRoute(
+            builder: (context) => AServeScreen(
+                  user: _currentUser,
+                )),
       );
     } else if (index == 2) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const AInventoryScreen()),
+        MaterialPageRoute(
+            builder: (context) => AInventoryScreen(user: _currentUser)),
       );
     }
   }
@@ -46,6 +54,7 @@ class _AHomeScreen extends State<AHomeScreen> {
 
   @override
   void initState() {
+    _currentUser = widget.user;
     super.initState();
   }
 
@@ -82,7 +91,9 @@ class _AHomeScreen extends State<AHomeScreen> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const ABillScreen(),
+                  builder: (context) => ABillScreen(
+                    user: _currentUser,
+                  ),
                 ),
               );
             },

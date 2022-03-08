@@ -1,11 +1,13 @@
 import 'package:amy/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'ahome.dart';
 import 'aserve.dart';
 
 class AInventoryScreen extends StatefulWidget {
-  const AInventoryScreen({Key? key}) : super(key: key);
+  final User user;
+  const AInventoryScreen({required this.user});
 
   @override
   _AInventoryScreen createState() => _AInventoryScreen();
@@ -13,6 +15,7 @@ class AInventoryScreen extends StatefulWidget {
 
 class _AInventoryScreen extends State<AInventoryScreen> {
   int _selectedIndex = 2;
+  late User _currentUser;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -20,15 +23,18 @@ class _AInventoryScreen extends State<AInventoryScreen> {
     });
     if (index == 0) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const AHomeScreen()),
+        MaterialPageRoute(
+            builder: (context) => AHomeScreen(user: _currentUser)),
       );
     } else if (index == 1) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const AServeScreen()),
+        MaterialPageRoute(
+            builder: (context) => AServeScreen(user: _currentUser)),
       );
     } else if (index == 2) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const AInventoryScreen()),
+        MaterialPageRoute(
+            builder: (context) => AInventoryScreen(user: _currentUser)),
       );
     }
   }
@@ -41,6 +47,7 @@ class _AInventoryScreen extends State<AInventoryScreen> {
 
   @override
   void initState() {
+    _currentUser = widget.user;
     super.initState();
   }
 

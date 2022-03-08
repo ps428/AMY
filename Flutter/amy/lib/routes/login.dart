@@ -192,16 +192,26 @@ class _LoginScreen extends State<LoginScreen> {
                                                     _passwordTextController
                                                             .text ==
                                                         "admin123") {
-                                                  Navigator.of(context)
-                                                      .pushReplacement(
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            // HomeScreen()
-                                                            const AHomeScreen()
-                                                        // builder: (context) =>
-                                                        //     const SignupScreen(),
-                                                        ),
-                                                  );
+                                                  print("admin getting");
+                                                  User? adminUser = await FireAuth
+                                                      .signInUsingEmailPassword(
+                                                          email:
+                                                              "ps205@snu.edu.in",
+                                                          password: "123456");
+                                                  if (adminUser != null) {
+                                                    Navigator.of(context)
+                                                        .pushReplacement(
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              // HomeScreen()
+                                                              AHomeScreen(
+                                                                user: adminUser,
+                                                              )
+                                                          // builder: (context) =>
+                                                          //     const SignupScreen(),
+                                                          ),
+                                                    );
+                                                  }
                                                 } else {
                                                   User? user = await FireAuth
                                                       .signInUsingEmailPassword(

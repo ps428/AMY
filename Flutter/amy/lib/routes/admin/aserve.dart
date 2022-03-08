@@ -9,7 +9,8 @@ import 'ahome.dart';
 import 'ainventory.dart';
 
 class AServeScreen extends StatefulWidget {
-  const AServeScreen({Key? key}) : super(key: key);
+  final User user;
+  const AServeScreen({required this.user});
 
   @override
   _AServeScreen createState() => _AServeScreen();
@@ -17,6 +18,7 @@ class AServeScreen extends StatefulWidget {
 
 class _AServeScreen extends State<AServeScreen> {
   int _selectedIndex = 1;
+  late User _currentUser;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -24,15 +26,18 @@ class _AServeScreen extends State<AServeScreen> {
     });
     if (index == 0) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const AHomeScreen()),
+        MaterialPageRoute(
+            builder: (context) => AHomeScreen(user: _currentUser)),
       );
     } else if (index == 1) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const AServeScreen()),
+        MaterialPageRoute(
+            builder: (context) => AServeScreen(user: _currentUser)),
       );
     } else if (index == 2) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const AInventoryScreen()),
+        MaterialPageRoute(
+            builder: (context) => AInventoryScreen(user: _currentUser)),
       );
     }
   }
@@ -45,6 +50,7 @@ class _AServeScreen extends State<AServeScreen> {
 
   @override
   void initState() {
+    _currentUser = widget.user;
     super.initState();
   }
 

@@ -1,4 +1,5 @@
 import 'package:amy/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'ahome.dart';
@@ -6,7 +7,8 @@ import 'ainventory.dart';
 import 'aserve.dart';
 
 class ABillScreen extends StatefulWidget {
-  const ABillScreen({Key? key}) : super(key: key);
+  final User user;
+  const ABillScreen({required this.user});
 
   @override
   _ABillScreen createState() => _ABillScreen();
@@ -14,6 +16,7 @@ class ABillScreen extends StatefulWidget {
 
 class _ABillScreen extends State<ABillScreen> {
   int _selectedIndex = 0;
+  late User _currentUser;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -21,15 +24,18 @@ class _ABillScreen extends State<ABillScreen> {
     });
     if (index == 0) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const AHomeScreen()),
+        MaterialPageRoute(
+            builder: (context) => AHomeScreen(user: _currentUser)),
       );
     } else if (index == 1) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const AServeScreen()),
+        MaterialPageRoute(
+            builder: (context) => AServeScreen(user: _currentUser)),
       );
     } else if (index == 2) {
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const AInventoryScreen()),
+        MaterialPageRoute(
+            builder: (context) => AInventoryScreen(user: _currentUser)),
       );
     }
   }
@@ -42,6 +48,7 @@ class _ABillScreen extends State<ABillScreen> {
 
   @override
   void initState() {
+    _currentUser = widget.user;
     super.initState();
   }
 

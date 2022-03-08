@@ -8,6 +8,7 @@ import 'package:amy/routes/login.dart';
 import 'package:amy/routes/signup.dart';
 import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'authentication_service.dart';
@@ -20,6 +21,22 @@ class AllScreen extends StatefulWidget {
 }
 
 class _AllScreen extends State<AllScreen> {
+  var _currentUser;
+
+  Future<void> getDataFromFirebase() async {
+    var user = await FireAuth.signInUsingEmailPassword(
+        email: 'ps205@snu.edu.in', password: '123456');
+    setState(() {
+      _currentUser = user;
+    });
+  }
+
+  @override
+  void initState() {
+    getDataFromFirebase();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,7 +130,9 @@ class _AllScreen extends State<AllScreen> {
             // off the stack.
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const AHomeScreen(),
+                builder: (context) => AHomeScreen(
+                  user: _currentUser,
+                ),
               ),
             );
           },
@@ -126,7 +145,9 @@ class _AllScreen extends State<AllScreen> {
             // off the stack.
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const ABillScreen(),
+                builder: (context) => ABillScreen(
+                  user: _currentUser,
+                ),
               ),
             );
           },
@@ -139,7 +160,7 @@ class _AllScreen extends State<AllScreen> {
             // off the stack.
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const AServeScreen(),
+                builder: (context) => AServeScreen(user: _currentUser),
               ),
             );
           },
@@ -152,7 +173,9 @@ class _AllScreen extends State<AllScreen> {
             // off the stack.
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const AInventoryScreen(),
+                builder: (context) => AInventoryScreen(
+                  user: _currentUser,
+                ),
               ),
             );
           },

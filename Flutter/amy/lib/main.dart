@@ -82,7 +82,7 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
-    Timer(const Duration(seconds: 6), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.pushNamed(context, '/all');
     });
     super.initState();
