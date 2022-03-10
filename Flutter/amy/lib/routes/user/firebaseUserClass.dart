@@ -146,4 +146,23 @@ class FirebaseUserClass {
     var collectionID = DateTime.now().toString();
     collection.doc(uID).collection(collectionID).doc('Donation').set(newEntry);
   }
+
+  static Future<List> getUserRecords(String uID) async {
+    var returnList = [];
+    // var tmp;
+    print("generating records....");
+    var donationData = await FirebaseFirestore.instance
+        .collection('userDonations')
+        .doc(uID)
+        .collection('test_data')
+        .doc('record1');
+
+    print(donationData.get().then((value) => print(value.data())));
+    // var donationData = element.get('Donation');
+    // print(donationData);
+    // });
+
+    // print(returnList);
+    return returnList;
+  }
 }

@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../authentication_service.dart';
+import 'firebaseUserClass.dart';
 
 class UAccountScreen extends StatefulWidget {
   final User user;
@@ -61,7 +62,22 @@ class _UAccountScreen extends State<UAccountScreen> {
   @override
   void initState() {
     _currentUser = widget.user;
+    getDataFromFirebase();
     super.initState();
+  }
+
+  Future<void> getDataFromFirebase() async {
+    // var counterTmp = await FirebaseUserClass.getCounters();
+    // var messDataTmp =
+    //     await FirebaseUserClass.getUserMessDeatils(widget.user.uid);
+
+    var userData = await FirebaseUserClass.getUserRecords(widget.user.uid);
+    setState(() {
+      // counters = counterTmp;
+      // messData = messDataTmp;
+      // isFirebaseCalled = true;
+      // // print(counters[0]);
+    });
   }
 
   @override
