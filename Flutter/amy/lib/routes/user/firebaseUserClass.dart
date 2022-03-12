@@ -86,65 +86,61 @@ class FirebaseUserClass {
 
     var messData = await getUserMessDeatils(uID);
 
+    var currentTime = DateTime.now().toString();
+
     for (int i = 0; i < l[2]; i++) {
       Map<String, dynamic>? newEntryBf = {
-        'Donation Time': DateTime.now(),
-        'UID': uID,
-        'Status': 'Available',
-        'Name': messData[0].toString(),
-        'Mess ID': messData[1].toString()
+        currentTime: {
+          'Donation Time': DateTime.now(),
+          'UID': uID,
+          'Status': 'Available',
+          'Name': messData[0].toString(),
+          'Mess ID': messData[1].toString()
+        }
       };
-      var collectionID = DateTime.now().toString();
-      await collection
-          .doc('adminBreakfast')
-          .collection(collectionID)
-          .doc('Donation')
-          .set(newEntryBf);
+      await collection.doc('adminBreakfast').update(newEntryBf);
     }
     for (int i = 0; i < l[3]; i++) {
       Map<String, dynamic>? newEntryLunch = {
-        'Donation Time': DateTime.now(),
-        'UID': uID,
-        'Status': 'Available',
-        'Name': messData[0].toString(),
-        'Mess ID': messData[1].toString()
+        currentTime: {
+          'Donation Time': DateTime.now(),
+          'UID': uID,
+          'Status': 'Available',
+          'Name': messData[0].toString(),
+          'Mess ID': messData[1].toString()
+        }
       };
-      var collectionID = DateTime.now().toString();
-      await collection
-          .doc('adminLunch')
-          .collection(collectionID)
-          .doc('Donation')
-          .set(newEntryLunch);
+      await collection.doc('adminLunch').update(newEntryLunch);
     }
     for (int i = 0; i < l[4]; i++) {
       Map<String, dynamic>? newEntryDinner = {
-        'Donation Time': DateTime.now(),
-        'UID': uID,
-        'Status': 'Available',
-        'Name': messData[0].toString(),
-        'Mess ID': messData[1].toString()
+        currentTime: {
+          'Donation Time': DateTime.now(),
+          'UID': uID,
+          'Status': 'Available',
+          'Name': messData[0].toString(),
+          'Mess ID': messData[1].toString()
+        }
       };
-      var collectionID = DateTime.now().toString();
-      await collection
-          .doc('adminDinner')
-          .collection(collectionID)
-          .doc('Donation')
-          .set(newEntryDinner);
+      await collection.doc('adminDinner').update(newEntryDinner);
     }
   }
 
   static void updateUserRecord(String uID, List l) async {
     var collection =
         await FirebaseFirestore.instance.collection('userDonations');
+    var currentTime = DateTime.now().toString();
 
     Map<String, dynamic>? newEntry = {
-      'Donation Time': DateTime.now(),
-      'Breakfast': l[2],
-      "Lunch": l[3],
-      "Dinner": l[4],
+      currentTime: {
+        'Donation Time': DateTime.now(),
+        'Breakfast': l[2],
+        "Lunch": l[3],
+        "Dinner": l[4],
+      }
     };
-    var collectionID = DateTime.now().toString();
-    collection.doc(uID).collection(collectionID).doc('Donation').set(newEntry);
+    var fieldKeyTime = DateTime.now().toString();
+    await collection.doc(uID).update(newEntry);
   }
 
   static Future<List> getUserRecords(String uID) async {
@@ -154,15 +150,13 @@ class FirebaseUserClass {
     var donationData = await FirebaseFirestore.instance
         .collection('userDonations')
         .doc(uID)
-        .collection('test_data')
-        .doc('record1');
+        .get();
+    var mappedData = await donationData.data();
+    mappedData?.forEach((key, value) {
+      print(value.runtimeType);
+      // print(key.toString() + " : " + value.toString());
+    });
 
-    print(donationData.get().then((value) => print(value.data())));
-    // var donationData = element.get('Donation');
-    // print(donationData);
-    // });
-
-    // print(returnList);
     return returnList;
   }
 }
