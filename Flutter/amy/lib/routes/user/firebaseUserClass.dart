@@ -146,8 +146,10 @@ class FirebaseUserClass {
     await collection.doc(uID).update(newEntry);
   }
 
-  static Future<List> getUserRecords(String uID) async {
-    var returnList = [];
+  static Future<List<List<int>>> getUserRecords(String uID) async {
+    // list of list with bf, lunch, dinner and timestamp as elements,
+    // [[b,l,d,time],[b,l,d,time]]
+    List<List<int>> returnList = [];
     // var tmp;
     print("generating records....");
     var donationData = await FirebaseFirestore.instance
@@ -161,13 +163,28 @@ class FirebaseUserClass {
       if (data != 'tmp_data') {
         var hashedData = HashMap.from(value);
         hashedData.forEach((key, val) {
-          print(val);
+          var listData = val
+              .toString()
+              .substring(1, val.toString().length - 1)
+              .split(", ")
+            ..sort();
+          // listData.sort();
+          // print(listData);
+
+          var bf = int.parse(listData[0].split(": ")[1]);
+          var lunch = int.parse(listData[3].split(": ")[1]);
+          var dinner = int.parse(listData[1].split(": ")[1]);
+          var time = int.parse(listData[2].split("=")[1]);
+          var finalList = [bf, dinner, lunch, time];
+          // print(finalList);
+
+          returnList.add(finalList);
           //just have to show this data on a table now, yo
         });
       }
       // print(key.toString() + " : " + value.toString());
     });
-
+    print(returnList);
     return returnList;
   }
 }
