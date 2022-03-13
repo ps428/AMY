@@ -101,38 +101,40 @@ class _UAccountScreen extends State<UAccountScreen> {
         ),
       );
     }
-    return DataTable(columns: const <DataColumn>[
-      DataColumn(
-        label: Text(
-          'S. No.',
-          style: TextStyle(fontStyle: FontStyle.italic),
-        ),
-      ),
-      DataColumn(
-        label: Text(
-          'Breakfast',
-          style: TextStyle(fontStyle: FontStyle.italic),
-        ),
-      ),
-      DataColumn(
-        label: Text(
-          'Lunch',
-          style: TextStyle(fontStyle: FontStyle.italic),
-        ),
-      ),
-      DataColumn(
-        label: Text(
-          'Dinner',
-          style: TextStyle(fontStyle: FontStyle.italic),
-        ),
-      ),
-      DataColumn(
-        label: Text(
-          'Time Donated',
-          style: TextStyle(fontStyle: FontStyle.italic),
-        ),
-      ),
-    ], rows: dataRows);
+    return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: DataTable(columns: const <DataColumn>[
+          DataColumn(
+            label: Text(
+              'S. No.',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Breakfast',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Lunch',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Dinner',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Time Donated',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
+        ], rows: dataRows));
   }
 
   @override
