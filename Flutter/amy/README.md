@@ -60,7 +60,7 @@ samples, guidance on mobile development, and a full API reference.
 - [X] Design a final flow for everything
 - [X] Work on SRS doc
 - [X] Finalize the flow of the app
-- [ ] User side page creation: Just need confetti and user records
+- [ ] User side page creation: Just need confetti 
 - [X] User side DB work
 - [ ] Admin side page creation
 - [ ] Admin side DB work
