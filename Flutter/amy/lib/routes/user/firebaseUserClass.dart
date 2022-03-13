@@ -1,3 +1,6 @@
+import 'dart:collection';
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirebaseUserClass {
@@ -91,7 +94,7 @@ class FirebaseUserClass {
     for (int i = 0; i < l[2]; i++) {
       Map<String, dynamic>? newEntryBf = {
         currentTime: {
-          'Donation Time': DateTime.now(),
+          'Donation Time': DateTime.now().toString(),
           'UID': uID,
           'Status': 'Available',
           'Name': messData[0].toString(),
@@ -103,7 +106,7 @@ class FirebaseUserClass {
     for (int i = 0; i < l[3]; i++) {
       Map<String, dynamic>? newEntryLunch = {
         currentTime: {
-          'Donation Time': DateTime.now(),
+          'Donation Time': DateTime.now().toString(),
           'UID': uID,
           'Status': 'Available',
           'Name': messData[0].toString(),
@@ -115,7 +118,7 @@ class FirebaseUserClass {
     for (int i = 0; i < l[4]; i++) {
       Map<String, dynamic>? newEntryDinner = {
         currentTime: {
-          'Donation Time': DateTime.now(),
+          'Donation Time': DateTime.now().toString(),
           'UID': uID,
           'Status': 'Available',
           'Name': messData[0].toString(),
@@ -153,7 +156,15 @@ class FirebaseUserClass {
         .get();
     var mappedData = await donationData.data();
     mappedData?.forEach((key, value) {
-      print(value.runtimeType);
+      // print(value.runtimeType);
+      var data = value.toString();
+      if (data != 'tmp_data') {
+        var hashedData = HashMap.from(value);
+        hashedData.forEach((key, val) {
+          print(val);
+          //just have to show this data on a table now, yo
+        });
+      }
       // print(key.toString() + " : " + value.toString());
     });
 

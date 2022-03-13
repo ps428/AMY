@@ -46,9 +46,7 @@ class FirebaseUser {
     // Call the user's CollectionReference to add a new user
     userRecord
         .doc(uID)
-        .set({
-          'uID': uID, // John Doe
-        })
+        .set({'newAdditon': 'tmp_data'})
         .then((value) => print("Pesonal record Data Added"))
         .catchError(
             (error) => print("Failed to update personal record data: $error"));
