@@ -4,6 +4,15 @@ import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+
+final List<String> imgList = [
+  'assets/images/hands.jpg',
+  'assets/images/kid_bread.png',
+  'assets/images/kid_plate.jpg',
+  'assets/images/kid_scarffed.png',
+  'assets/images/knife_fork.jpg'
+];
 
 class UThanksScreen extends StatefulWidget {
   final User user;
@@ -69,8 +78,8 @@ class _UThanksScreen extends State<UThanksScreen> {
       backgroundColor: lightGreen,
       appBar: AppBar(
         title: const Text(
-          'Thanks',
-          style: TextStyle(color: lightGreen, fontFamily: 'OpenSans'),
+          'Thanks for Donation',
+          style: TextStyle(color: lightGreen, fontFamily: 'Playfair'),
         ),
         backgroundColor: pineGreen,
       ),
@@ -83,13 +92,20 @@ class _UThanksScreen extends State<UThanksScreen> {
             endIndent: 8,
             color: Colors.grey,
           ),
-          const Header("Confetti"),
-          Text(
-            'NAME: ${_currentUser.displayName}',
+          HeaderPlayfair(
+            'Thank you ${_currentUser.displayName}!',
           ),
-          const Paragraph(
-            'Tables!',
-          ),
+          const HeaderPlayfair("See the smiles that you have brought..."),
+          CarouselSlider(
+            options: CarouselOptions(),
+            items: imgList
+                .map((item) => Container(
+                      child: Center(
+                          child: Image.network(item,
+                              fit: BoxFit.cover, width: 1000)),
+                    ))
+                .toList(),
+          )
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

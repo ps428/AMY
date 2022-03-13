@@ -194,6 +194,17 @@ class _UHomeScreen extends State<UHomeScreen> {
                     FirebaseUserClass.updateDonations(
                         _currentUser.uid.toString(), [3100, 900, 1, 1, 1])
                   }),
+          StyledButtonPlayfair(
+              text: "Confetti",
+              onPressed: () => {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => UThanksScreen(
+                          user: _currentUser,
+                        ),
+                      ),
+                    )
+                  }),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
