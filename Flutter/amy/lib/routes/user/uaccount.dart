@@ -4,6 +4,7 @@ import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../authentication_service.dart';
 import 'firebaseUserClass.dart';
@@ -19,7 +20,7 @@ class UAccountScreen extends StatefulWidget {
 class _UAccountScreen extends State<UAccountScreen> {
   late User _currentUser;
   bool dataFetched = false;
-  var userData;
+  List<List<int>> userData = [[]];
   int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
@@ -72,7 +73,7 @@ class _UAccountScreen extends State<UAccountScreen> {
     //     await FirebaseUserClass.getUserMessDeatils(widget.user.uid);
 
     userData = await FirebaseUserClass.getUserRecords(widget.user.uid);
-    print(userData);
+    print(userData.runtimeType);
     setState(() {
       dataFetched = true;
       // counters = counterTmp;
@@ -80,6 +81,58 @@ class _UAccountScreen extends State<UAccountScreen> {
       // isFirebaseCalled = true;
       // // print(counters[0]);
     });
+  }
+
+  Widget createTable() {
+    List<DataRow> dataRows = [];
+    for (int i = 0; i < userData.length; ++i) {
+      dataRows.add(
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text((i + 1).toString())),
+            DataCell(Text(userData[i][0].toString())),
+            DataCell(Text(userData[i][1].toString())),
+            DataCell(Text(userData[i][2].toString())),
+            DataCell(
+              Text(DateTime.fromMillisecondsSinceEpoch(userData[i][3] * 1000)
+                  .toString()),
+            )
+          ],
+        ),
+      );
+    }
+    return DataTable(columns: const <DataColumn>[
+      DataColumn(
+        label: Text(
+          'S. No.',
+          style: TextStyle(fontStyle: FontStyle.italic),
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          'Breakfast',
+          style: TextStyle(fontStyle: FontStyle.italic),
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          'Lunch',
+          style: TextStyle(fontStyle: FontStyle.italic),
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          'Dinner',
+          style: TextStyle(fontStyle: FontStyle.italic),
+        ),
+      ),
+      DataColumn(
+        label: Text(
+          'Time Donated',
+          style: TextStyle(fontStyle: FontStyle.italic),
+        ),
+      ),
+    ], rows: dataRows);
   }
 
   @override
@@ -109,8 +162,20 @@ class _UAccountScreen extends State<UAccountScreen> {
           Text(
             'Name: ${_currentUser.displayName}',
           ),
-          const Paragraph(
-            'Tables!',
+          const ParagraphMontserrat(
+            'Your donation data is:',
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          dataFetched
+              ? createTable()
+              : const SpinKitHourGlass(
+                  color: Colors.greenAccent,
+                  size: 50.0,
+                ),
+          const SizedBox(
+            height: 30,
           ),
           Align(
               alignment: Alignment.bottomCenter,
@@ -126,11 +191,6 @@ class _UAccountScreen extends State<UAccountScreen> {
                           ),
                         )
                       })),
-          dataFetched
-              ? Table(
-                  children: [],
-                )
-              : const CircularProgressIndicator()
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -175,7 +175,13 @@ class FirebaseUserClass {
           var lunch = int.parse(listData[3].split(": ")[1]);
           var dinner = int.parse(listData[1].split(": ")[1]);
           var time = int.parse(listData[2].split("=")[1]);
-          var finalList = [bf, dinner, lunch, time];
+
+          var finalList = [
+            bf,
+            dinner,
+            lunch,
+            time,
+          ];
           // print(finalList);
 
           returnList.add(finalList);
