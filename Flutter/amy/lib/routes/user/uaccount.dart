@@ -10,7 +10,6 @@ import 'firebaseUserClass.dart';
 
 class UAccountScreen extends StatefulWidget {
   final User user;
-
   const UAccountScreen({required this.user});
 
   @override
@@ -19,7 +18,8 @@ class UAccountScreen extends StatefulWidget {
 
 class _UAccountScreen extends State<UAccountScreen> {
   late User _currentUser;
-
+  bool dataFetched = false;
+  var userData;
   int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
@@ -71,8 +71,10 @@ class _UAccountScreen extends State<UAccountScreen> {
     // var messDataTmp =
     //     await FirebaseUserClass.getUserMessDeatils(widget.user.uid);
 
-    var userData = await FirebaseUserClass.getUserRecords(widget.user.uid);
+    userData = await FirebaseUserClass.getUserRecords(widget.user.uid);
+    print(userData);
     setState(() {
+      dataFetched = true;
       // counters = counterTmp;
       // messData = messDataTmp;
       // isFirebaseCalled = true;
@@ -124,6 +126,11 @@ class _UAccountScreen extends State<UAccountScreen> {
                           ),
                         )
                       })),
+          dataFetched
+              ? Table(
+                  children: [],
+                )
+              : const CircularProgressIndicator()
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
