@@ -3,10 +3,18 @@ import 'package:amy/routes/admin/abill.dart';
 import 'package:amy/routes/user/uaccount.dart';
 import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uthanks.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'firebaseUserClass.dart';
+
+final List<String> imgList = [
+  'https://media.istockphoto.com/photos/poor-indian-children-asking-for-food-india-picture-id524903696?k=20&m=524903696&s=612x612&w=0&h=lyOsBJSuxpNFYhoFQDrkBjWrMulPnMkQHkhfQWw2Z4g=',
+  'https://thumbs.dreamstime.com/b/double-exposure-hunger-begging-hands-dry-soil-represent-lot-people-world-hungry-starvation-need-69057865.jpg',
+  'https://media.istockphoto.com/photos/african-girl-eating-a-meal-in-the-orphanage-picture-id108349181?k=20&m=108349181&s=612x612&w=0&h=fgoQ9CW_tHzInBPVLYOPVqZYfp0MQCrB3nBUUTAUetc=',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYMw_KObr82gHU8mJiK5w6CyNkYeIDCAZRCg&usqp=CAU'
+];
 
 class UHomeScreen extends StatefulWidget {
   final User user;
@@ -107,7 +115,7 @@ class _UHomeScreen extends State<UHomeScreen> {
           ),
           const Align(
             alignment: Alignment.center,
-            child: Header("Welcome to AMY"),
+            child: HeaderMontserrat("Welcome to AMY"),
           ),
           const Divider(
             height: 8,
@@ -188,12 +196,12 @@ class _UHomeScreen extends State<UHomeScreen> {
                   )
                 ])
               : const ParagraphMontserrat("Loading user data"),
-          StyledButtonPlayfair(
-              text: "Test donations",
-              onPressed: () => {
-                    FirebaseUserClass.updateDonations(
-                        _currentUser.uid.toString(), [3100, 900, 1, 1, 1])
-                  }),
+          // StyledButtonPlayfair(
+          //     text: "Test donations",
+          //     onPressed: () => {
+          //           FirebaseUserClass.updateDonations(
+          //               _currentUser.uid.toString(), [3100, 900, 1, 1, 1])
+          //         }),
           StyledButtonPlayfair(
               text: "Confetti",
               onPressed: () => {
@@ -205,6 +213,26 @@ class _UHomeScreen extends State<UHomeScreen> {
                       ),
                     )
                   }),
+          const Divider(
+            height: 8,
+            thickness: 1,
+            indent: 8,
+            endIndent: 8,
+            color: Colors.grey,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          CarouselSlider(
+            options: CarouselOptions(),
+            items: imgList
+                .map((item) => Container(
+                      child: Center(
+                          child: Image.network(item,
+                              fit: BoxFit.cover, width: 1000)),
+                    ))
+                .toList(),
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -117,7 +117,7 @@ class _UDonateScreen extends State<UDonateScreen> {
           ),
           Align(
             alignment: Alignment.center,
-            child: Header(
+            child: HeaderMontserrat(
               'Welcome ${_currentUser.displayName}!',
             ),
           ),

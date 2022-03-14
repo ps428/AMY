@@ -107,19 +107,19 @@ class _UAccountScreen extends State<UAccountScreen> {
           DataColumn(
             label: Text(
               'S. No.',
-              style: TextStyle(fontStyle: FontStyle.italic),
+              style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),
           DataColumn(
             label: Text(
               'Breakfast',
-              style: TextStyle(fontStyle: FontStyle.italic),
+              style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),
           DataColumn(
             label: Text(
               'Lunch',
-              style: TextStyle(fontStyle: FontStyle.italic),
+              style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),
           DataColumn(
@@ -153,22 +153,19 @@ class _UAccountScreen extends State<UAccountScreen> {
         shrinkWrap: true,
         padding: const EdgeInsets.all(20.0),
         children: <Widget>[
+          HeaderMontserrat(" ${_currentUser.displayName}'s Record"),
+          const ParagraphMontserrat(
+            'Your donation data is:',
+          ),
+          const SizedBox(
+            height: 20,
+          ),
           const Divider(
             height: 8,
             thickness: 1,
             indent: 8,
             endIndent: 8,
             color: Colors.grey,
-          ),
-          const Header("Account Details"),
-          Text(
-            'Name: ${_currentUser.displayName}',
-          ),
-          const ParagraphMontserrat(
-            'Your donation data is:',
-          ),
-          const SizedBox(
-            height: 20,
           ),
           dataFetched
               ? createTable()

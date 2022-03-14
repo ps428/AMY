@@ -7,11 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 final List<String> imgList = [
-  'assets/images/hands.jpg',
-  'assets/images/kid_bread.png',
-  'assets/images/kid_plate.jpg',
-  'assets/images/kid_scarffed.png',
-  'assets/images/knife_fork.jpg'
+  'https://media.istockphoto.com/photos/poor-indian-children-asking-for-food-india-picture-id524903696?k=20&m=524903696&s=612x612&w=0&h=lyOsBJSuxpNFYhoFQDrkBjWrMulPnMkQHkhfQWw2Z4g=',
+  'https://thumbs.dreamstime.com/b/double-exposure-hunger-begging-hands-dry-soil-represent-lot-people-world-hungry-starvation-need-69057865.jpg',
+  'https://media.istockphoto.com/photos/african-girl-eating-a-meal-in-the-orphanage-picture-id108349181?k=20&m=108349181&s=612x612&w=0&h=fgoQ9CW_tHzInBPVLYOPVqZYfp0MQCrB3nBUUTAUetc=',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYMw_KObr82gHU8mJiK5w6CyNkYeIDCAZRCg&usqp=CAU'
 ];
 
 class UThanksScreen extends StatefulWidget {
@@ -96,6 +95,9 @@ class _UThanksScreen extends State<UThanksScreen> {
             'Thank you ${_currentUser.displayName}!',
           ),
           const HeaderPlayfair("See the smiles that you have brought..."),
+          const SizedBox(
+            height: 20,
+          ),
           CarouselSlider(
             options: CarouselOptions(),
             items: imgList
@@ -105,7 +107,11 @@ class _UThanksScreen extends State<UThanksScreen> {
                               fit: BoxFit.cover, width: 1000)),
                     ))
                 .toList(),
-          )
+          ),
+          const SizedBox(height: 20),
+          const ParagraphPlayfair("You are a superstar for all these people. "),
+          const ParagraphPlayfair("Some cool quote. "),
+          const ParagraphPlayfair("Some more text. ")
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
