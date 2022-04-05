@@ -19,7 +19,9 @@ const wildWatermelon = Color(0xffFF577F);
 const babyPink = Color(0xffFCD1D1);
 const conifer = Color(0xffA3D344);
 const brown = Color(0xff5D373D);
-const pineGreen = Color(0xff15717E);
+const pineGreen = Color(0xff008080);
+// const pineGreen = Color(0xff15717E);
+const bottleGreen2 = Color(0xff006A4E);
 const pistaliter = Color(0xffECF9F2);
 const lightGreen = Color(0xffF1FFDB);
 const greenAmy = Color(0xffA1D444);
@@ -49,8 +51,10 @@ class HeaderPlayfair extends StatelessWidget {
         child: Text(
           heading,
           style: const TextStyle(
+              color: pineGreen,
               fontSize: 24,
               fontFamily: 'Playfair',
+              fontStyle: FontStyle.italic,
               fontWeight: FontWeight.bold),
         ),
       );

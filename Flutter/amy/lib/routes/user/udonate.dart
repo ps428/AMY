@@ -108,24 +108,16 @@ class _UDonateScreen extends State<UDonateScreen> {
         shrinkWrap: true,
         padding: const EdgeInsets.all(20.0),
         children: <Widget>[
-          const Divider(
-            height: 8,
-            thickness: 1,
-            indent: 8,
-            endIndent: 8,
-            color: Colors.grey,
-          ),
-          Align(
+          const Align(
             alignment: Alignment.center,
-            child: HeaderMontserrat(
-              'Welcome ${_currentUser.displayName}!',
+            child: HeaderPlayfair(
+              'Start by feeding someone...',
             ),
           ),
           // Column(
           //   children: [
           //     Row(
           //       children: [
-          const ParagraphMontserrat("Donate Meals: "),
           const SizedBox(
             height: 10,
           ),
@@ -171,13 +163,6 @@ class _UDonateScreen extends State<UDonateScreen> {
                   isDense: true,
                 )),
           ),
-          const Divider(
-            height: 8,
-            thickness: 1,
-            indent: 8,
-            endIndent: 8,
-            color: Colors.grey,
-          ),
           const SizedBox(
             height: 30,
           ),
@@ -222,7 +207,7 @@ class _UDonateScreen extends State<UDonateScreen> {
                 width: 80,
               ),
               StyledButtonMonterrsat(
-                  text: "Donate This",
+                  text: "Donate",
                   onPressed: () => {
                         if (_breakfastCounts.text != '')
                           breakfastCounts = int.parse(_breakfastCounts.text),
@@ -294,7 +279,7 @@ class _UDonateScreen extends State<UDonateScreen> {
                                 .toString())
                       ],
                     )
-              : const ParagraphMontserrat("Enter some input to get estimate"),
+              : const ParagraphMontserrat(""),
 
           //       ],
           //     ),

@@ -95,7 +95,7 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
           ),
           const Align(
             alignment: Alignment.center,
-            child: Header("Confirm Your Donation"),
+            child: HeaderMontserrat("Confirm Your Donation"),
           ),
           const Divider(
             height: 8,

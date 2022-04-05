@@ -139,7 +139,7 @@ class _UHomeScreen extends State<UHomeScreen> {
               //         messData[2].toString())
               ? Column(children: [
                   ParagraphMontserrat(
-                    'Welcome ${_currentUser.displayName}!',
+                    'Hey ${_currentUser.displayName}!',
                   ),
                   ParagraphMontserrat(
                     'Your Mess ID is ${messData[1].toString()}',
@@ -155,7 +155,7 @@ class _UHomeScreen extends State<UHomeScreen> {
                     color: Colors.grey,
                   ),
                   const ParagraphMontserrat(
-                    'AMY Status: ',
+                    'Donation Status:',
                   ),
                   Align(
                     alignment: Alignment.center,
@@ -170,12 +170,14 @@ class _UHomeScreen extends State<UHomeScreen> {
                               counts: counters[0],
                               total: counters[2],
                             ),
-                            ParagraphMontserrat(counters[0].toString() +
-                                " meals donated so far."),
-                            ParagraphMontserrat("Target of " +
-                                counters[2].toString() +
-                                " meal donation."),
+                            ParagraphMontserrat("Donated meals " +
+                                counters[0].toString() +
+                                "/" +
+                                counters[2].toString()),
                           ],
+                        ),
+                        const SizedBox(
+                          height: 20,
                         ),
                         Column(
                           children: [
@@ -185,10 +187,10 @@ class _UHomeScreen extends State<UHomeScreen> {
                               counts: counters[1],
                               total: counters[0],
                             ),
-                            ParagraphMontserrat(counters[1].toString() +
-                                " meals served so far."),
-                            ParagraphMontserrat(counters[0].toString() +
-                                " meal donated so far."),
+                            ParagraphMontserrat("Served meals " +
+                                counters[1].toString() +
+                                "/" +
+                                counters[2].toString()),
                           ],
                         )
                       ],

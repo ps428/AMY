@@ -130,7 +130,7 @@ class _UAccountScreen extends State<UAccountScreen> {
           ),
           DataColumn(
             label: Text(
-              'Time Donated',
+              'Timestamp of Donation',
               style: TextStyle(fontStyle: FontStyle.italic),
             ),
           ),
@@ -154,6 +154,18 @@ class _UAccountScreen extends State<UAccountScreen> {
         padding: const EdgeInsets.all(20.0),
         children: <Widget>[
           HeaderMontserrat(" ${_currentUser.displayName}'s Record"),
+          StyledButtonMonterrsat(
+              text: "Sign Out",
+              onPressed: () => {
+                    FireAuth.signOut(),
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                        // builder: (context) =>
+                        //     const SignupScreen(),
+                      ),
+                    )
+                  }),
           const ParagraphMontserrat(
             'Your donation data is:',
           ),
@@ -176,20 +188,6 @@ class _UAccountScreen extends State<UAccountScreen> {
           const SizedBox(
             height: 30,
           ),
-          Align(
-              alignment: Alignment.bottomCenter,
-              child: StyledButtonMonterrsat(
-                  text: "Sign Out",
-                  onPressed: () => {
-                        FireAuth.signOut(),
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (context) => const HomeScreen(),
-                            // builder: (context) =>
-                            //     const SignupScreen(),
-                          ),
-                        )
-                      })),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

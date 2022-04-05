@@ -94,10 +94,13 @@ class _UThanksScreen extends State<UThanksScreen> {
           HeaderPlayfair(
             'Thank you ${_currentUser.displayName}!',
           ),
-          const HeaderPlayfair("See the smiles that you have brought..."),
           const SizedBox(
-            height: 20,
+            height: 200,
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: Colors.red),
+            ),
           ),
+          const ParagraphPlayfair("A Meal by You! "),
           CarouselSlider(
             options: CarouselOptions(),
             items: imgList
@@ -108,10 +111,6 @@ class _UThanksScreen extends State<UThanksScreen> {
                     ))
                 .toList(),
           ),
-          const SizedBox(height: 20),
-          const ParagraphPlayfair("You are a superstar for all these people. "),
-          const ParagraphPlayfair("Some cool quote. "),
-          const ParagraphPlayfair("Some more text. ")
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
