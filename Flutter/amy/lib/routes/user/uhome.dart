@@ -10,10 +10,10 @@ import 'package:flutter/material.dart';
 import 'firebaseUserClass.dart';
 
 final List<String> imgList = [
-  'https://media.istockphoto.com/photos/poor-indian-children-asking-for-food-india-picture-id524903696?k=20&m=524903696&s=612x612&w=0&h=lyOsBJSuxpNFYhoFQDrkBjWrMulPnMkQHkhfQWw2Z4g=',
-  'https://thumbs.dreamstime.com/b/double-exposure-hunger-begging-hands-dry-soil-represent-lot-people-world-hungry-starvation-need-69057865.jpg',
-  'https://media.istockphoto.com/photos/african-girl-eating-a-meal-in-the-orphanage-picture-id108349181?k=20&m=108349181&s=612x612&w=0&h=fgoQ9CW_tHzInBPVLYOPVqZYfp0MQCrB3nBUUTAUetc=',
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYMw_KObr82gHU8mJiK5w6CyNkYeIDCAZRCg&usqp=CAU'
+  'assets/Amy/2.png',
+  'assets/Amy/3.png',
+  'assets/Amy/4.png',
+  'assets/Amy/5.png'
 ];
 
 class UHomeScreen extends StatefulWidget {
@@ -124,6 +124,9 @@ class _UHomeScreen extends State<UHomeScreen> {
             endIndent: 8,
             color: Colors.grey,
           ),
+          const SizedBox(
+            height: 10,
+          ),
           isFirebaseCalled
               //     ? ParagraphMontserrat("Total meals donated: " +
               //         counters[0].toString() +
@@ -138,14 +141,37 @@ class _UHomeScreen extends State<UHomeScreen> {
               //         " Your account balance is: INR " +
               //         messData[2].toString())
               ? Column(children: [
-                  ParagraphMontserrat(
-                    'Hey ${_currentUser.displayName}!',
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 100.0,
+                        width: 300.0,
+                        decoration: const BoxDecoration(
+                            color: mustard,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                      ),
+                      Column(
+                        children: [
+                          ParagraphMontserrat(
+                            'Hey ${_currentUser.displayName}!',
+                          ),
+                          ParagraphMontserrat(
+                            'Your Mess ID is ${messData[1].toString()}',
+                          ),
+                          ParagraphMontserrat(
+                            'Your current balance is \u{20B9}${messData[2].toString()}',
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  ParagraphMontserrat(
-                    'Your Mess ID is ${messData[1].toString()}',
-                  ),
-                  ParagraphMontserrat(
-                    'Your current balance is \u{20B9}${messData[2].toString()}',
+                  const SizedBox(
+                    height: 10,
                   ),
                   const Divider(
                     height: 8,
@@ -155,7 +181,7 @@ class _UHomeScreen extends State<UHomeScreen> {
                     color: Colors.grey,
                   ),
                   const ParagraphMontserrat(
-                    'Donation Status:',
+                    'Donation Status',
                   ),
                   Align(
                     alignment: Alignment.center,
@@ -190,7 +216,7 @@ class _UHomeScreen extends State<UHomeScreen> {
                             ParagraphMontserrat("Served meals " +
                                 counters[1].toString() +
                                 "/" +
-                                counters[2].toString()),
+                                counters[0].toString()),
                           ],
                         )
                       ],
@@ -204,6 +230,34 @@ class _UHomeScreen extends State<UHomeScreen> {
           //           FirebaseUserClass.updateDonations(
           //               _currentUser.uid.toString(), [3100, 900, 1, 1, 1])
           //         }),
+          const Divider(
+            height: 8,
+            thickness: 1,
+            indent: 8,
+            endIndent: 8,
+            color: Colors.grey,
+          ),
+          CarouselSlider(
+            options: CarouselOptions(
+              height: 400,
+              aspectRatio: 20 / 9,
+              viewportFraction: 0.8,
+              initialPage: 0,
+              autoPlay: true,
+              autoPlayInterval: const Duration(seconds: 3),
+              autoPlayAnimationDuration: const Duration(milliseconds: 800),
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enlargeCenterPage: true,
+              scrollDirection: Axis.horizontal,
+            ),
+            items: imgList
+                .map((item) => Center(
+                        child: Image.asset(
+                      item,
+                      fit: BoxFit.cover,
+                    )))
+                .toList(),
+          ),
           StyledButtonPlayfair(
               text: "Confetti",
               onPressed: () => {
@@ -215,26 +269,6 @@ class _UHomeScreen extends State<UHomeScreen> {
                       ),
                     )
                   }),
-          const Divider(
-            height: 8,
-            thickness: 1,
-            indent: 8,
-            endIndent: 8,
-            color: Colors.grey,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          CarouselSlider(
-            options: CarouselOptions(),
-            items: imgList
-                .map((item) => Container(
-                      child: Center(
-                          child: Image.network(item,
-                              fit: BoxFit.cover, width: 1000)),
-                    ))
-                .toList(),
-          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

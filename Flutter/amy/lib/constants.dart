@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const lavendar = Color(0xffEDE3FF);
+const mustard = Color(0xffffdb58);
 const pista = Color(0xffBEDDD7);
 const hawkesBlue = Color(0xffCFE5FD);
 const monteCarlo = Color(0xffABD8D8);

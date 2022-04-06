@@ -83,6 +83,24 @@ flutter:
     - assets/images/kid_plate.jpg
     - assets/images/kid_scarffed.png
     - assets/images/knife_fork.jpg
+    - assets/Amy/1.png
+    - assets/Amy/1.gif
+    - assets/Amy/2.png
+    - assets/Amy/3.png
+    - assets/Amy/4.png
+    - assets/Amy/5.png
+    - assets/gif/confetti.gif
+    - assets/Food/breakfast.png
+    - assets/Food/breakfast2.png
+    - assets/Food/breakfast3.png
+    - assets/Food/lunch.png
+    - assets/Food/lunch 2.png
+    - assets/Food/lunch 3.png
+    - assets/Food/dinner.png
+    - assets/Food/dinner 2.png
+    - assets/Food/dinner 3.png
+
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

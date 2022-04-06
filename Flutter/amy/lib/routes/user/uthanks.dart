@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:amy/constants.dart';
 import 'package:amy/routes/user/uaccount.dart';
 import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
+import 'package:confetti/confetti.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -24,6 +27,7 @@ class UThanksScreen extends StatefulWidget {
 
 class _UThanksScreen extends State<UThanksScreen> {
   late User _currentUser;
+  late ConfettiController _topController;
 
   int _selectedIndex = 0;
 
@@ -67,7 +71,17 @@ class _UThanksScreen extends State<UThanksScreen> {
   @override
   void initState() {
     _currentUser = widget.user;
+    _topController = ConfettiController(duration: const Duration(seconds: 10));
+    _topController.play();
+
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    // dispose the controller
+    _topController.dispose();
+    super.dispose();
   }
 
   @override
@@ -84,32 +98,51 @@ class _UThanksScreen extends State<UThanksScreen> {
       ),
       body: ListView(
         children: <Widget>[
-          const Divider(
-            height: 8,
-            thickness: 1,
-            indent: 8,
-            endIndent: 8,
-            color: Colors.grey,
-          ),
-          HeaderPlayfair(
-            'Thank you ${_currentUser.displayName}!',
-          ),
-          const SizedBox(
-            height: 200,
-            child: DecoratedBox(
-              decoration: BoxDecoration(color: Colors.red),
-            ),
-          ),
-          const ParagraphPlayfair("A Meal by You! "),
-          CarouselSlider(
-            options: CarouselOptions(),
-            items: imgList
-                .map((item) => Container(
-                      child: Center(
-                          child: Image.network(item,
-                              fit: BoxFit.cover, width: 1000)),
-                    ))
-                .toList(),
+          Stack(
+            children: [
+              Column(
+                children: [
+                  const SizedBox(
+                    height: 70,
+                  ),
+                  Image.asset('assets/Amy/1.gif'),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Stack(
+                    children: [
+                      Container(
+                        height: 140.0,
+                        width: 290.0,
+                        decoration: const BoxDecoration(
+                            color: lavendar,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                      ),
+                      Column(
+                        children: [
+                          HeaderMontserrat(
+                              "Thank you ${_currentUser.displayName}"),
+                          const HeaderMontserrat("for donating"),
+                          const HeaderMontserrat("#AMealByYou")
+                        ],
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  StyledButtonMonterrsat(
+                      text: "Share your badge!",
+                      onPressed: () => {
+                            //do something
+                          }),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                ],
+              ),
+            ],
           ),
         ],
       ),

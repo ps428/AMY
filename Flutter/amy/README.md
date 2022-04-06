@@ -77,11 +77,16 @@ samples, guidance on mobile development, and a full API reference.
 - [ ] In app notification on meal serving
 - [ ] Use group by kind of something to get superstar from the bill table
 - [ ] Add a graph. Can use sunc_fusion_flutter_charts
-- [ ] Confetti
-- [ ] Card on personal details
-- [ ] Pictures
+--------------------------
+- [X] Confetti: Done
+- [X] Card on personal details: Done 
+- [X] Pictures: Done
+- [ ] Mustard or darkish yellow on confirm donation {behind confirm your donation}
+- [ ] About page: Floating icon: Amy card logo and some lines from first doc
+- [ ] Our team photo in about page: minds behind the meals
+- [ ] Sign out on right end in my account page
+- [ ] Sort table in my account
 - [ ] Meal donated based food image
-- [ ] Overall text size increment
 - [ ] Table on confirm your donation
 - [ ] Spacing adjustment
-- [ ] Mustard or darkish yellow on confirm donation
+- [ ] Overall text size increment
