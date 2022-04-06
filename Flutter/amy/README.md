@@ -77,3 +77,11 @@ samples, guidance on mobile development, and a full API reference.
 - [ ] In app notification on meal serving
 - [ ] Use group by kind of something to get superstar from the bill table
 - [ ] Add a graph. Can use sunc_fusion_flutter_charts
+- [ ] Confetti
+- [ ] Card on personal details
+- [ ] Pictures
+- [ ] Meal donated based food image
+- [ ] Overall text size increment
+- [ ] Table on confirm your donation
+- [ ] Spacing adjustment
+- [ ] Mustard or darkish yellow on confirm donation
