@@ -196,7 +196,10 @@ class _UAccountScreen extends State<UAccountScreen> {
             color: Colors.grey,
           ),
           dataFetched
-              ? createTable()
+              ? Align(
+                  alignment: Alignment.center,
+                  child: createTable(),
+                )
               : const SpinKitHourGlass(
                   color: Colors.greenAccent,
                   size: 50.0,

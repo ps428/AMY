@@ -61,6 +61,79 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
   //   });
   // }
 
+  Widget createTable() {
+    List<DataRow> dataRows = [];
+    dataRows.add(
+      DataRow(
+        cells: <DataCell>[
+          const DataCell(Text("Breakfast")),
+          DataCell(Text(l[2].toString())),
+          DataCell(Text((l[2] * 40).toString())),
+        ],
+      ),
+    );
+    dataRows.add(
+      DataRow(
+        cells: <DataCell>[
+          const DataCell(Text("Lunch")),
+          DataCell(Text(l[3].toString())),
+          DataCell(Text((l[3] * 70).toString())),
+        ],
+      ),
+    );
+    dataRows.add(
+      DataRow(
+        cells: <DataCell>[
+          const DataCell(Text("Dinner")),
+          DataCell(Text(l[4].toString())),
+          DataCell(Text((l[4] * 70).toString())),
+        ],
+      ),
+    );
+    dataRows.add(
+      DataRow(
+        color: MaterialStateProperty.all(lavendar),
+        cells: <DataCell>[
+          const DataCell(Text(
+            "Total",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          )),
+          DataCell(Text(
+            (l[2] + l[3] + l[4]).toString(),
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          )),
+          DataCell(Text(
+            (l[2] * 40 + l[3] * 70 + l[4] * 70).toString(),
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          )),
+        ],
+      ),
+    );
+
+    return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: DataTable(columns: const <DataColumn>[
+          DataColumn(
+            label: Text(
+              'Meal Name',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Quantity',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Cost',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+        ], rows: dataRows));
+  }
+
   @override
   void initState() {
     _currentUser = widget.user;
@@ -104,6 +177,9 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
               ),
             ],
           ),
+          const SizedBox(
+            height: 10,
+          ),
           const Divider(
             height: 8,
             thickness: 1,
@@ -111,19 +187,23 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
             endIndent: 8,
             color: Colors.grey,
           ),
-          Column(
-            children: [
-              ParagraphMontserrat("Hey " + _currentUser.displayName.toString()),
-              ParagraphMontserrat(
-                  "Your Balance post donation is " + l[0].toString()),
-              ParagraphMontserrat("Your Donation cost is " + l[1].toString()),
-              ParagraphMontserrat(
-                  "You are donating " + l[2].toString() + " breakfasts,"),
-              ParagraphMontserrat(
-                  "You are donating " + l[3].toString() + " lunches,"),
-              ParagraphMontserrat(
-                  "You are donating " + l[4].toString() + " dinners,"),
-            ],
+          // Column(
+          //   children: [
+          //     ParagraphMontserrat("Hey " + _currentUser.displayName.toString()),
+          //     ParagraphMontserrat(
+          //         "Your Balance post donation is " + l[0].toString()),
+          //     ParagraphMontserrat("Your Donation cost is " + l[1].toString()),
+          //     ParagraphMontserrat(
+          //         "You are donating " + l[2].toString() + " breakfasts,"),
+          //     ParagraphMontserrat(
+          //         "You are donating " + l[3].toString() + " lunches,"),
+          //     ParagraphMontserrat(
+          //         "You are donating " + l[4].toString() + " dinners,"),
+          //   ],
+          // ),
+          Align(
+            alignment: Alignment.center,
+            child: createTable(),
           ),
           const SizedBox(
             height: 10,
@@ -160,6 +240,63 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
                   }),
             ],
           ),
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment:
+                MainAxisAlignment.center, //Center Row contents horizontally,
+            crossAxisAlignment:
+                CrossAxisAlignment.center, //Center Row contents vertically,
+
+            children: [
+              l[2] > 5
+                  ? const FoodImage(
+                      location: "assets/Food/breakfast3.png",
+                    )
+                  : l[2] > 2
+                      ? const FoodImage(
+                          location: "assets/Food/breakfast2.png",
+                        )
+                      : l[2] > 0
+                          ? const FoodImage(
+                              location: "assets/Food/breakfast.png",
+                            )
+                          : const Paragraph(""),
+              const SizedBox(
+                width: 15,
+              ),
+              l[3] > 5
+                  ? const FoodImage(
+                      location: "assets/Food/lunch 3.png",
+                    )
+                  : l[3] > 2
+                      ? const FoodImage(
+                          location: "assets/Food/lunch 2.png",
+                        )
+                      : l[3] > 0
+                          ? const FoodImage(
+                              location: "assets/Food/lunch.png",
+                            )
+                          : const Paragraph(""),
+              const SizedBox(
+                width: 15,
+              ),
+              l[4] > 5
+                  ? const FoodImage(
+                      location: "assets/Food/dinner 3.png",
+                    )
+                  : l[4] > 2
+                      ? const FoodImage(
+                          location: "assets/Food/dinner 2.png",
+                        )
+                      : l[4] > 0
+                          ? const FoodImage(
+                              location: "assets/Food/dinner.png",
+                            )
+                          : const Paragraph(""),
+            ],
+          )
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

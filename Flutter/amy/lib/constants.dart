@@ -230,6 +230,17 @@ class StyledButtonMonterrsat extends StatelessWidget {
       );
 }
 
+class FoodImage extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
+  const FoodImage({required this.location});
+  final String location;
+  @override
+  Widget build(BuildContext context) => Container(
+        alignment: Alignment.center, // use aligment
+        child:
+            Image.asset(location, height: 150, width: 150, fit: BoxFit.cover),
+      );
+}
 // ignore_for_file: must_be_immutable
 
 class ProgressBar extends StatelessWidget {

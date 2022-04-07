@@ -87,6 +87,6 @@ samples, guidance on mobile development, and a full API reference.
 - [X] Sign out on right end in my account page
 - [ ] Sort table in my account
 - [X] Meal donated based food image
-- [ ] Table on confirm your donation
+- [X] Table on confirm your donation
 - [ ] Spacing adjustment
 - [ ] Overall text size increment

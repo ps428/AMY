@@ -296,32 +296,50 @@ class _UDonateScreen extends State<UDonateScreen> {
 
                           children: [
                             breakfastCounts > 5
-                                ? Image.asset("assets/Food/breakfast3.png")
+                                ? const FoodImage(
+                                    location: "assets/Food/breakfast3.png",
+                                  )
                                 : breakfastCounts > 2
-                                    ? Image.asset("assets/Food/breakfast2.png")
+                                    ? const FoodImage(
+                                        location: "assets/Food/breakfast2.png",
+                                      )
                                     : breakfastCounts > 0
-                                        ? Image.asset(
-                                            "assets/Food/breakfast.png")
+                                        ? const FoodImage(
+                                            location:
+                                                "assets/Food/breakfast.png",
+                                          )
                                         : const Paragraph(""),
                             const SizedBox(
                               width: 15,
                             ),
                             lunchCounts > 5
-                                ? Image.asset("assets/Food/lunch 3.png")
+                                ? const FoodImage(
+                                    location: "assets/Food/lunch 3.png",
+                                  )
                                 : lunchCounts > 2
-                                    ? Image.asset("assets/Food/lunch 2.png")
+                                    ? const FoodImage(
+                                        location: "assets/Food/lunch 2.png",
+                                      )
                                     : lunchCounts > 0
-                                        ? Image.asset("assets/Food/lunch.png")
+                                        ? const FoodImage(
+                                            location: "assets/Food/lunch.png",
+                                          )
                                         : const Paragraph(""),
                             const SizedBox(
                               width: 15,
                             ),
                             dinnerCounts > 5
-                                ? Image.asset("assets/Food/dinner 3.png")
+                                ? const FoodImage(
+                                    location: "assets/Food/dinner 3.png",
+                                  )
                                 : dinnerCounts > 2
-                                    ? Image.asset("assets/Food/dinner 2.png")
+                                    ? const FoodImage(
+                                        location: "assets/Food/dinner 2.png",
+                                      )
                                     : dinnerCounts > 0
-                                        ? Image.asset("assets/Food/dinner.png")
+                                        ? const FoodImage(
+                                            location: "assets/Food/dinner.png",
+                                          )
                                         : const Paragraph(""),
                           ],
                         )
