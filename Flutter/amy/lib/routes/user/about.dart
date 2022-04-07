@@ -67,10 +67,7 @@ class _AboutScreen extends State<AboutScreen> {
       resizeToAvoidBottomInset: false,
       backgroundColor: lightGreen,
       appBar: AppBar(
-        title: const Text(
-          'About',
-          style: TextStyle(color: lightGreen, fontFamily: 'OpenSans'),
-        ),
+        title: const TitleMonterrsat("About"),
         backgroundColor: pineGreen,
       ),
       body: ListView(
@@ -93,7 +90,7 @@ class _AboutScreen extends State<AboutScreen> {
               ),
             ],
           ),
-          const ParagraphMontserrat(
+          const ParagraphPlayfair(
             "AMY is an innovative food bank app designed by keeping SNU’s current mess ecosystem in consideration. AMY lends a helping hand to the students to make efficient use of their about to be lapsed mess card balance by making meal donations for the people for whom affording the meals is not that simple, eg. gardeners, nurserymen, guards working in night shifts etc.",
           ),
           const SizedBox(
@@ -101,7 +98,7 @@ class _AboutScreen extends State<AboutScreen> {
           ),
           const Align(
             alignment: Alignment.center,
-            child: HeaderPlayfair("Minds behind Meals"),
+            child: HeaderPlayfairBig("Minds behind Meals"),
           ),
           const SizedBox(
             height: 20,
@@ -128,14 +125,7 @@ class _AboutScreen extends State<AboutScreen> {
                   //         fit: BoxFit.contain),
                   //   ),
                   // ),
-                  CircleAvatar(
-                    backgroundColor: Colors.black,
-                    radius: 101.0,
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage('assets/Minds/jayati.png'),
-                      radius: 100,
-                    ),
-                  ),
+                  MindsBehindAvatar('assets/Minds/jayati.png'),
                   SizedBox(
                     width: 10,
                   ),
@@ -166,14 +156,7 @@ class _AboutScreen extends State<AboutScreen> {
                   //         fit: BoxFit.contain),
                   //   ),
                   // ),
-                  CircleAvatar(
-                    backgroundColor: Colors.black,
-                    radius: 101.0,
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage('assets/Minds/pranav.png'),
-                      radius: 100,
-                    ),
-                  ),
+                  MindsBehindAvatar('assets/Minds/pranav.png'),
                   SizedBox(
                     width: 10,
                   ),
@@ -197,14 +180,7 @@ class _AboutScreen extends State<AboutScreen> {
                   //         fit: BoxFit.contain),
                   //   ),
                   // ),
-                  CircleAvatar(
-                    backgroundColor: Colors.black,
-                    radius: 101.0,
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage('assets/Minds/madhav.png'),
-                      radius: 100,
-                    ),
-                  ),
+                  MindsBehindAvatar('assets/Minds/madhav.png'),
                   SizedBox(
                     width: 10,
                   ),

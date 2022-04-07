@@ -147,10 +147,7 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
       resizeToAvoidBottomInset: false,
       backgroundColor: lightGreen,
       appBar: AppBar(
-        title: const Text(
-          'Confirm Donation',
-          style: TextStyle(color: lightGreen, fontFamily: 'OpenSans'),
-        ),
+        title: const TitleMonterrsat("Confirm Donation"),
         backgroundColor: pineGreen,
       ),
       body: ListView(

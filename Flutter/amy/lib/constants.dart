@@ -64,6 +64,24 @@ class HeaderPlayfair extends StatelessWidget {
       );
 }
 
+class HeaderPlayfairBig extends StatelessWidget {
+  const HeaderPlayfairBig(this.heading);
+  final String heading;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          heading,
+          style: const TextStyle(
+              color: pineGreen,
+              fontSize: 32,
+              fontFamily: 'Playfair',
+              fontWeight: FontWeight.bold),
+        ),
+      );
+}
+
 class HeaderOpenSans extends StatelessWidget {
   const HeaderOpenSans(this.heading);
   final String heading;
@@ -159,6 +177,37 @@ class ParagraphOpenSans extends StatelessWidget {
       );
 }
 
+class TitleMonterrsat extends StatelessWidget {
+  const TitleMonterrsat(this.content);
+  final String content;
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: Text(
+          content,
+          style: const TextStyle(
+              fontSize: 18,
+              fontFamily: 'Monterrsat',
+              color: lightGreen,
+              fontWeight: FontWeight.bold),
+        ),
+      );
+}
+
+class MindsBehindAvatar extends StatelessWidget {
+  const MindsBehindAvatar(this.content);
+  final String content;
+  @override
+  Widget build(BuildContext context) => CircleAvatar(
+        backgroundColor: Colors.black,
+        radius: 91.0,
+        child: CircleAvatar(
+          backgroundImage: AssetImage(content),
+          radius: 90,
+        ),
+      );
+}
+
 class StyledButton extends StatelessWidget {
   const StyledButton({required this.child, required this.onPressed});
   final Widget child;
@@ -227,7 +276,11 @@ class StyledButtonMonterrsat extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: const TextStyle(fontFamily: 'Montserrat', color: apricotWhite),
+          style: const TextStyle(
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              color: apricotWhite),
         ),
       );
 }
@@ -240,7 +293,7 @@ class FoodImage extends StatelessWidget {
   Widget build(BuildContext context) => Container(
         alignment: Alignment.center, // use aligment
         child:
-            Image.asset(location, height: 120, width: 120, fit: BoxFit.cover),
+            Image.asset(location, height: 110, width: 110, fit: BoxFit.cover),
       );
 }
 // ignore_for_file: must_be_immutable

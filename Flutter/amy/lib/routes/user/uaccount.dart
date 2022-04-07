@@ -74,7 +74,7 @@ class _UAccountScreen extends State<UAccountScreen> {
     //     await FirebaseUserClass.getUserMessDeatils(widget.user.uid);
 
     userData = await FirebaseUserClass.getUserRecords(widget.user.uid);
-    print(userData.runtimeType);
+    // print(userData.runtimeType);
     setState(() {
       dataFetched = true;
       // counters = counterTmp;
@@ -90,10 +90,10 @@ class _UAccountScreen extends State<UAccountScreen> {
       dataRows.add(
         DataRow(
           cells: <DataCell>[
-            DataCell(Text((i + 1).toString())),
-            DataCell(Text(userData[i][0].toString())),
-            DataCell(Text(userData[i][1].toString())),
-            DataCell(Text(userData[i][2].toString())),
+            DataCell(Center(child: Text((i + 1).toString()))),
+            DataCell(Center(child: Text(userData[i][0].toString()))),
+            DataCell(Center(child: Text(userData[i][1].toString()))),
+            DataCell(Center(child: Text(userData[i][2].toString()))),
             DataCell(
               Text(DateTime.fromMillisecondsSinceEpoch(userData[i][3] * 1000)
                   .toString()),
@@ -126,13 +126,13 @@ class _UAccountScreen extends State<UAccountScreen> {
           DataColumn(
             label: Text(
               'Dinner',
-              style: TextStyle(fontStyle: FontStyle.italic),
+              style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),
           DataColumn(
             label: Text(
               'Timestamp of Donation',
-              style: TextStyle(fontStyle: FontStyle.italic),
+              style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),
         ], rows: dataRows));
@@ -144,10 +144,7 @@ class _UAccountScreen extends State<UAccountScreen> {
         resizeToAvoidBottomInset: false,
         backgroundColor: lightGreen,
         appBar: AppBar(
-          title: const Text(
-            'My Account',
-            style: TextStyle(color: lightGreen, fontFamily: 'OpenSans'),
-          ),
+          title: const TitleMonterrsat("Account"),
           backgroundColor: pineGreen,
         ),
         body: ListView(

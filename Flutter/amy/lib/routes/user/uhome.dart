@@ -96,16 +96,16 @@ class _UHomeScreen extends State<UHomeScreen> {
       resizeToAvoidBottomInset: false,
       backgroundColor: lightGreen,
       appBar: AppBar(
-        title: const Text(
-          'Donate Food',
-          style: TextStyle(color: lightGreen, fontFamily: 'OpenSans'),
-        ),
+        title: const TitleMonterrsat("AMY: A Meal by You"),
         backgroundColor: pineGreen,
       ),
       body: ListView(
         shrinkWrap: true,
         padding: const EdgeInsets.all(20.0),
         children: <Widget>[
+          const SizedBox(
+            height: 10,
+          ),
           const Divider(
             height: 8,
             thickness: 1,
@@ -260,17 +260,17 @@ class _UHomeScreen extends State<UHomeScreen> {
                     )))
                 .toList(),
           ),
-          StyledButtonPlayfair(
-              text: "Confetti",
-              onPressed: () => {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => UThanksScreen(
-                          user: _currentUser,
-                        ),
-                      ),
-                    )
-                  }),
+          // StyledButtonPlayfair(
+          //     text: "Confetti",
+          //     onPressed: () => {
+          //           Navigator.of(context).push(
+          //             MaterialPageRoute(
+          //               builder: (context) => UThanksScreen(
+          //                 user: _currentUser,
+          //               ),
+          //             ),
+          //           )
+          //         }),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

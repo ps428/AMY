@@ -102,13 +102,16 @@ class _UDonateScreen extends State<UDonateScreen> {
         resizeToAvoidBottomInset: false,
         backgroundColor: lightGreen,
         appBar: AppBar(
-          title: const HeaderMontserrat("Donate Now"),
+          title: const TitleMonterrsat("Donate Now"),
           backgroundColor: pineGreen,
         ),
         body: ListView(
           shrinkWrap: true,
           padding: const EdgeInsets.all(20.0),
           children: <Widget>[
+            const SizedBox(
+              height: 20,
+            ),
             const Align(
               alignment: Alignment.center,
               child: HeaderPlayfair(
@@ -349,85 +352,25 @@ class _UDonateScreen extends State<UDonateScreen> {
                         ],
                       )
                 : const ParagraphMontserrat(""),
-
-            //       ],
-            //     ),
-            //     Row(
-            //       children: [
-            //         TextField(
-            //autofocus: true,
-            //             controller: _lunchCounts,
-            //             decoration: const InputDecoration(
-            //               hintText: "0",
-            //             )),
-            //         const ParagraphMontserrat("Lunch")
-            //       ],
-            //     ),
-            //     Row(
-            //       children: [
-            //         TextField(
-            // autofocus: true,
-            //             controller: _dinnerCounts,
-            //             decoration: const InputDecoration(
-            //               hintText: "0",
-            //             )),
-            //         const ParagraphMontserrat("Dinner")
-            //       ],
-            //     ),
-            //     const SizedBox(height: 8.0),
-            //   ],
-            // )
-            // Column( TODO USE THE SAME FOR ADMIN DONATION OPTION
-            //   crossAxisAlignment: CrossAxisAlignment.center,
-            //   children: [
-            //     ListTile(
-            //       title: const ParagraphMontserrat("Donate Breakfast"),
-            //       leading: Radio(
-            //         value: 1,
-            //         groupValue: donationOption,
-            //         onChanged: (value) {
-            //           setState(() {
-            //             donationOption = value as int;
-            //           });
-            //         },
-            //         activeColor: Colors.green,
-            //       ),
-            //     ),
-            //     ListTile(
-            //       title: const ParagraphMontserrat("Donate Lunch"),
-            //       leading: Radio(
-            //         value: 2,
-            //         groupValue: donationOption,
-            //         onChanged: (value) {
-            //           setState(() {
-            //             donationOption = value as int;
-            //           });
-            //         },
-            //         activeColor: Colors.green,
-            //       ),
-            //     ),
-            //     ListTile(
-            //       title: const ParagraphMontserrat("Donate Dinner"),
-            //       leading: Radio(
-            //         value: 3,
-            //         groupValue: donationOption,
-            //         onChanged: (value) {
-            //           setState(() {
-            //             donationOption = value as int;
-            //           });
-            //         },
-            //         activeColor: Colors.green,
-            //       ),
-            //     ),
-            //   ],
-            // ),
-            // StyledButtonMonterrsat(
-            //     text: "Serve Meal",
-            //     onPressed: () => {
-            //           //todo
-            //         }),
-            // const Paragraph(
-            //   'Tables!',
+            //        CarouselSlider(
+            //   options: CarouselOptions(
+            //     aspectRatio: 20 / 9,
+            //     viewportFraction: 0.8,
+            //     initialPage: 0,
+            //     autoPlay: true,
+            //     autoPlayInterval: const Duration(seconds: 3),
+            //     autoPlayAnimationDuration: const Duration(milliseconds: 800),
+            //     autoPlayCurve: Curves.fastOutSlowIn,
+            //     enlargeCenterPage: true,
+            //     scrollDirection: Axis.horizontal,
+            //   ),
+            //   items: imgList
+            //       .map((item) => Center(
+            //               child: Image.asset(
+            //             item,
+            //             fit: BoxFit.cover,
+            //           )))
+            //       .toList(),
             // ),
           ],
         ),

@@ -90,10 +90,7 @@ class _UThanksScreen extends State<UThanksScreen> {
       resizeToAvoidBottomInset: false,
       backgroundColor: lightGreen,
       appBar: AppBar(
-        title: const Text(
-          'Thanks for Donation',
-          style: TextStyle(color: lightGreen, fontFamily: 'Playfair'),
-        ),
+        title: const TitleMonterrsat("Thanks for Donation"),
         backgroundColor: pineGreen,
       ),
       body: ListView(
