@@ -152,13 +152,24 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
       ),
       body: ListView(
         shrinkWrap: true,
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(40.0),
         children: <Widget>[
-          Stack(
-            alignment: Alignment.center,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 10,
+                height: 30,
+              ),
+              const Divider(
+                height: 8,
+                thickness: 1,
+                indent: 8,
+                endIndent: 8,
+                color: Colors.grey,
+              ),
+              const SizedBox(
+                height: 25,
               ),
               Container(
                 decoration: const BoxDecoration(
@@ -175,7 +186,7 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
             ],
           ),
           const SizedBox(
-            height: 10,
+            height: 25,
           ),
           const Divider(
             height: 8,
@@ -184,6 +195,10 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
             endIndent: 8,
             color: Colors.grey,
           ),
+          const SizedBox(
+            height: 25,
+          ),
+
           // Column(
           //   children: [
           //     ParagraphMontserrat("Hey " + _currentUser.displayName.toString()),
@@ -203,7 +218,7 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
             child: createTable(),
           ),
           const SizedBox(
-            height: 10,
+            height: 40,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -238,7 +253,7 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
             ],
           ),
           const SizedBox(
-            height: 20,
+            height: 40,
           ),
           Row(
             mainAxisAlignment:

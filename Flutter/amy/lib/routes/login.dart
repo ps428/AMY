@@ -65,14 +65,7 @@ class _LoginScreen extends State<LoginScreen> {
           backgroundColor: lightGreen,
           appBar: AppBar(
             backgroundColor: pineGreen,
-            title: const Text(
-              'Log In',
-              style: TextStyle(
-                  // fontWeight: FontWeight.bold,
-                  color: lightGreen,
-                  fontFamily: 'Monterrsat',
-                  fontSize: 36),
-            ),
+            title: const TitleMonterrsat("Login"),
           ),
           body: ListView(children: <Widget>[
             FutureBuilder(

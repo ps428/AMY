@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+const bgThanksLight = Color(0x78adebad);
 const bgThanks = Color(0xffadebad);
 const fgThanks = Color(0xff1f7a1f);
 const lavendar = Color(0xffEDE3FF);
@@ -75,7 +76,7 @@ class HeaderPlayfairBig extends StatelessWidget {
           heading,
           style: const TextStyle(
               color: pineGreen,
-              fontSize: 32,
+              fontSize: 28,
               fontFamily: 'Playfair',
               fontWeight: FontWeight.bold),
         ),

@@ -83,7 +83,14 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushNamed(context, '/all');
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          // builder: (context) => const SignupScreen(),
+          builder: (context) => const HomeScreen(),
+        ),
+      );
+
+      // Navigator.pushNamed(context, '/all');
     });
     super.initState();
   }

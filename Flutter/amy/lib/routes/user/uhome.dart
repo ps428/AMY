@@ -103,72 +103,26 @@ class _UHomeScreen extends State<UHomeScreen> {
         shrinkWrap: true,
         padding: const EdgeInsets.all(20.0),
         children: <Widget>[
-          const SizedBox(
-            height: 10,
-          ),
-          const Divider(
-            height: 8,
-            thickness: 1,
-            indent: 8,
-            endIndent: 8,
-            color: Colors.grey,
-          ),
-          const Align(
-            alignment: Alignment.center,
-            child: HeaderMontserrat("Welcome to AMY"),
-          ),
-          const Divider(
-            height: 8,
-            thickness: 1,
-            indent: 8,
-            endIndent: 8,
-            color: Colors.grey,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          isFirebaseCalled
-              //     ? ParagraphMontserrat("Total meals donated: " +
-              //         counters[0].toString() +
-              //         " Total meals served: " +
-              //         counters[1].toString())
-              //     : const ParagraphMontserrat("Loading counters"),
-              // isFirebaseCalled
-              //     ? ParagraphMontserrat("Hello " +
-              //         messData[0] +
-              //         "! Your mess id is: " +
-              //         messData[1].toString() +
-              //         " Your account balance is: INR " +
-              //         messData[2].toString())
-              ? Column(children: [
-                  Stack(
+          Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Divider(
+                    height: 8,
+                    thickness: 1,
+                    indent: 8,
+                    endIndent: 8,
+                    color: Colors.grey,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Align(
                     alignment: Alignment.center,
-                    children: [
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 100.0,
-                        width: 300.0,
-                        decoration: const BoxDecoration(
-                            color: mustard,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                      ),
-                      Column(
-                        children: [
-                          ParagraphMontserrat(
-                            'Hey ${_currentUser.displayName}!',
-                          ),
-                          ParagraphMontserrat(
-                            'Your Mess ID is ${messData[1].toString()}',
-                          ),
-                          ParagraphMontserrat(
-                            'Your current balance is \u{20B9}${messData[2].toString()}',
-                          ),
-                        ],
-                      ),
-                    ],
+                    child: HeaderMontserrat("Welcome to AMY"),
                   ),
                   const SizedBox(
                     height: 10,
@@ -180,97 +134,169 @@ class _UHomeScreen extends State<UHomeScreen> {
                     endIndent: 8,
                     color: Colors.grey,
                   ),
-                  const ParagraphMontserrat(
-                    'Donation Status',
+                  const SizedBox(
+                    height: 20,
                   ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            ProgressBar(
-                              value: counters[0] / (counters[2] / 100),
-                              size: counters[2] / (counters[2] / 100),
-                              counts: counters[0],
-                              total: counters[2],
+                  isFirebaseCalled
+                      //     ? ParagraphMontserrat("Total meals donated: " +
+                      //         counters[0].toString() +
+                      //         " Total meals served: " +
+                      //         counters[1].toString())
+                      //     : const ParagraphMontserrat("Loading counters"),
+                      // isFirebaseCalled
+                      //     ? ParagraphMontserrat("Hello " +
+                      //         messData[0] +
+                      //         "! Your mess id is: " +
+                      //         messData[1].toString() +
+                      //         " Your account balance is: INR " +
+                      //         messData[2].toString())
+                      ? Column(children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              Container(
+                                height: 140.0,
+                                width: 300.0,
+                                decoration: const BoxDecoration(
+                                    color: mustard,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ParagraphMontserrat(
+                                      'Hey ${_currentUser.displayName}!',
+                                    ),
+                                    ParagraphMontserrat(
+                                      'Your Mess ID is ${messData[1].toString()}',
+                                    ),
+                                    ParagraphMontserrat(
+                                      'Your balance is \u{20B9}${messData[2].toString()}',
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Divider(
+                            height: 8,
+                            thickness: 1,
+                            indent: 8,
+                            endIndent: 8,
+                            color: Colors.grey,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const ParagraphMontserrat(
+                            'Donation Status',
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  children: [
+                                    ProgressBar(
+                                      value: counters[0] / (counters[2] / 100),
+                                      size: counters[2] / (counters[2] / 100),
+                                      counts: counters[0],
+                                      total: counters[2],
+                                    ),
+                                    ParagraphMontserrat("Donated meals " +
+                                        counters[0].toString() +
+                                        "/" +
+                                        counters[2].toString()),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Column(
+                                  children: [
+                                    ProgressBar(
+                                      value: 1.0 *
+                                          counters[1] /
+                                          (counters[0] / 100),
+                                      size: 3.0 *
+                                          counters[0] /
+                                          (counters[0] / 100),
+                                      counts: counters[1],
+                                      total: counters[0],
+                                    ),
+                                    ParagraphMontserrat("Served meals " +
+                                        counters[1].toString() +
+                                        "/" +
+                                        counters[0].toString()),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                              ],
                             ),
-                            ParagraphMontserrat("Donated meals " +
-                                counters[0].toString() +
-                                "/" +
-                                counters[2].toString()),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Column(
-                          children: [
-                            ProgressBar(
-                              value: 1.0 * counters[1] / (counters[0] / 100),
-                              size: 3.0 * counters[0] / (counters[0] / 100),
-                              counts: counters[1],
-                              total: counters[0],
-                            ),
-                            ParagraphMontserrat("Served meals " +
-                                counters[1].toString() +
-                                "/" +
-                                counters[0].toString()),
-                          ],
-                        )
-                      ],
+                          )
+                        ])
+                      : const ParagraphMontserrat("Loading user data"),
+                  // StyledButtonPlayfair(
+                  //     text: "Test donations",
+                  //     onPressed: () => {
+                  //           FirebaseUserClass.updateDonations(
+                  //               _currentUser.uid.toString(), [3100, 900, 1, 1, 1])
+                  //         }),
+                  const Divider(
+                    height: 8,
+                    thickness: 1,
+                    indent: 8,
+                    endIndent: 8,
+                    color: Colors.grey,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      //REMOVABLE
+                      // height: 150,
+                      aspectRatio: 20 / 9,
+                      viewportFraction: 0.8,
+                      initialPage: 0,
+                      autoPlay: true,
+                      autoPlayInterval: const Duration(seconds: 3),
+                      autoPlayAnimationDuration:
+                          const Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeCenterPage: true,
+                      scrollDirection: Axis.horizontal,
                     ),
-                  )
-                ])
-              : const ParagraphMontserrat("Loading user data"),
-          // StyledButtonPlayfair(
-          //     text: "Test donations",
-          //     onPressed: () => {
-          //           FirebaseUserClass.updateDonations(
-          //               _currentUser.uid.toString(), [3100, 900, 1, 1, 1])
-          //         }),
-          const Divider(
-            height: 8,
-            thickness: 1,
-            indent: 8,
-            endIndent: 8,
-            color: Colors.grey,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          CarouselSlider(
-            options: CarouselOptions(
-              aspectRatio: 20 / 9,
-              viewportFraction: 0.8,
-              initialPage: 0,
-              autoPlay: true,
-              autoPlayInterval: const Duration(seconds: 3),
-              autoPlayAnimationDuration: const Duration(milliseconds: 800),
-              autoPlayCurve: Curves.fastOutSlowIn,
-              enlargeCenterPage: true,
-              scrollDirection: Axis.horizontal,
-            ),
-            items: imgList
-                .map((item) => Center(
-                        child: Image.asset(
-                      item,
-                      fit: BoxFit.cover,
-                    )))
-                .toList(),
-          ),
-          // StyledButtonPlayfair(
-          //     text: "Confetti",
-          //     onPressed: () => {
-          //           Navigator.of(context).push(
-          //             MaterialPageRoute(
-          //               builder: (context) => UThanksScreen(
-          //                 user: _currentUser,
-          //               ),
-          //             ),
-          //           )
-          //         }),
+                    items: imgList
+                        .map((item) => Center(
+                                child: Image.asset(
+                              item,
+                              fit: BoxFit.cover,
+                            )))
+                        .toList(),
+                  ),
+                  // StyledButtonPlayfair(
+                  //     text: "Confetti",
+                  //     onPressed: () => {
+                  //           Navigator.of(context).push(
+                  //             MaterialPageRoute(
+                  //               builder: (context) => UThanksScreen(
+                  //                 user: _currentUser,
+                  //               ),
+                  //             ),
+                  //           )
+                  //         }),
+                ],
+              )),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

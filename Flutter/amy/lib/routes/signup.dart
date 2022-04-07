@@ -51,16 +51,8 @@ class _RegisterPageState extends State<SignupScreen> {
       child: Scaffold(
         backgroundColor: lightGreen,
         appBar: AppBar(
-          backgroundColor: pineGreen,
-          title: const Text(
-            'Sign Up',
-            style: TextStyle(
-                // fontWeight: FontWeight.bold,
-                color: lightGreen,
-                fontFamily: 'Monterrsat',
-                fontSize: 36),
-          ),
-        ),
+            backgroundColor: pineGreen,
+            title: const TitleMonterrsat("Sign Up")),
         body: ListView(children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(24.0),
@@ -125,14 +117,14 @@ class _RegisterPageState extends State<SignupScreen> {
                             hintText: "Password",
                             errorBorder: UnderlineInputBorder(
                               borderRadius: BorderRadius.circular(6.0),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.red,
                               ),
                             ),
                           ),
                         ),
                         //TODO from here make the variable changes and all
-                        SizedBox(height: 16.0),
+                        const SizedBox(height: 16.0),
                         TextFormField(
                           controller: _messIDTextController,
                           focusNode: _focusMessID,
@@ -140,16 +132,16 @@ class _RegisterPageState extends State<SignupScreen> {
                             messID: value,
                           ),
                           decoration: InputDecoration(
-                            hintText: "Mess ID",
+                            hintText: "6 digit Mess ID",
                             errorBorder: UnderlineInputBorder(
                               borderRadius: BorderRadius.circular(6.0),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.red,
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(height: 16.0),
+                        const SizedBox(height: 16.0),
                         TextFormField(
                           controller: _phoneNumberTextController,
                           focusNode: _focusPhoneNumber,

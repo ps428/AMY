@@ -3,6 +3,7 @@ import 'package:amy/routes/user/uaccount.dart';
 import 'package:amy/routes/user/uconfirmation.dart';
 import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,7 @@ class _UDonateScreen extends State<UDonateScreen> {
   final _dinnerCounts = TextEditingController();
   final _breakfastCounts = TextEditingController();
 
-  final breakfastPrice = 50;
+  final breakfastPrice = 40;
   final lunchPrice = 70;
   final dinnerPrice = 70;
 
@@ -110,20 +111,53 @@ class _UDonateScreen extends State<UDonateScreen> {
           padding: const EdgeInsets.all(20.0),
           children: <Widget>[
             const SizedBox(
-              height: 20,
+              height: 35,
             ),
-            const Align(
-              alignment: Alignment.center,
-              child: HeaderPlayfair(
-                'Start by feeding someone...',
+            const SizedBox(
+              height: 30,
+            ),
+            const Divider(
+              height: 8,
+              thickness: 1,
+              indent: 8,
+              endIndent: 8,
+              color: Colors.grey,
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                  color: mustard,
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              child: Padding(
+                padding: const EdgeInsets.all(7),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    HeaderPlayfair("Start by feeding someone..."),
+                  ],
+                ),
               ),
+            ),
+
+            const SizedBox(
+              height: 25,
+            ),
+            const Divider(
+              height: 8,
+              thickness: 1,
+              indent: 8,
+              endIndent: 8,
+              color: Colors.grey,
             ),
             // Column(
             //   children: [
             //     Row(
             //       children: [
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
             SizedBox(
               width: 20.0,
@@ -138,7 +172,7 @@ class _UDonateScreen extends State<UDonateScreen> {
                   )),
             ),
             const SizedBox(
-              height: 10,
+              height: 15,
             ),
             SizedBox(
               width: 20.0,
@@ -153,7 +187,7 @@ class _UDonateScreen extends State<UDonateScreen> {
                   )),
             ),
             const SizedBox(
-              height: 10,
+              height: 15,
             ),
             SizedBox(
               width: 20.0,
@@ -213,10 +247,14 @@ class _UDonateScreen extends State<UDonateScreen> {
                 StyledButtonMonterrsat(
                     text: "Donate",
                     onPressed: () => {
+                          //so test by branch not by node
+                          if (_breakfastCounts.text == '') breakfastCounts = 0,
                           if (_breakfastCounts.text != '')
                             breakfastCounts = int.parse(_breakfastCounts.text),
+                          if (_lunchCounts.text == '') lunchCounts = 0,
                           if (_lunchCounts.text != '')
                             lunchCounts = int.parse(_lunchCounts.text),
+                          if (_dinnerCounts.text == '') dinnerCounts = 0,
                           if (_dinnerCounts.text != '')
                             dinnerCounts = int.parse(_dinnerCounts.text),
                           setState(() {
@@ -260,18 +298,23 @@ class _UDonateScreen extends State<UDonateScreen> {
               ],
             ),
             const SizedBox(
-              height: 20,
+              height: 40,
             ),
             estimate
                 ? notEnoughFunds
                     ? Column(children: [
                         const Text(
                           "OUT OF FUNDS!",
-                          style:
-                              TextStyle(fontFamily: 'Montserrat', color: red),
+                          style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              color: red,
+                              fontSize: 40),
                         ),
                         ParagraphMontserrat(
                             "Current Donation value is: " + cost.toString()),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         ParagraphMontserrat("Your balance post donation is: " +
                             (int.parse(messData[2].toString()) - cost)
                                 .toString()),
@@ -285,12 +328,15 @@ class _UDonateScreen extends State<UDonateScreen> {
                           ParagraphMontserrat(
                               "Current Donation value is: \u{20B9}" +
                                   cost.toString()),
+                          const SizedBox(
+                            height: 20,
+                          ),
                           ParagraphMontserrat(
                               "Your balance post donation is: \u{20B9}" +
                                   (int.parse(messData[2].toString()) - cost)
                                       .toString()),
                           const SizedBox(
-                            height: 20,
+                            height: 40,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment
@@ -351,27 +397,29 @@ class _UDonateScreen extends State<UDonateScreen> {
                           )
                         ],
                       )
-                : const ParagraphMontserrat(""),
-            //        CarouselSlider(
-            //   options: CarouselOptions(
-            //     aspectRatio: 20 / 9,
-            //     viewportFraction: 0.8,
-            //     initialPage: 0,
-            //     autoPlay: true,
-            //     autoPlayInterval: const Duration(seconds: 3),
-            //     autoPlayAnimationDuration: const Duration(milliseconds: 800),
-            //     autoPlayCurve: Curves.fastOutSlowIn,
-            //     enlargeCenterPage: true,
-            //     scrollDirection: Axis.horizontal,
-            //   ),
-            //   items: imgList
-            //       .map((item) => Center(
-            //               child: Image.asset(
-            //             item,
-            //             fit: BoxFit.cover,
-            //           )))
-            //       .toList(),
-            // ),
+                :
+                // const ParagraphMontserrat(""),
+                CarouselSlider(
+                    options: CarouselOptions(
+                      aspectRatio: 20 / 9,
+                      viewportFraction: 0.8,
+                      initialPage: 0,
+                      autoPlay: true,
+                      autoPlayInterval: const Duration(seconds: 3),
+                      autoPlayAnimationDuration:
+                          const Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeCenterPage: true,
+                      scrollDirection: Axis.horizontal,
+                    ),
+                    items: imgList
+                        .map((item) => Center(
+                                child: Image.asset(
+                              item,
+                              fit: BoxFit.cover,
+                            )))
+                        .toList(),
+                  ),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(

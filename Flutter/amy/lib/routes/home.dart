@@ -62,14 +62,7 @@ class _HomeScreen extends State<HomeScreen> {
         backgroundColor: lightGreen,
         appBar: AppBar(
           backgroundColor: pineGreen,
-          title: const Text(
-            'Home',
-            style: TextStyle(
-                // fontWeight: FontWeight.bold,
-                color: lightGreen,
-                fontFamily: 'Monterrsat',
-                fontSize: 36),
-          ),
+          title: TitleMonterrsat("Home"),
         ),
         body: FutureBuilder(
           future: _initializeFirebase(),

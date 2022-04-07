@@ -85,14 +85,34 @@ class _AboutScreen extends State<AboutScreen> {
                 child: Image.asset(
                   'assets/amy_logo.png',
                   height: 180.0,
-                  fit: BoxFit.contain,
+                  fit: BoxFit.cover,
                 ),
               ),
             ],
           ),
-          const ParagraphPlayfair(
-            "AMY is an innovative food bank app designed by keeping SNU’s current mess ecosystem in consideration. AMY lends a helping hand to the students to make efficient use of their about to be lapsed mess card balance by making meal donations for the people for whom affording the meals is not that simple, eg. gardeners, nurserymen, guards working in night shifts etc.",
-          ),
+          Container(
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              decoration: const BoxDecoration(
+                  color: bgThanksLight,
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    ParagraphPlayfair(
+                      "AMY is an innovative food bank app designed by keeping SNU’s current mess ecosystem in consideration. AMY lends a helping hand to the students to make efficient use of their about to be lapsed mess card balance by making meal donations for the people for whom affording the meals is not that simple, eg. gardeners, nurserymen, guards working in night shifts etc.",
+                    ),
+                  ],
+                ),
+              )),
+          // const Align(
+          //   alignment: Alignment.center,
+          //   child: ParagraphPlayfair(
+          //     "AMY is an innovative food bank app designed by keeping SNU’s current mess ecosystem in consideration. AMY lends a helping hand to the students to make efficient use of their about to be lapsed mess card balance by making meal donations for the people for whom affording the meals is not that simple, eg. gardeners, nurserymen, guards working in night shifts etc.",
+          //   ),
+          // ),
           const SizedBox(
             height: 12,
           ),

@@ -89,11 +89,11 @@ samples, guidance on mobile development, and a full API reference.
 - [X] Meal donated based food image
 - [X] Table on confirm your donation
 - [X] Spacing adjustment
-- [ ] Overall text size increment
-- [ ] Home: Above Welcome to amy, insert box; remove confetti button; Donate food->amy:a meal
-- [ ] Donate: Above start by.., insert box; add slider; get estimate and doante button size increase; food image slight small
-- [ ] My Account: reduce column gaps; corrent table fonts
-- [ ] Photo small; mind behind the meals larger
-- [ ] Change headers text types
+- [X] Overall text size increment
+- [X] Home: Above Welcome to amy, insert box; remove confetti button; Donate food->amy:a meal
+- [X] Donate: Above start by.., insert box; add slider; get estimate and doante button size increase; food image slight small
+- [X] My Account: reduce column gaps; correct table fonts
+- [X] Photo small; mind behind the meals larger
+- [X] Change headers text types
 
 
