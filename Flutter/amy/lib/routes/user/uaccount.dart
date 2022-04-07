@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../authentication_service.dart';
+import 'about.dart';
 import 'firebaseUserClass.dart';
 
 class UAccountScreen extends StatefulWidget {
@@ -153,21 +154,36 @@ class _UAccountScreen extends State<UAccountScreen> {
         shrinkWrap: true,
         padding: const EdgeInsets.all(20.0),
         children: <Widget>[
-          HeaderMontserrat(" ${_currentUser.displayName}'s Record"),
-          StyledButtonMonterrsat(
-              text: "Sign Out",
-              onPressed: () => {
-                    FireAuth.signOut(),
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
-                        // builder: (context) =>
-                        //     const SignupScreen(),
-                      ),
-                    )
-                  }),
-          const ParagraphMontserrat(
-            'Your donation data is:',
+          Row(
+            children: [
+              Expanded(
+                  child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Column(
+                        children: [
+                          HeaderMontserrat(
+                              " ${_currentUser.displayName}'s Record"),
+                          const ParagraphMontserrat(
+                            'Your donation data is:',
+                          ),
+                        ],
+                      ))),
+              const SizedBox(
+                width: 100,
+              ),
+              StyledButtonMonterrsat(
+                  text: "Sign Out",
+                  onPressed: () => {
+                        FireAuth.signOut(),
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                            // builder: (context) =>
+                            //     const SignupScreen(),
+                          ),
+                        )
+                      }),
+            ],
           ),
           const SizedBox(
             height: 20,
@@ -208,6 +224,21 @@ class _UAccountScreen extends State<UAccountScreen> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => AboutScreen(
+                user: _currentUser,
+              ),
+              // builder: (context) =>
+              //     const SignupScreen(),
+            ),
+          ); // Add your onPressed code here!
+        },
+        backgroundColor: pineGreen,
+        child: const Icon(Icons.info_outline_rounded),
       ),
     );
   }

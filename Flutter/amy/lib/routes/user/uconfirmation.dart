@@ -1,6 +1,4 @@
 import 'package:amy/constants.dart';
-import 'package:amy/firebase_user_dealing.dart';
-import 'package:amy/routes/admin/abill.dart';
 import 'package:amy/routes/user/uaccount.dart';
 import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
@@ -86,16 +84,25 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
         shrinkWrap: true,
         padding: const EdgeInsets.all(20.0),
         children: <Widget>[
-          const Divider(
-            height: 8,
-            thickness: 1,
-            indent: 8,
-            endIndent: 8,
-            color: Colors.grey,
-          ),
-          const Align(
+          Stack(
             alignment: Alignment.center,
-            child: HeaderMontserrat("Confirm Your Donation"),
+            children: [
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                    color: mustard,
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    HeaderMontserrat("Confirm Your Donation"),
+                  ],
+                ),
+              ),
+            ],
           ),
           const Divider(
             height: 8,

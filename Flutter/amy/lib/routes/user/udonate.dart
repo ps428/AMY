@@ -6,6 +6,7 @@ import 'package:amy/routes/user/uhome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'about.dart';
 import 'firebaseUserClass.dart';
 
 class UDonateScreen extends StatefulWidget {
@@ -268,15 +269,62 @@ class _UDonateScreen extends State<UDonateScreen> {
                       ParagraphMontserrat(
                           "Current Donation value is: " + cost.toString()),
                       ParagraphMontserrat("Your balance post donation is: " +
-                          (int.parse(messData[2].toString()) - cost).toString())
+                          (int.parse(messData[2].toString()) - cost)
+                              .toString()),
+                      const Icon(
+                        Icons.not_interested_rounded,
+                        color: red,
+                      )
                     ])
                   : Column(
                       children: [
                         ParagraphMontserrat(
-                            "Current Donation value is: " + cost.toString()),
-                        ParagraphMontserrat("Your balance post donation is: " +
-                            (int.parse(messData[2].toString()) - cost)
-                                .toString())
+                            "Current Donation value is: \u{20B9}" +
+                                cost.toString()),
+                        ParagraphMontserrat(
+                            "Your balance post donation is: \u{20B9}" +
+                                (int.parse(messData[2].toString()) - cost)
+                                    .toString()),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment
+                              .center, //Center Row contents horizontally,
+                          crossAxisAlignment: CrossAxisAlignment
+                              .center, //Center Row contents vertically,
+
+                          children: [
+                            breakfastCounts > 5
+                                ? Image.asset("assets/Food/breakfast3.png")
+                                : breakfastCounts > 2
+                                    ? Image.asset("assets/Food/breakfast2.png")
+                                    : breakfastCounts > 0
+                                        ? Image.asset(
+                                            "assets/Food/breakfast.png")
+                                        : const Paragraph(""),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            lunchCounts > 5
+                                ? Image.asset("assets/Food/lunch 3.png")
+                                : lunchCounts > 2
+                                    ? Image.asset("assets/Food/lunch 2.png")
+                                    : lunchCounts > 0
+                                        ? Image.asset("assets/Food/lunch.png")
+                                        : const Paragraph(""),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            dinnerCounts > 5
+                                ? Image.asset("assets/Food/dinner 3.png")
+                                : dinnerCounts > 2
+                                    ? Image.asset("assets/Food/dinner 2.png")
+                                    : dinnerCounts > 0
+                                        ? Image.asset("assets/Food/dinner.png")
+                                        : const Paragraph(""),
+                          ],
+                        )
                       ],
                     )
               : const ParagraphMontserrat(""),
@@ -380,6 +428,21 @@ class _UDonateScreen extends State<UDonateScreen> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => AboutScreen(
+                user: _currentUser,
+              ),
+              // builder: (context) =>
+              //     const SignupScreen(),
+            ),
+          ); // Add your onPressed code here!
+        },
+        backgroundColor: pineGreen,
+        child: const Icon(Icons.info_outline_rounded),
       ),
     );
   }

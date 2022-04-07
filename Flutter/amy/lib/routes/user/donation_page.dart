@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../authentication_service.dart';
+import '../../constants.dart';
 import '../login.dart';
+import 'about.dart';
 
 class ProfilePage extends StatefulWidget {
   final User user;
@@ -121,6 +123,21 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => AboutScreen(
+                user: _currentUser,
+              ),
+              // builder: (context) =>
+              //     const SignupScreen(),
+            ),
+          ); // Add your onPressed code here!
+        },
+        backgroundColor: pineGreen,
+        child: const Icon(Icons.info_outline_rounded),
       ),
     );
   }

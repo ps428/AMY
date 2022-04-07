@@ -1,5 +1,6 @@
 import 'package:amy/constants.dart';
 import 'package:amy/routes/admin/abill.dart';
+import 'package:amy/routes/user/about.dart';
 import 'package:amy/routes/user/uaccount.dart';
 import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uthanks.dart';
@@ -239,7 +240,6 @@ class _UHomeScreen extends State<UHomeScreen> {
           ),
           CarouselSlider(
             options: CarouselOptions(
-              height: 400,
               aspectRatio: 20 / 9,
               viewportFraction: 0.8,
               initialPage: 0,
@@ -289,6 +289,21 @@ class _UHomeScreen extends State<UHomeScreen> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => AboutScreen(
+                user: _currentUser,
+              ),
+              // builder: (context) =>
+              //     const SignupScreen(),
+            ),
+          ); // Add your onPressed code here!
+        },
+        backgroundColor: pineGreen,
+        child: const Icon(Icons.info_outline_rounded),
       ),
     );
   }

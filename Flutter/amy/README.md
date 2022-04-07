@@ -81,12 +81,12 @@ samples, guidance on mobile development, and a full API reference.
 - [X] Confetti: Done
 - [X] Card on personal details: Done 
 - [X] Pictures: Done
-- [ ] Mustard or darkish yellow on confirm donation {behind confirm your donation}
-- [ ] About page: Floating icon: Amy card logo and some lines from first doc
-- [ ] Our team photo in about page: minds behind the meals
-- [ ] Sign out on right end in my account page
+- [X] Mustard or darkish yellow on confirm donation {behind confirm your donation}
+- [X] About page: Floating icon: Amy card logo and some lines from first doc
+- [X] Our team photo in about page: minds behind the meals
+- [X] Sign out on right end in my account page
 - [ ] Sort table in my account
-- [ ] Meal donated based food image
+- [X] Meal donated based food image
 - [ ] Table on confirm your donation
 - [ ] Spacing adjustment
 - [ ] Overall text size increment

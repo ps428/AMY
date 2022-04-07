@@ -10,10 +10,10 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 final List<String> imgList = [
-  'https://media.istockphoto.com/photos/poor-indian-children-asking-for-food-india-picture-id524903696?k=20&m=524903696&s=612x612&w=0&h=lyOsBJSuxpNFYhoFQDrkBjWrMulPnMkQHkhfQWw2Z4g=',
-  'https://thumbs.dreamstime.com/b/double-exposure-hunger-begging-hands-dry-soil-represent-lot-people-world-hungry-starvation-need-69057865.jpg',
-  'https://media.istockphoto.com/photos/african-girl-eating-a-meal-in-the-orphanage-picture-id108349181?k=20&m=108349181&s=612x612&w=0&h=fgoQ9CW_tHzInBPVLYOPVqZYfp0MQCrB3nBUUTAUetc=',
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYMw_KObr82gHU8mJiK5w6CyNkYeIDCAZRCg&usqp=CAU'
+  'assets/Amy/2.png',
+  'assets/Amy/3.png',
+  'assets/Amy/4.png',
+  'assets/Amy/5.png'
 ];
 
 class UThanksScreen extends StatefulWidget {
@@ -110,23 +110,27 @@ class _UThanksScreen extends State<UThanksScreen> {
                     height: 20,
                   ),
                   Stack(
+                    alignment: Alignment.center,
                     children: [
+                      const SizedBox(
+                        height: 10,
+                      ),
                       Container(
-                        height: 140.0,
-                        width: 290.0,
                         decoration: const BoxDecoration(
                             color: lavendar,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            HeaderMontserrat(
+                                "Thank you ${_currentUser.displayName}"),
+                            const HeaderMontserrat("for donating"),
+                            const HeaderMontserrat("#AMealByYou")
+                          ],
+                        ),
                       ),
-                      Column(
-                        children: [
-                          HeaderMontserrat(
-                              "Thank you ${_currentUser.displayName}"),
-                          const HeaderMontserrat("for donating"),
-                          const HeaderMontserrat("#AMealByYou")
-                        ],
-                      )
                     ],
                   ),
                   const SizedBox(
