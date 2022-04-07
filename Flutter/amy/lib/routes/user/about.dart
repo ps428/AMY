@@ -1,17 +1,13 @@
 import 'package:amy/constants.dart';
-import 'package:amy/routes/home.dart';
 import 'package:amy/routes/user/uaccount.dart';
 import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-
-import '../../authentication_service.dart';
-import 'firebaseUserClass.dart';
 
 class AboutScreen extends StatefulWidget {
   final User user;
+
   const AboutScreen({required this.user});
 
   @override
@@ -92,75 +88,127 @@ class _AboutScreen extends State<AboutScreen> {
                 child: Image.asset(
                   'assets/amy_logo.png',
                   height: 180.0,
-                  fit: BoxFit.scaleDown,
+                  fit: BoxFit.contain,
                 ),
               ),
             ],
           ),
           const ParagraphMontserrat(
-            "AMY is an innovative food bank app designed by keeping SNU’s current mess ecosystem in consideration. AMY allows the students to make efficient use of their about to be lapsed mess card balance by making meal donations for the people for whom affording the meals is not that simple, eg. gardeners, nurserymen, guards working in night shifts etc.",
+            "AMY is an innovative food bank app designed by keeping SNU’s current mess ecosystem in consideration. AMY lends a helping hand to the students to make efficient use of their about to be lapsed mess card balance by making meal donations for the people for whom affording the meals is not that simple, eg. gardeners, nurserymen, guards working in night shifts etc.",
           ),
           const SizedBox(
             height: 12,
           ),
           const Align(
             alignment: Alignment.center,
-            child: HeaderMontserrat("Minds behind Meals:"),
+            child: HeaderPlayfair("Minds behind Meals"),
           ),
           const SizedBox(
-            height: 10,
+            height: 20,
           ),
-          Row(
+          Column(
             mainAxisAlignment:
                 MainAxisAlignment.center, //Center Row contents horizontally,
             crossAxisAlignment:
                 CrossAxisAlignment.center, //Center Row contents vertically,
             children: [
-              Column(
-                children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+
+                children: const [
                   // ClipRRect(
-                  //   borderRadius: BorderRadius.circular(10), // Image border
+                  //   borderRadius: BorderRadius.circular(7),
+                  //   // Image border
                   //   child: SizedBox.fromSize(
-                  //     size: const Size.fromRadius(170), // Image radius
-                  //     child: Image.asset("assets/Minds/pranav.png",
-                  //         fit: BoxFit.cover),
+                  //     size: const Size.fromRadius(70), // Image radius
+                  //     child: Image.asset("assets/Minds/jayati.png",
+                  //         fit: BoxFit.contain),
                   //   ),
                   // ),
-                  ClipOval(
-                    child: SizedBox.fromSize(
-                      size: const Size.fromRadius(150), // Image radius
-                      child: Image.asset("assets/Minds/jayati.png"),
+                  CircleAvatar(
+                    backgroundColor: Colors.black,
+                    radius: 101.0,
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/Minds/jayati.png'),
+                      radius: 100,
                     ),
                   ),
-                  const HeaderPlayfair("Jayati Sharma")
+                  SizedBox(
+                    width: 10,
+                  ),
+
+                  // ClipOval(
+                  //   child: SizedBox.fromSize(
+                  //     size: const Size.fromRadius(50), // Image radius
+                  //     child: Image.asset("assets/Minds/jayati.png"),
+                  //   ),
+                  // ),
+                  HeaderPlayfair("Jayati")
                 ],
               ),
               const SizedBox(
-                width: 10,
+                height: 20,
               ),
-              Column(
-                children: [
-                  ClipOval(
-                    child: SizedBox.fromSize(
-                      size: const Size.fromRadius(150), // Image radius
-                      child: Image.asset("assets/Minds/pranav.png"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: const [
+                  // ClipRRect(
+                  //   borderRadius: BorderRadius.circular(7), // Image border
+                  //   child: SizedBox.fromSize(
+                  //     size: const Size.fromRadius(70), // Image radius
+                  //     child: Image.asset("assets/Minds/pranav.png",
+                  //         fit: BoxFit.contain),
+                  //   ),
+                  // ),
+                  CircleAvatar(
+                    backgroundColor: Colors.black,
+                    radius: 101.0,
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/Minds/pranav.png'),
+                      radius: 100,
                     ),
                   ),
-                  const HeaderPlayfair("Pranav Soni")
+                  SizedBox(
+                    width: 10,
+                  ),
+                  HeaderPlayfair("Pranav")
                 ],
               ),
               const SizedBox(
-                width: 10,
+                height: 20,
               ),
-              Column(
-                children: [
-                  ClipOval(
-                    child: SizedBox.fromSize(
-                      size: const Size.fromRadius(150), // Image radius
-                      child: Image.asset("assets/Minds/madhav.png"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: const [
+                  // ClipRRect(
+                  //   borderRadius: BorderRadius.circular(7), // Image border
+                  //   child: SizedBox.fromSize(
+                  //     size: const Size.fromRadius(70), // Image radius
+                  //     child: Image.asset("assets/Minds/madhav.png",
+                  //         fit: BoxFit.contain),
+                  //   ),
+                  // ),
+                  CircleAvatar(
+                    backgroundColor: Colors.black,
+                    radius: 101.0,
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/Minds/madhav.png'),
+                      radius: 100,
                     ),
                   ),
-                  const HeaderPlayfair("Madhav Agarwal")
+                  SizedBox(
+                    width: 10,
+                  ),
+                  HeaderPlayfair("Madhav")
                 ],
               ),
             ],

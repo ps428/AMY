@@ -113,34 +113,50 @@ class _UThanksScreen extends State<UThanksScreen> {
                     alignment: Alignment.center,
                     children: [
                       const SizedBox(
-                        height: 10,
+                        height: 30,
                       ),
                       Container(
-                        decoration: const BoxDecoration(
-                            color: lavendar,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            HeaderMontserrat(
-                                "Thank you ${_currentUser.displayName}"),
-                            const HeaderMontserrat("for donating"),
-                            const HeaderMontserrat("#AMealByYou")
-                          ],
-                        ),
-                      ),
+                          decoration: const BoxDecoration(
+                              color: bgThanks,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(30, 20, 30, 20),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Text("Yay! You fed someone.",
+                                    style: TextStyle(
+                                        fontSize: 34,
+                                        fontFamily: 'Montserrat',
+                                        color: fgThanks)),
+                                const Text(
+                                  "",
+                                ),
+                                Text("Thank you ${_currentUser.displayName}",
+                                    style: const TextStyle(
+                                        fontSize: 34,
+                                        fontFamily: 'Montserrat',
+                                        color: fgThanks)),
+                                const Text("for donating",
+                                    style: TextStyle(
+                                        fontSize: 34,
+                                        fontFamily: 'Montserrat',
+                                        color: fgThanks)),
+                                const Text(
+                                  "#AMealByYou",
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      fontSize: 34,
+                                      fontFamily: 'Montserrat',
+                                      color: fgThanks),
+                                )
+                              ],
+                            ),
+                          )),
                     ],
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  StyledButtonMonterrsat(
-                      text: "Share your badge!",
-                      onPressed: () => {
-                            //do something
-                          }),
                   const SizedBox(
                     height: 20,
                   ),

@@ -1,5 +1,5 @@
 name: amy
-description: AMY A Meal by Me.
+description: AMY A Meal by You.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -42,9 +42,14 @@ dependencies:
   firebase_app_check: ^0.0.6+5
   confetti: ^0.6.0
   carousel_slider: ^4.0.0
+  flutter_share: ^2.0.0
+  path_provider: ^2.0.9
+  screenshot: ^1.2.3
+  file_picker: ^4.5.1
+  
 
 flutter_icons:
-  image_path: "assets/amy_logo.png" 
+  image_path: "assets/app_logo.png" 
   android: true
   ios: true
   web: true

@@ -1,5 +1,4 @@
 import 'package:amy/constants.dart';
-import 'package:amy/routes/admin/abill.dart';
 import 'package:amy/routes/user/about.dart';
 import 'package:amy/routes/user/uaccount.dart';
 import 'package:amy/routes/user/udonate.dart';
@@ -12,9 +11,9 @@ import 'firebaseUserClass.dart';
 
 final List<String> imgList = [
   'assets/Amy/2.png',
-  'assets/Amy/3.png',
   'assets/Amy/4.png',
-  'assets/Amy/5.png'
+  'assets/Amy/5.png',
+  'assets/Amy/3.png'
 ];
 
 class UHomeScreen extends StatefulWidget {
@@ -238,6 +237,9 @@ class _UHomeScreen extends State<UHomeScreen> {
             endIndent: 8,
             color: Colors.grey,
           ),
+          const SizedBox(
+            height: 10,
+          ),
           CarouselSlider(
             options: CarouselOptions(
               aspectRatio: 20 / 9,
@@ -290,20 +292,23 @@ class _UHomeScreen extends State<UHomeScreen> {
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => AboutScreen(
-                user: _currentUser,
+      floatingActionButton: SizedBox(
+        height: 40.0,
+        width: 40.0,
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) => AboutScreen(
+                  user: _currentUser,
+                ), // builder: (context) =>
+                //     const SignupScreen(),
               ),
-              // builder: (context) =>
-              //     const SignupScreen(),
-            ),
-          ); // Add your onPressed code here!
-        },
-        backgroundColor: pineGreen,
-        child: const Icon(Icons.info_outline_rounded),
+            ); // Add your onPressed code here!
+          },
+          backgroundColor: pineGreen,
+          child: const Icon(Icons.info_outline_rounded),
+        ),
       ),
     );
   }

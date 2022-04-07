@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const bgThanks = Color(0xffadebad);
+const fgThanks = Color(0xff1f7a1f);
 const lavendar = Color(0xffEDE3FF);
 const mustard = Color(0xffffdb58);
 const pista = Color(0xffBEDDD7);
@@ -238,7 +240,7 @@ class FoodImage extends StatelessWidget {
   Widget build(BuildContext context) => Container(
         alignment: Alignment.center, // use aligment
         child:
-            Image.asset(location, height: 150, width: 150, fit: BoxFit.cover),
+            Image.asset(location, height: 120, width: 120, fit: BoxFit.cover),
       );
 }
 // ignore_for_file: must_be_immutable

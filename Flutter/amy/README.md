@@ -88,5 +88,12 @@ samples, guidance on mobile development, and a full API reference.
 - [ ] Sort table in my account
 - [X] Meal donated based food image
 - [X] Table on confirm your donation
-- [ ] Spacing adjustment
+- [X] Spacing adjustment
 - [ ] Overall text size increment
+- [ ] Home: Above Welcome to amy, insert box; remove confetti button; Donate food->amy:a meal
+- [ ] Donate: Above start by.., insert box; add slider; get estimate and doante button size increase; food image slight small
+- [ ] My Account: reduce column gaps; corrent table fonts
+- [ ] Photo small; mind behind the meals larger
+- [ ] Change headers text types
+
+

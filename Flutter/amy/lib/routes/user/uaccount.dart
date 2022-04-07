@@ -141,108 +141,106 @@ class _UAccountScreen extends State<UAccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: lightGreen,
-      appBar: AppBar(
-        title: const Text(
-          'My Account',
-          style: TextStyle(color: lightGreen, fontFamily: 'OpenSans'),
+        resizeToAvoidBottomInset: false,
+        backgroundColor: lightGreen,
+        appBar: AppBar(
+          title: const Text(
+            'My Account',
+            style: TextStyle(color: lightGreen, fontFamily: 'OpenSans'),
+          ),
+          backgroundColor: pineGreen,
         ),
-        backgroundColor: pineGreen,
-      ),
-      body: ListView(
-        shrinkWrap: true,
-        padding: const EdgeInsets.all(20.0),
-        children: <Widget>[
-          Row(
-            children: [
-              Expanded(
-                  child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Column(
-                        children: [
-                          HeaderMontserrat(
-                              " ${_currentUser.displayName}'s Record"),
-                          const ParagraphMontserrat(
-                            'Your donation data is:',
-                          ),
-                        ],
-                      ))),
-              const SizedBox(
-                width: 100,
-              ),
-              StyledButtonMonterrsat(
-                  text: "Sign Out",
-                  onPressed: () => {
-                        FireAuth.signOut(),
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (context) => const HomeScreen(),
-                            // builder: (context) =>
-                            //     const SignupScreen(),
-                          ),
-                        )
-                      }),
-            ],
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          const Divider(
-            height: 8,
-            thickness: 1,
-            indent: 8,
-            endIndent: 8,
-            color: Colors.grey,
-          ),
-          dataFetched
-              ? Align(
-                  alignment: Alignment.center,
-                  child: createTable(),
-                )
-              : const SpinKitHourGlass(
-                  color: Colors.greenAccent,
-                  size: 50.0,
+        body: ListView(
+          shrinkWrap: true,
+          padding: const EdgeInsets.all(20.0),
+          children: <Widget>[
+            Row(
+              children: [
+                Expanded(
+                    child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Column(
+                          children: const [
+                            HeaderMontserrat("Your Record"),
+                          ],
+                        ))),
+                const SizedBox(
+                  width: 100,
                 ),
-          const SizedBox(
-            height: 30,
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.food_bank),
-            label: 'Donate',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'My Account',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => AboutScreen(
-                user: _currentUser,
-              ),
-              // builder: (context) =>
-              //     const SignupScreen(),
+                StyledButtonMonterrsat(
+                    text: "Sign Out",
+                    onPressed: () => {
+                          FireAuth.signOut(),
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => const HomeScreen(),
+                              // builder: (context) =>
+                              //     const SignupScreen(),
+                            ),
+                          )
+                        }),
+              ],
             ),
-          ); // Add your onPressed code here!
-        },
-        backgroundColor: pineGreen,
-        child: const Icon(Icons.info_outline_rounded),
-      ),
-    );
+            const SizedBox(
+              height: 20,
+            ),
+            const Divider(
+              height: 8,
+              thickness: 1,
+              indent: 8,
+              endIndent: 8,
+              color: Colors.grey,
+            ),
+            dataFetched
+                ? Align(
+                    alignment: Alignment.center,
+                    child: createTable(),
+                  )
+                : const SpinKitHourGlass(
+                    color: Colors.greenAccent,
+                    size: 50.0,
+                  ),
+            const SizedBox(
+              height: 30,
+            ),
+          ],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.food_bank),
+              label: 'Donate',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle),
+              label: 'My Account',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.amber[800],
+          onTap: _onItemTapped,
+        ),
+        floatingActionButton: SizedBox(
+          height: 40.0,
+          width: 40.0,
+          child: FloatingActionButton(
+            onPressed: () {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => AboutScreen(
+                    user: _currentUser,
+                  ), // builder: (context) =>
+                  //     const SignupScreen(),
+                ),
+              ); // Add your onPressed code here!
+            },
+            backgroundColor: pineGreen,
+            child: const Icon(Icons.info_outline_rounded),
+          ),
+        ));
   }
 }
