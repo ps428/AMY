@@ -9,9 +9,14 @@ import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+import '../../authentication_service.dart';
+import 'firebaseAdminClass.dart';
 
 class AHomeScreen extends StatefulWidget {
   final User user;
+  
   const AHomeScreen({required this.user});
 
   @override
@@ -19,8 +24,10 @@ class AHomeScreen extends StatefulWidget {
 }
 
 class _AHomeScreen extends State<AHomeScreen> {
-  int _selectedIndex = 0;
   late User _currentUser;
+  bool dataFetched = false;
+  List<List<int>> userData = [[]];
+  int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -55,7 +62,78 @@ class _AHomeScreen extends State<AHomeScreen> {
   @override
   void initState() {
     _currentUser = widget.user;
+    getDataFromFirebase();
     super.initState();
+  }
+  
+ Future<void> getDataFromFirebase() async {
+    // var counterTmp = await FirebaseUserClass.getCounters();
+    // var messDataTmp =
+    //     await FirebaseUserClass.getUserMessDeatils(widget.user.uid);
+
+    userData = await FirebaseAdminClass.getUserRecords(widget.user.uid);
+    print(userData.runtimeType);
+    setState(() {
+      dataFetched = true;
+      // counters = counterTmp;
+      // messData = messDataTmp;
+      // isFirebaseCalled = true;
+      // // print(counters[0]);
+    });
+  }
+
+  Widget createTable() {
+    List<DataRow> dataRows = [];
+    for (int i = 0; i < userData.length; ++i) {
+      dataRows.add(
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text((i + 1).toString())),
+            DataCell(Text(userData[i][0].toString())),
+            DataCell(Text(userData[i][1].toString())),
+            DataCell(Text(userData[i][2].toString())),
+            DataCell(
+              Text(DateTime.fromMillisecondsSinceEpoch(userData[i][3] * 1000)
+                  .toString()),
+            )
+          ],
+        ),
+      );
+    }
+    return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: DataTable(columns: const <DataColumn>[
+          DataColumn(
+            label: Text(
+              'S. No.',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Breakfast',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Lunch',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Dinner',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Timestamp of Donation',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
+        ], rows: dataRows));
   }
 
   @override
@@ -84,7 +162,7 @@ class _AHomeScreen extends State<AHomeScreen> {
             'Details: ',
           ),
           const Paragraph(
-            'Tables!',
+            'I need to print table here!',
           ),
           StyledButtonPlayfair(
             text: "To bill screen",
@@ -98,6 +176,7 @@ class _AHomeScreen extends State<AHomeScreen> {
               );
             },
           ),
+           
           StyledButtonMonterrsat(
               text: "Log Out",
               onPressed: () => {
@@ -106,7 +185,30 @@ class _AHomeScreen extends State<AHomeScreen> {
                         builder: (context) => const HomeScreen(),
                       ),
                     )
-                  })
+                  }),
+          const SizedBox(
+                  width: 100,
+                ),
+          const Divider(
+              height: 8,
+              thickness: 1,
+              indent: 8,
+              endIndent: 8,
+              color: Colors.grey,
+            ),
+            dataFetched
+                ? Align(
+                    alignment: Alignment.center,
+                    child: createTable(),
+                  )
+                : const SpinKitHourGlass(
+                    color: Colors.greenAccent,
+                    size: 50.0,
+                  ),
+            const SizedBox(
+              height: 30,
+            ),
+
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
