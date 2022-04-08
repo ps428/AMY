@@ -28,6 +28,7 @@ class _LoginScreen extends State<LoginScreen> {
   bool _attempetd = false;
 
   late User default_user;
+  late User adminUser;
 
   final _focusEmail = FocusNode();
   final _focusPassword = FocusNode();
@@ -91,6 +92,26 @@ class _LoginScreen extends State<LoginScreen> {
                             'Log In',
                           ),
                         ),
+                        StyledButtonMonterrsat(
+                            text: "Admin Login",
+                            onPressed: () async => {
+                                  adminUser =
+                                      (await FireAuth.signInUsingEmailPassword(
+                                    email: 'ps205@snu.edu.in',
+                                    password: '123456',
+                                  ))!,
+                                  if (adminUser != null)
+                                    {
+                                      Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              AHomeScreen(user: adminUser),
+                                          // builder: (context) =>
+                                          //     const SignupScreen(),
+                                        ),
+                                      )
+                                    }
+                                }),
                         StyledButtonMonterrsat(
                             text: "Default login",
                             onPressed: () async => {
