@@ -16,7 +16,7 @@ import 'firebaseAdminClass.dart';
 
 class AHomeScreen extends StatefulWidget {
   final User user;
-  
+
   const AHomeScreen({required this.user});
 
   @override
@@ -27,7 +27,7 @@ class _AHomeScreen extends State<AHomeScreen> {
   late User _currentUser;
   bool dataFetched = false;
   List<List<int>> userData = [[]];
-  int _selectedIndex = 2;
+  int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -65,14 +65,14 @@ class _AHomeScreen extends State<AHomeScreen> {
     getDataFromFirebase();
     super.initState();
   }
-  
- Future<void> getDataFromFirebase() async {
+
+  Future<void> getDataFromFirebase() async {
     // var counterTmp = await FirebaseUserClass.getCounters();
     // var messDataTmp =
-    //     await FirebaseUserClass.getUserMessDeatils(widget.user.uid);
-
+    await FirebaseAdminClass.getAdminInventory();
+    print("banged...");
     userData = await FirebaseAdminClass.getUserRecords(widget.user.uid);
-    print(userData.runtimeType);
+    // print(userData.runtimeType);
     setState(() {
       dataFetched = true;
       // counters = counterTmp;
@@ -142,9 +142,8 @@ class _AHomeScreen extends State<AHomeScreen> {
       resizeToAvoidBottomInset: false,
       backgroundColor: lightGreen,
       appBar: AppBar(
-        title: const Text(
+        title: const TitleMonterrsat(
           'Admin Home',
-          style: TextStyle(color: lightGreen, fontFamily: 'OpenSans'),
         ),
         backgroundColor: pineGreen,
       ),
@@ -176,7 +175,6 @@ class _AHomeScreen extends State<AHomeScreen> {
               );
             },
           ),
-           
           StyledButtonMonterrsat(
               text: "Log Out",
               onPressed: () => {
@@ -187,28 +185,27 @@ class _AHomeScreen extends State<AHomeScreen> {
                     )
                   }),
           const SizedBox(
-                  width: 100,
-                ),
+            width: 100,
+          ),
           const Divider(
-              height: 8,
-              thickness: 1,
-              indent: 8,
-              endIndent: 8,
-              color: Colors.grey,
-            ),
-            dataFetched
-                ? Align(
-                    alignment: Alignment.center,
-                    child: createTable(),
-                  )
-                : const SpinKitHourGlass(
-                    color: Colors.greenAccent,
-                    size: 50.0,
-                  ),
-            const SizedBox(
-              height: 30,
-            ),
-
+            height: 8,
+            thickness: 1,
+            indent: 8,
+            endIndent: 8,
+            color: Colors.grey,
+          ),
+          dataFetched
+              ? Align(
+                  alignment: Alignment.center,
+                  child: createTable(),
+                )
+              : const SpinKitHourGlass(
+                  color: Colors.greenAccent,
+                  size: 50.0,
+                ),
+          const SizedBox(
+            height: 30,
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

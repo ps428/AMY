@@ -1,152 +1,9 @@
-
 import 'dart:collection';
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirebaseAdminClass {
-  static CollectionReference userDonations =
-      FirebaseFirestore.instance.collection('userDonations');
-
-  static Future<List> getCounters() async {
-    var returnList = [];
-    var tmp;
-    await FirebaseFirestore.instance
-        .collection('globalCounters')
-        .get()
-        .then((querySnapshot) {
-      querySnapshot.docs.forEach((result) {
-        // print(result.data());
-        tmp = result.data();
-      });
-    });
-    returnList.add(tmp['mealsDonated']);
-    returnList.add(tmp['mealsServed']);
-    returnList.add(tmp['targetDonation']);
-
-    return returnList;
-  }
-
-  static Future<List> getUserMessDeatils(String uID) async {
-    var returnList;
-    var tmp;
-    await FirebaseFirestore.instance
-        .collection('messData')
-        .get()
-        .then((querySnapshot) {
-      querySnapshot.docs.forEach((result) {
-        if (result.data()['uID'] == uID) {
-          // print(result.data());
-          tmp = result.data();
-        }
-      });
-    });
-    returnList = [];
-    returnList.add(tmp['full_name']);
-    returnList.add(tmp['messID']);
-    returnList.add(tmp['balance']);
-    // print(returnList);
-    return returnList;
-  }
-
-  static void updateDonations(String uID, List l) async {
-    updateUserRecord(uID, l);
-    updateAdminInventory(uID, l);
-    updateUserMessData(uID, l);
-    updateCountersDonated(l);
-  }
-
-  static void updateCountersDonated(List l) async {
-    var collection =
-        await FirebaseFirestore.instance.collection('globalCounters');
-
-    var counters = await getCounters();
-    // print('----------------------------');
-    // print(counters);
-    var currentDonations = counters[0];
-    // print(currentDonations);
-    currentDonations += l[2] + l[3] + l[4];
-    // print(currentDonations);
-
-    var a = collection.doc('AMYFoodCounters').update({
-      'mealsDonated': currentDonations,
-    });
-    // print(a);
-
-    // collection.doc('AMYFoodCounters').set({'mealsDonated': 1});
-  }
-
-  static void updateUserMessData(String uID, List l) async {
-    var collection = await FirebaseFirestore.instance.collection('messData');
-
-    var newBalance = l[0];
-
-    collection.doc(uID).update({'balance': newBalance});
-  }
-
-  static void updateAdminInventory(String uID, List l) async {
-    var collection =
-        await FirebaseFirestore.instance.collection('adminInventory');
-
-    var messData = await getUserMessDeatils(uID);
-
-    var currentTime = DateTime.now().toString();
-
-    for (int i = 0; i < l[2]; i++) {
-      Map<String, dynamic>? newEntryBf = {
-        currentTime: {
-          'Donation Time': DateTime.now().toString(),
-          'UID': uID,
-          'Status': 'Available',
-          'Name': messData[0].toString(),
-          'Mess ID': messData[1].toString()
-        }
-      };
-      await collection.doc('adminBreakfast').update(newEntryBf);
-    }
-    for (int i = 0; i < l[3]; i++) {
-      Map<String, dynamic>? newEntryLunch = {
-        currentTime: {
-          'Donation Time': DateTime.now().toString(),
-          'UID': uID,
-          'Status': 'Available',
-          'Name': messData[0].toString(),
-          'Mess ID': messData[1].toString()
-        }
-      };
-      await collection.doc('adminLunch').update(newEntryLunch);
-    }
-    for (int i = 0; i < l[4]; i++) {
-      Map<String, dynamic>? newEntryDinner = {
-        currentTime: {
-          'Donation Time': DateTime.now().toString(),
-          'UID': uID,
-          'Status': 'Available',
-          'Name': messData[0].toString(),
-          'Mess ID': messData[1].toString()
-        }
-      };
-      await collection.doc('adminDinner').update(newEntryDinner);
-    }
-  }
-
-  static void updateUserRecord(String uID, List l) async {
-    var collection =
-        await FirebaseFirestore.instance.collection('userDonations');
-    var currentTime = DateTime.now().toString();
-
-    Map<String, dynamic>? newEntry = {
-      currentTime: {
-        'Donation Time': DateTime.now(),
-        'Breakfast': l[2],
-        "Lunch": l[3],
-        "Dinner": l[4],
-      }
-    };
-    var fieldKeyTime = DateTime.now().toString();
-    await collection.doc(uID).update(newEntry);
-  }
-
   static Future<List<List<int>>> getUserRecords(String uID) async {
     // list of list with bf, lunch, dinner and timestamp as elements,
     // [[b,l,d,time],[b,l,d,time]]
@@ -200,5 +57,35 @@ class FirebaseAdminClass {
 
     // print(returnList);
     return tmpReturnList;
+  }
+
+  static Future<List<int>> getAdminInventory() async {
+    int bfCounts = await getMealSum("adminBreakfast");
+    int lunchCounts = await getMealSum("adminLunch");
+    int dinnerCounts = await getMealSum("adminDinner");
+    List<int> returnData = [bfCounts, lunchCounts, dinnerCounts];
+    return returnData;
+  }
+
+  static Future<int> getMealSum(String s) async {
+    int counts = 0;
+    var mealData = await FirebaseFirestore.instance
+        .collection('adminInventory')
+        .doc(s)
+        .get();
+    mealData.data()?.forEach((key, value) {
+      counts++;
+    });
+
+    return counts - 1;
+  }
+
+  static void serveMeal(String s) async {
+    //get inventory
+    //delete from inventory
+    //add to bill table
+    //notify user
+    //counter ++
+    //**keep track of this data returned in first step to print this in the bill */
   }
 }

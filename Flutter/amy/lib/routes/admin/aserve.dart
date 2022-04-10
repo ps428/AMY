@@ -1,4 +1,5 @@
 import 'package:amy/constants.dart';
+import 'package:amy/routes/admin/firebaseAdminClass.dart';
 import 'package:amy/routes/user/uaccount.dart';
 import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
@@ -19,7 +20,7 @@ class AServeScreen extends StatefulWidget {
 class _AServeScreen extends State<AServeScreen> {
   int _selectedIndex = 1;
   late User _currentUser;
-
+  bool availability = true;
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -54,33 +55,68 @@ class _AServeScreen extends State<AServeScreen> {
     super.initState();
   }
 
+  void serveMeal(String meal) async {
+    availability = await checkMealAvailability(meal);
+    if (availability) FirebaseAdminClass.serveMeal(meal);
+  }
+
+  Future<bool> checkMealAvailability(String meal) async {
+    List<int> inventoryData = await FirebaseAdminClass.getAdminInventory();
+
+    if (meal == 'b') {
+      if (inventoryData[0] == 0) return false;
+    }
+    if (meal == 'l') {
+      if (inventoryData[1] == 0) return false;
+    }
+    if (meal == 'd') {
+      if (inventoryData[2] == 0) return false;
+    }
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: lightGreen,
       appBar: AppBar(
-        title: const Text(
+        title: const TitleMonterrsat(
           'Serve',
-          style: TextStyle(color: lightGreen, fontFamily: 'OpenSans'),
         ),
         backgroundColor: pineGreen,
       ),
       body: ListView(
-        children: const <Widget>[
-          Divider(
+        children: <Widget>[
+          const HeaderMontserrat("Serve Meal"),
+          const Divider(
             height: 8,
             thickness: 1,
             indent: 8,
             endIndent: 8,
             color: Colors.grey,
           ),
-          Header("Serve meal"),
-          Text(
-            'B/L/D: ',
+          const SizedBox(
+            height: 20,
           ),
-          Paragraph(
-            'Tables!',
+          Column(
+            children: [
+              StyledButtonMonterrsat(
+                  text: "Serve Breakfast", onPressed: () => serveMeal('b')),
+              const SizedBox(
+                height: 20,
+              ),
+              StyledButtonMonterrsat(
+                  text: "Serve Lunch", onPressed: () => serveMeal('l')),
+              const SizedBox(
+                height: 20,
+              ),
+              StyledButtonMonterrsat(
+                  text: "Serve Dinner", onPressed: () => serveMeal('d')),
+              availability
+                  ? const Text("")
+                  : const HeaderMontserratWarning('WARNING! OUT OF STOCKS'),
+            ],
           ),
         ],
       ),

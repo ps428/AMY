@@ -58,10 +58,7 @@ class _ABillScreen extends State<ABillScreen> {
       resizeToAvoidBottomInset: false,
       backgroundColor: lightGreen,
       appBar: AppBar(
-        title: const Text(
-          'Bill',
-          style: TextStyle(color: lightGreen, fontFamily: 'OpenSans'),
-        ),
+        title: const TitleMonterrsat("Bill"),
         backgroundColor: pineGreen,
       ),
       body: ListView(
