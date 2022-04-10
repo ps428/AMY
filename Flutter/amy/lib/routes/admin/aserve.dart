@@ -63,13 +63,13 @@ class _AServeScreen extends State<AServeScreen> {
   Future<bool> checkMealAvailability(String meal) async {
     List<int> inventoryData = await FirebaseAdminClass.getAdminInventory();
 
-    if (meal == 'b') {
+    if (meal == 'adminBreakfast') {
       if (inventoryData[0] == 0) return false;
     }
-    if (meal == 'l') {
+    if (meal == 'adminLunch') {
       if (inventoryData[1] == 0) return false;
     }
-    if (meal == 'd') {
+    if (meal == 'adminDinner') {
       if (inventoryData[2] == 0) return false;
     }
     return true;
@@ -102,17 +102,20 @@ class _AServeScreen extends State<AServeScreen> {
           Column(
             children: [
               StyledButtonMonterrsat(
-                  text: "Serve Breakfast", onPressed: () => serveMeal('b')),
+                  text: "Serve Breakfast",
+                  onPressed: () => serveMeal('adminBreakfast')),
               const SizedBox(
                 height: 20,
               ),
               StyledButtonMonterrsat(
-                  text: "Serve Lunch", onPressed: () => serveMeal('l')),
+                  text: "Serve Lunch",
+                  onPressed: () => serveMeal('adminLunch')),
               const SizedBox(
                 height: 20,
               ),
               StyledButtonMonterrsat(
-                  text: "Serve Dinner", onPressed: () => serveMeal('d')),
+                  text: "Serve Dinner",
+                  onPressed: () => serveMeal('adminDinner')),
               availability
                   ? const Text("")
                   : const HeaderMontserratWarning('WARNING! OUT OF STOCKS'),

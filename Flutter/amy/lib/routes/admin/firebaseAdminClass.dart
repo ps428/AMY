@@ -88,4 +88,14 @@ class FirebaseAdminClass {
     //counter ++
     //**keep track of this data returned in first step to print this in the bill */
   }
+
+  static Future<List<int>> getMealDetailsFromInventory(String s) async {
+    List<int> details = [];
+    var inventoryData = await FirebaseFirestore.instance
+        .collection("adminInventory")
+        .doc(s)
+        .get();
+
+    return details;
+  }
 }
