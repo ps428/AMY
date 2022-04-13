@@ -184,4 +184,59 @@ class FirebaseAdminClass {
 
     // collection.doc('AMYFoodCounters').set({'mealsDonated': 1});
   }
+
+  static Future<Map<String, Map>> getBillRecords() async {
+    Map<String, Map> billData = {};
+    billData['breakfast'] = await getMealWiseBillRecords('adminBreakfast');
+    billData['lunch'] = await getMealWiseBillRecords('adminLunch');
+    billData['dinner'] = await getMealWiseBillRecords('adminDinner');
+    return billData;
+  }
+
+  static Future<Map<String, dynamic>> getMealWiseBillRecords(String s) async {
+    Map<String, dynamic> returnData = {};
+
+    var billDataJSON =
+        await FirebaseFirestore.instance.collection('adminBills').doc(s).get();
+
+    var mappedData = await billDataJSON.data();
+    // print(billDataJSON);
+    mappedData?.forEach((key, value) {
+      // print(value.runtimeType);
+      var data = value.toString();
+      var hashedData = HashMap.from(value);
+      hashedData.forEach((key, val) {
+        var listData = val
+            .toString()
+            .substring(1, val.toString().length - 1)
+            .split(", ")
+          ..sort();
+        // listData.sort();
+
+        var donationTime = listData[0].split(": ")[1];
+        var messID = listData[1].split(": ")[1];
+        var name = listData[2].split(": ")[1];
+        var servingTime = listData[3].split(": ")[1];
+
+        Map<String, dynamic> tmp = {};
+
+        tmp['donationTime'] = donationTime;
+        tmp['messID'] = messID;
+        tmp['name'] = name;
+        tmp['servingTime'] = servingTime;
+        tmp['mealType'] = s;
+        returnData[servingTime] = tmp;
+        // var finalList = [
+        //   bf,
+        //   dinner,
+        //   lunch,
+        //   time,
+        // ];
+        // print(finalList);
+
+        //just have to show this data on a table now, yo
+      });
+    });
+    return returnData;
+  }
 }

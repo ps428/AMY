@@ -28,6 +28,8 @@ class _AHomeScreen extends State<AHomeScreen> {
   bool dataFetched = false;
   List<List<int>> userData = [[]];
   int _selectedIndex = 0;
+  var counters;
+  Map<String, Map> billData = {};
 
   void _onItemTapped(int index) {
     setState(() {
@@ -67,39 +69,32 @@ class _AHomeScreen extends State<AHomeScreen> {
   }
 
   Future<void> getDataFromFirebase() async {
-    // var counterTmp = await FirebaseUserClass.getCounters();
-    // var messDataTmp =
-    await FirebaseAdminClass.getAdminInventory();
-    print("banged...");
-    userData = await FirebaseAdminClass.getUserRecords(widget.user.uid);
-    // print(userData.runtimeType);
+    var counterTmp = await FirebaseAdminClass.getCounters();
+    Map<String, Map> tmpBillData = await FirebaseAdminClass.getBillRecords();
     setState(() {
       dataFetched = true;
-      // counters = counterTmp;
-      // messData = messDataTmp;
-      // isFirebaseCalled = true;
-      // // print(counters[0]);
+      counters = counterTmp;
+      billData = tmpBillData;
     });
   }
 
-  Widget createTable() {
+  Widget createTableBreakfast() {
     List<DataRow> dataRows = [];
-    for (int i = 0; i < userData.length; ++i) {
+    // print(billData['breakfast']);
+    int i = 0;
+    billData['breakfast']!.forEach((key, value) {
       dataRows.add(
         DataRow(
           cells: <DataCell>[
             DataCell(Text((i + 1).toString())),
-            DataCell(Text(userData[i][0].toString())),
-            DataCell(Text(userData[i][1].toString())),
-            DataCell(Text(userData[i][2].toString())),
-            DataCell(
-              Text(DateTime.fromMillisecondsSinceEpoch(userData[i][3] * 1000)
-                  .toString()),
-            )
+            DataCell(Text(value!['donationTime'].toString())),
+            DataCell(Text(value!['servingTime'].toString())),
+            DataCell(Text(value!['messID'].toString())),
           ],
         ),
       );
-    }
+      i += 1;
+    });
     return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: DataTable(columns: const <DataColumn>[
@@ -111,26 +106,114 @@ class _AHomeScreen extends State<AHomeScreen> {
           ),
           DataColumn(
             label: Text(
-              'Breakfast',
+              'Donation Time',
               style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),
           DataColumn(
             label: Text(
-              'Lunch',
+              'Serving Time',
               style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),
           DataColumn(
             label: Text(
-              'Dinner',
-              style: TextStyle(fontStyle: FontStyle.italic),
+              'Donor MessID',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+        ], rows: dataRows));
+  }
+
+  Widget createTableLunch() {
+    List<DataRow> dataRows = [];
+    // print(billData['breakfast']);
+    int i = 0;
+    billData['lunch']!.forEach((key, value) {
+      dataRows.add(
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text((i + 1).toString())),
+            DataCell(Text(value!['donationTime'].toString())),
+            DataCell(Text(value!['servingTime'].toString())),
+            DataCell(Text(value!['messID'].toString())),
+          ],
+        ),
+      );
+      i += 1;
+    });
+    return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: DataTable(columns: const <DataColumn>[
+          DataColumn(
+            label: Text(
+              'S. No.',
+              style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),
           DataColumn(
             label: Text(
-              'Timestamp of Donation',
-              style: TextStyle(fontStyle: FontStyle.italic),
+              'Donation Time',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Serving Time',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Donor MessID',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+        ], rows: dataRows));
+  }
+
+  Widget createTableDinner() {
+    List<DataRow> dataRows = [];
+    // print(billData['breakfast']);
+    int i = 0;
+    billData['dinner']!.forEach((key, value) {
+      dataRows.add(
+        DataRow(
+          cells: <DataCell>[
+            DataCell(Text((i + 1).toString())),
+            DataCell(Text(value!['donationTime'].toString())),
+            DataCell(Text(value!['servingTime'].toString())),
+            DataCell(Text(value!['messID'].toString())),
+          ],
+        ),
+      );
+      i += 1;
+    });
+    return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: DataTable(columns: const <DataColumn>[
+          DataColumn(
+            label: Text(
+              'S. No.',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Donation Time',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Serving Time',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Donor MessID',
+              style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),
         ], rows: dataRows));
@@ -156,34 +239,53 @@ class _AHomeScreen extends State<AHomeScreen> {
             endIndent: 8,
             color: Colors.grey,
           ),
-          const Header("Counter and all"),
-          const Text(
-            'Details: ',
+          const ParagraphMontserrat(
+            'Donation Status',
           ),
-          const Paragraph(
-            'I need to print table here!',
-          ),
-          StyledButtonPlayfair(
-            text: "To bill screen",
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => ABillScreen(
-                    user: _currentUser,
-                  ),
-                ),
-              );
-            },
-          ),
-          StyledButtonMonterrsat(
-              text: "Log Out",
-              onPressed: () => {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
+          dataFetched
+              ? Align(
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          ProgressBar(
+                            value: counters[0] / (counters[2] / 100),
+                            size: counters[2] / (counters[2] / 100),
+                            counts: counters[0],
+                            total: counters[2],
+                          ),
+                          ParagraphMontserrat("Donated meals " +
+                              counters[0].toString() +
+                              "/" +
+                              counters[2].toString()),
+                        ],
                       ),
-                    )
-                  }),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Column(
+                        children: [
+                          ProgressBar(
+                            value: 1.0 * counters[1] / (counters[0] / 100),
+                            size: 3.0 * counters[0] / (counters[0] / 100),
+                            counts: counters[1],
+                            total: counters[0],
+                          ),
+                          ParagraphMontserrat("Served meals " +
+                              counters[1].toString() +
+                              "/" +
+                              counters[0].toString()),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                    ],
+                  ),
+                )
+              : const Header("Counter and all"),
           const SizedBox(
             width: 100,
           ),
@@ -197,8 +299,44 @@ class _AHomeScreen extends State<AHomeScreen> {
           dataFetched
               ? Align(
                   alignment: Alignment.center,
-                  child: createTable(),
-                )
+                  child: Column(
+                    children: [
+                      const HeaderMontserrat("Breakfast Table"),
+                      createTableBreakfast(),
+                    ],
+                  ))
+              : const SpinKitHourGlass(
+                  color: Colors.greenAccent,
+                  size: 50.0,
+                ),
+          const SizedBox(
+            height: 30,
+          ),
+          dataFetched
+              ? Align(
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      const HeaderMontserrat("Lunch Table"),
+                      createTableLunch(),
+                    ],
+                  ))
+              : const SpinKitHourGlass(
+                  color: Colors.greenAccent,
+                  size: 50.0,
+                ),
+          const SizedBox(
+            height: 30,
+          ),
+          dataFetched
+              ? Align(
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      const HeaderMontserrat("Dinner Table"),
+                      createTableDinner(),
+                    ],
+                  ))
               : const SpinKitHourGlass(
                   color: Colors.greenAccent,
                   size: 50.0,
@@ -220,7 +358,7 @@ class _AHomeScreen extends State<AHomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.poll),
-            label: 'Show Records',
+            label: 'Show Inventory',
           ),
         ],
         currentIndex: _selectedIndex,

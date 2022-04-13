@@ -8,7 +8,8 @@ import 'aserve.dart';
 
 class ABillScreen extends StatefulWidget {
   final User user;
-  const ABillScreen({required this.user});
+  final Map<String, dynamic> details;
+  const ABillScreen({required this.user, required this.details});
 
   @override
   _ABillScreen createState() => _ABillScreen();
@@ -17,6 +18,7 @@ class ABillScreen extends StatefulWidget {
 class _ABillScreen extends State<ABillScreen> {
   int _selectedIndex = 0;
   late User _currentUser;
+  late Map<String, dynamic> details;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -49,6 +51,7 @@ class _ABillScreen extends State<ABillScreen> {
   @override
   void initState() {
     _currentUser = widget.user;
+    details = widget.details;
     super.initState();
   }
 
@@ -62,16 +65,44 @@ class _ABillScreen extends State<ABillScreen> {
         backgroundColor: pineGreen,
       ),
       body: ListView(
-        children: const <Widget>[
-          Divider(
+        children: <Widget>[
+          const Header("Billing"),
+          const Divider(
             height: 8,
             thickness: 1,
             indent: 8,
             endIndent: 8,
             color: Colors.grey,
           ),
-          Header("Billing"),
-          Text('bill')
+          Text(details.toString()),
+          StyledButtonMonterrsat(
+              text: 'Serve Again',
+              onPressed: () => {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => AServeScreen(user: _currentUser),
+                      ),
+                    )
+                  }),
+          StyledButtonMonterrsat(
+              text: 'Show Records',
+              onPressed: () => {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => AHomeScreen(user: _currentUser),
+                      ),
+                    )
+                  }),
+          StyledButtonMonterrsat(
+              text: 'Show Inventory',
+              onPressed: () => {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            AInventoryScreen(user: _currentUser),
+                      ),
+                    )
+                  }),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -86,7 +117,7 @@ class _ABillScreen extends State<ABillScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.poll),
-            label: 'Show Records',
+            label: 'Show Inventory',
           ),
         ],
         currentIndex: _selectedIndex,

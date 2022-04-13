@@ -162,7 +162,7 @@ class _AInventoryScreen extends State<AInventoryScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.poll),
-            label: 'Show Records',
+            label: 'Show Inventory',
           ),
         ],
         currentIndex: _selectedIndex,

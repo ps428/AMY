@@ -22,6 +22,7 @@ class AllScreen extends StatefulWidget {
 
 class _AllScreen extends State<AllScreen> {
   var _currentUser;
+  late User adminUser;
 
   Future<void> getDataFromFirebase() async {
     var user = await FireAuth.signInUsingEmailPassword(
@@ -145,21 +146,6 @@ class _AllScreen extends State<AllScreen> {
             // off the stack.
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => ABillScreen(
-                  user: _currentUser,
-                ),
-              ),
-            );
-          },
-          child: const Text('Go to Admin Bill Screen!'),
-        ),
-        ElevatedButton(
-          // Within the AllScreen widget
-          onPressed: () {
-            // Navigate back to the first screen by popping the current route
-            // off the stack.
-            Navigator.of(context).push(
-              MaterialPageRoute(
                 builder: (context) => AServeScreen(user: _currentUser),
               ),
             );
@@ -182,6 +168,24 @@ class _AllScreen extends State<AllScreen> {
           child: const Text('Go to Admin Inventory!'),
         ),
         const HeaderMontserrat('Montersat heading'),
+        StyledButtonMonterrsat(
+            text: "Admin Login",
+            onPressed: () async => {
+                  adminUser = (await FireAuth.signInUsingEmailPassword(
+                    email: 'ps205@snu.edu.in',
+                    password: '123456',
+                  ))!,
+                  if (adminUser != null)
+                    {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => AHomeScreen(user: adminUser),
+                          // builder: (context) =>
+                          //     const SignupScreen(),
+                        ),
+                      )
+                    }
+                }),
         const ParagraphMontserrat(
             'A demo paraghaph!A demo  paraghaph!A demo paraghaph!A demo paraghaph!'),
         const ParagraphMontserrat(

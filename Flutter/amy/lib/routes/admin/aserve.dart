@@ -6,6 +6,7 @@ import 'package:amy/routes/user/uhome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'abill.dart';
 import 'ahome.dart';
 import 'ainventory.dart';
 
@@ -57,7 +58,12 @@ class _AServeScreen extends State<AServeScreen> {
 
   void serveMeal(String meal) async {
     availability = await checkMealAvailability(meal);
-    if (availability) FirebaseAdminClass.serveMeal(meal);
+    if (availability) {
+      Map<String, dynamic> details = await FirebaseAdminClass.serveMeal(meal);
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => ABillScreen(user: _currentUser, details: details),
+      ));
+    }
   }
 
   Future<bool> checkMealAvailability(String meal) async {
@@ -135,7 +141,7 @@ class _AServeScreen extends State<AServeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.poll),
-            label: 'Show Records',
+            label: 'Show Inventory',
           ),
         ],
         currentIndex: _selectedIndex,
