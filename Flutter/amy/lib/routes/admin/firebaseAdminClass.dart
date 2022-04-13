@@ -80,22 +80,108 @@ class FirebaseAdminClass {
     return counts - 1;
   }
 
-  static void serveMeal(String s) async {
-    //get inventory
-    //delete from inventory
+//TODO notification part
+  static Future<Map<String, dynamic>> serveMeal(String s) async {
+    Map<String, dynamic> details = await getMealDetailsFromInventory(s);
+    //delete from inventory: called in get function
+    // print(details);
+
     //add to bill table
-    //notify user
+    addToBillRecords(details, s);
+
+    //notify user:TODO cloud messenging
+
     //counter ++
-    //**keep track of this data returned in first step to print this in the bill */
+    updateCountersDonated();
+    // DONE:**keep track of this data returned in first step to print this in the bill */
+    return details;
   }
 
-  static Future<List<int>> getMealDetailsFromInventory(String s) async {
-    List<int> details = [];
+  static Future<Map<String, dynamic>> getMealDetailsFromInventory(
+      String s) async {
+    Map<String, dynamic> details = {};
     var inventoryData = await FirebaseFirestore.instance
         .collection("adminInventory")
         .doc(s)
         .get();
 
+    var mappedData = await inventoryData.data();
+    var firstServe = mappedData?.keys.first;
+    var serveDetails = mappedData?[firstServe];
+
+    serveDetails?.forEach((key, value) {
+      // print(value.runtimeType);
+      // print(value);
+      details = value;
+    });
+    // print(mappedData?.length);
+
+    mappedData?.remove(firstServe);
+    // print(mappedData?.length);
+
+    //deleting from inventory
+    deleteEntryFromInventory(mappedData!, s);
+
     return details;
+  }
+
+  static Future<void> deleteEntryFromInventory(
+      Map<String, dynamic> mappedData, String s) async {
+    await FirebaseFirestore.instance
+        .collection("adminInventory")
+        .doc(s)
+        .set(mappedData);
+  }
+
+  static Future<void> addToBillRecords(
+      Map<String, dynamic> details, String s) async {
+    var currentTime = DateTime.now().toString();
+    Map<String, dynamic> data = {};
+    details['Serving Time'] = currentTime;
+    data[currentTime] = details;
+
+    await FirebaseFirestore.instance
+        .collection("adminBills")
+        .doc(s)
+        .update(data);
+  }
+
+  static Future<List> getCounters() async {
+    var returnList = [];
+    var tmp;
+    await FirebaseFirestore.instance
+        .collection('globalCounters')
+        .get()
+        .then((querySnapshot) {
+      querySnapshot.docs.forEach((result) {
+        // print(result.data());
+        tmp = result.data();
+      });
+    });
+    returnList.add(tmp['mealsDonated']);
+    returnList.add(tmp['mealsServed']);
+    returnList.add(tmp['targetDonation']);
+
+    return returnList;
+  }
+
+  static void updateCountersDonated() async {
+    var collection =
+        await FirebaseFirestore.instance.collection('globalCounters');
+
+    var counters = await getCounters();
+    // print('----------------------------');
+    // print(counters);
+    var currentServings = counters[1];
+    // print(currentDonations);
+    currentServings += 1;
+    // print(currentDonations);
+
+    var a = collection.doc('AMYFoodCounters').update({
+      'mealsServed': currentServings,
+    });
+    // print(a);
+
+    // collection.doc('AMYFoodCounters').set({'mealsDonated': 1});
   }
 }

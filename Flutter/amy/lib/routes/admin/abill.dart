@@ -71,12 +71,7 @@ class _ABillScreen extends State<ABillScreen> {
             color: Colors.grey,
           ),
           Header("Billing"),
-          Text(
-            'Confetti superstar: ',
-          ),
-          Paragraph(
-            'Tables!',
-          ),
+          Text('bill')
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
