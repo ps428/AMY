@@ -8,6 +8,7 @@ import 'package:amy/routes/login.dart';
 import 'package:amy/routes/signup.dart';
 import 'package:amy/routes/user/udonate.dart';
 import 'package:amy/routes/user/uhome.dart';
+import 'package:amy/test.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -185,6 +186,17 @@ class _AllScreen extends State<AllScreen> {
                         ),
                       )
                     }
+                }),
+        StyledButtonMonterrsat(
+            text: "Test Screen",
+            onPressed: () => {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => const TestScreen(),
+                      // builder: (context) =>
+                      //     const SignupScreen(),
+                    ),
+                  )
                 }),
         const ParagraphMontserrat(
             'A demo paraghaph!A demo  paraghaph!A demo paraghaph!A demo paraghaph!'),

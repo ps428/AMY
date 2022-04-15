@@ -32,6 +32,7 @@ const pistaliter = Color(0xffECF9F2);
 const lightGreen = Color(0xffF1FFDB);
 const greenAmy = Color(0xffA1D444);
 const bar = Color(0xffE10032);
+const black = Color(0xff000000);
 
 class Header extends StatelessWidget {
   const Header(this.heading);

@@ -96,26 +96,30 @@ class _AInventoryScreen extends State<AInventoryScreen> {
 
     return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: DataTable(columns: const <DataColumn>[
-          DataColumn(
-            label: Text(
-              'S. No.',
-              style: TextStyle(fontFamily: 'Monterrsat'),
-            ),
-          ),
-          DataColumn(
-            label: Text(
-              'Meal Type',
-              style: TextStyle(fontFamily: 'Monterrsat'),
-            ),
-          ),
-          DataColumn(
-            label: Text(
-              'Available Servings',
-              style: TextStyle(fontFamily: 'Monterrsat'),
-            ),
-          ),
-        ], rows: dataRows));
+        child: DataTable(
+            headingRowColor:
+                MaterialStateColor.resolveWith((states) => lavendar),
+            columns: const <DataColumn>[
+              DataColumn(
+                label: Text(
+                  'S. No.',
+                  style: TextStyle(fontFamily: 'Monterrsat'),
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  'Meal Type',
+                  style: TextStyle(fontFamily: 'Monterrsat'),
+                ),
+              ),
+              DataColumn(
+                label: Text(
+                  'Available Servings',
+                  style: TextStyle(fontFamily: 'Monterrsat'),
+                ),
+              ),
+            ],
+            rows: dataRows));
   }
 
   @override

@@ -232,74 +232,92 @@ class _AHomeScreen extends State<AHomeScreen> {
       ),
       body: ListView(
         children: <Widget>[
+          const SizedBox(
+            height: 50,
+          ),
+          const Divider(
+            height: 8,
+            thickness: 1,
+            indent: 8,
+            endIndent: 8,
+            color: Colors.grey,
+          ),
           dataFetched
               ? Column(children: [
                   const SizedBox(
-                    height: 50,
-                  ),
-                  const Divider(
-                    height: 8,
-                    thickness: 1,
-                    indent: 8,
-                    endIndent: 8,
-                    color: Colors.grey,
-                  ),
-                  const SizedBox(
                     height: 20,
                   ),
-                  const ParagraphMontserratLarger2(
-                    'Donation Status',
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Align(
+                  Stack(
                     alignment: Alignment.center,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
+                    children: [
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 290.0,
+                        width: 300.0,
+                        decoration: const BoxDecoration(
+                            color: lavendar,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            ProgressBar(
-                              value: counters[0] / (counters[2] / 100),
-                              size: counters[2] / (counters[2] / 100),
-                              counts: counters[0],
-                              total: counters[2],
-                            ),
-                            ParagraphMontserrat("Donated meals " +
-                                counters[0].toString() +
-                                "/" +
-                                counters[2].toString()),
+                            const HeaderMontserrat("Donation Status"),
+                            Align(
+                              alignment: Alignment.center,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Column(
+                                    children: [
+                                      ProgressBar(
+                                        value:
+                                            counters[0] / (counters[2] / 100),
+                                        size: counters[2] / (counters[2] / 100),
+                                        counts: counters[0],
+                                        total: counters[2],
+                                      ),
+                                      ParagraphMontserrat("Donated meals " +
+                                          counters[0].toString() +
+                                          "/" +
+                                          counters[2].toString()),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Column(
+                                    children: [
+                                      ProgressBar(
+                                        value: 1.0 *
+                                            counters[1] /
+                                            (counters[0] / 100),
+                                        size: 3.0 *
+                                            counters[0] /
+                                            (counters[0] / 100),
+                                        counts: counters[1],
+                                        total: counters[0],
+                                      ),
+                                      ParagraphMontserrat("Served meals " +
+                                          counters[1].toString() +
+                                          "/" +
+                                          counters[0].toString()),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            )
                           ],
                         ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Column(
-                          children: [
-                            ProgressBar(
-                              value: 1.0 * counters[1] / (counters[0] / 100),
-                              size: 3.0 * counters[0] / (counters[0] / 100),
-                              counts: counters[1],
-                              total: counters[0],
-                            ),
-                            ParagraphMontserrat("Served meals " +
-                                counters[1].toString() +
-                                "/" +
-                                counters[0].toString()),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                      ],
-                    ),
-                  )
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                 ])
               : const ParagraphMontserrat("Loading Mess Data"),
-          const SizedBox(
-            width: 100,
-          ),
           const Divider(
             height: 8,
             thickness: 1,
@@ -324,6 +342,7 @@ class _AHomeScreen extends State<AHomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ExpansionTile(
+                        textColor: black,
                         backgroundColor: bgExpand,
                         expandedAlignment: Alignment.center,
                         title: Stack(

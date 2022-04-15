@@ -95,11 +95,11 @@ samples, guidance on mobile development, and a full API reference.
 - [X] My Account: reduce column gaps; correct table fonts
 - [X] Photo small; mind behind the meals larger
 - [X] Change headers text types
-- [ ] Home: Add lavendar card behind donation status
-- [ ] Home: Remove color from drop down breakfast, lunch, dinner in home page
+- [X] Home: Add lavendar card behind donation status
+- [X] Home: Remove color from drop down breakfast, lunch, dinner in home page
 - [ ] Serve: Add confirmation popup
 - [ ] Bill: Add bill from keep
-- [ ] Inventory: Add lavendar color to header row {this has been done before somewhere in user}
+- [X] Inventory: Add lavendar color to header row {this has been done before somewhere in user}
 
 
 
