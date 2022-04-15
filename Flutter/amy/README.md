@@ -97,9 +97,10 @@ samples, guidance on mobile development, and a full API reference.
 - [X] Change headers text types
 - [X] Home: Add lavendar card behind donation status
 - [X] Home: Remove color from drop down breakfast, lunch, dinner in home page
-- [ ] Serve: Add confirmation popup
-- [ ] Bill: Add bill from keep
+- [X] Serve: Add confirmation popup
+- [X] Bill: Add bill from keep
 - [X] Inventory: Add lavendar color to header row {this has been done before somewhere in user}
+- [ ] Notification to user on meal confirmation
 
 
 

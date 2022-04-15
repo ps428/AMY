@@ -121,6 +121,9 @@ class _TestScreen extends State<TestScreen> {
                             fit: BoxFit.scaleDown,
                           ),
                         ),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         ParagraphMontserrat("valit upto")
                       ],
                     ),

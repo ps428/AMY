@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+import '../../authentication_service.dart';
+import '../home.dart';
 import 'ahome.dart';
 import 'aserve.dart';
 import 'firebaseAdminClass.dart';
@@ -190,7 +192,7 @@ class _AInventoryScreen extends State<AInventoryScreen> {
                   size: 50.0,
                 ),
           const SizedBox(
-            height: 30,
+            height: 60,
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
@@ -221,6 +223,25 @@ class _AInventoryScreen extends State<AInventoryScreen> {
                 ),
               ],
             ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Column(
+            children: [
+              StyledButtonMonterrsat(
+                  text: "Sign Out",
+                  onPressed: () => {
+                        FireAuth.signOut(),
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                            // builder: (context) =>
+                            //     const SignupScreen(),
+                          ),
+                        )
+                      }),
+            ],
           ),
         ],
       ),

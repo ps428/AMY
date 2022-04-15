@@ -138,6 +138,7 @@ class FirebaseAdminClass {
     var currentTime = DateTime.now().toString();
     Map<String, dynamic> data = {};
     details['Serving Time'] = currentTime;
+    details['Meal Type'] = s;
     data[currentTime] = details;
 
     await FirebaseFirestore.instance
@@ -213,12 +214,12 @@ class FirebaseAdminClass {
           ..sort();
         // listData.sort();
         // print(listData);
-
+        // for (int i = 0; i < listData.length; i++) print(listData[i]);
         var donationTime = listData[0].split(": ")[1];
-        var messID = listData[1].split(": ")[1];
-        var name = listData[2].split(": ")[1];
-        var servingTime = listData[3].split(": ")[1];
-        var UID = listData[5].split(": ")[1];
+        var messID = listData[2].split(": ")[1];
+        var name = listData[3].split(": ")[1];
+        var servingTime = listData[4].split(": ")[1];
+        var UID = listData[6].split(": ")[1];
 
         Map<String, dynamic> tmp = {};
 

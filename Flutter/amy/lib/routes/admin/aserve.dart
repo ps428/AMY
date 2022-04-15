@@ -151,7 +151,7 @@ class _AServeScreen extends State<AServeScreen> {
               ),
               StyledButtonMonterrsatBig(
                   text: "Breakfast",
-                  onPressed: () => serveMeal('adminBreakfast')),
+                  onPressed: () => showAlertDialog(context, 'adminBreakfast')),
               const SizedBox(
                 height: 40,
               ),
@@ -164,7 +164,8 @@ class _AServeScreen extends State<AServeScreen> {
                 height: 10,
               ),
               StyledButtonMonterrsatBig(
-                  text: "  Lunch  ", onPressed: () => serveMeal('adminLunch')),
+                  text: "  Lunch  ",
+                  onPressed: () => showAlertDialog(context, 'adminLunch')),
               const SizedBox(
                 height: 30,
               ),
@@ -175,7 +176,7 @@ class _AServeScreen extends State<AServeScreen> {
               ),
               StyledButtonMonterrsatBig(
                   text: "  Dinner  ",
-                  onPressed: () => serveMeal('adminDinner')),
+                  onPressed: () => showAlertDialog(context, 'adminDinner')),
               availability
                   ? const Text("")
                   : const HeaderMontserratWarning('WARNING! OUT OF STOCKS'),
@@ -202,6 +203,36 @@ class _AServeScreen extends State<AServeScreen> {
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
+    );
+  }
+
+  showAlertDialog(BuildContext context, String meal) {
+    // set up the buttons
+    Widget cancelButton = StyledButtonMonterrsat(
+        text: "Cancel",
+        onPressed: () => {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => AServeScreen(user: _currentUser),
+              ))
+            });
+    Widget continueButton = StyledButtonMonterrsat(
+        text: "Confirm", onPressed: () => {serveMeal(meal)});
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const HeaderMontserrat("Confirm Serving"),
+      content: const ParagraphMontserrat("Are you sure to serve this meal?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }
