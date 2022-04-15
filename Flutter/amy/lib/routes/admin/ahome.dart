@@ -87,9 +87,9 @@ class _AHomeScreen extends State<AHomeScreen> {
         DataRow(
           cells: <DataCell>[
             DataCell(Text((i + 1).toString())),
+            DataCell(Text(value!['messID'].toString())),
             DataCell(Text(value!['donationTime'].toString())),
             DataCell(Text(value!['servingTime'].toString())),
-            DataCell(Text(value!['messID'].toString())),
           ],
         ),
       );
@@ -106,6 +106,12 @@ class _AHomeScreen extends State<AHomeScreen> {
           ),
           DataColumn(
             label: Text(
+              'Donor MessID',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
               'Donation Time',
               style: TextStyle(fontFamily: 'Monterrsat'),
             ),
@@ -113,12 +119,6 @@ class _AHomeScreen extends State<AHomeScreen> {
           DataColumn(
             label: Text(
               'Serving Time',
-              style: TextStyle(fontFamily: 'Monterrsat'),
-            ),
-          ),
-          DataColumn(
-            label: Text(
-              'Donor MessID',
               style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),
@@ -134,9 +134,9 @@ class _AHomeScreen extends State<AHomeScreen> {
         DataRow(
           cells: <DataCell>[
             DataCell(Text((i + 1).toString())),
+            DataCell(Text(value!['messID'].toString())),
             DataCell(Text(value!['donationTime'].toString())),
             DataCell(Text(value!['servingTime'].toString())),
-            DataCell(Text(value!['messID'].toString())),
           ],
         ),
       );
@@ -153,6 +153,12 @@ class _AHomeScreen extends State<AHomeScreen> {
           ),
           DataColumn(
             label: Text(
+              'Donor MessID',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
               'Donation Time',
               style: TextStyle(fontFamily: 'Monterrsat'),
             ),
@@ -160,12 +166,6 @@ class _AHomeScreen extends State<AHomeScreen> {
           DataColumn(
             label: Text(
               'Serving Time',
-              style: TextStyle(fontFamily: 'Monterrsat'),
-            ),
-          ),
-          DataColumn(
-            label: Text(
-              'Donor MessID',
               style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),
@@ -181,9 +181,9 @@ class _AHomeScreen extends State<AHomeScreen> {
         DataRow(
           cells: <DataCell>[
             DataCell(Text((i + 1).toString())),
+            DataCell(Text(value!['messID'].toString())),
             DataCell(Text(value!['donationTime'].toString())),
             DataCell(Text(value!['servingTime'].toString())),
-            DataCell(Text(value!['messID'].toString())),
           ],
         ),
       );
@@ -200,6 +200,12 @@ class _AHomeScreen extends State<AHomeScreen> {
           ),
           DataColumn(
             label: Text(
+              'Donor MessID',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
               'Donation Time',
               style: TextStyle(fontFamily: 'Monterrsat'),
             ),
@@ -207,12 +213,6 @@ class _AHomeScreen extends State<AHomeScreen> {
           DataColumn(
             label: Text(
               'Serving Time',
-              style: TextStyle(fontFamily: 'Monterrsat'),
-            ),
-          ),
-          DataColumn(
-            label: Text(
-              'Donor MessID',
               style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),
@@ -232,60 +232,71 @@ class _AHomeScreen extends State<AHomeScreen> {
       ),
       body: ListView(
         children: <Widget>[
-          const Divider(
-            height: 8,
-            thickness: 1,
-            indent: 8,
-            endIndent: 8,
-            color: Colors.grey,
-          ),
-          const ParagraphMontserrat(
-            'Donation Status',
-          ),
           dataFetched
-              ? Align(
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        children: [
-                          ProgressBar(
-                            value: counters[0] / (counters[2] / 100),
-                            size: counters[2] / (counters[2] / 100),
-                            counts: counters[0],
-                            total: counters[2],
-                          ),
-                          ParagraphMontserrat("Donated meals " +
-                              counters[0].toString() +
-                              "/" +
-                              counters[2].toString()),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Column(
-                        children: [
-                          ProgressBar(
-                            value: 1.0 * counters[1] / (counters[0] / 100),
-                            size: 3.0 * counters[0] / (counters[0] / 100),
-                            counts: counters[1],
-                            total: counters[0],
-                          ),
-                          ParagraphMontserrat("Served meals " +
-                              counters[1].toString() +
-                              "/" +
-                              counters[0].toString()),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                    ],
+              ? Column(children: [
+                  const SizedBox(
+                    height: 50,
                   ),
-                )
-              : const Header("Counter and all"),
+                  const Divider(
+                    height: 8,
+                    thickness: 1,
+                    indent: 8,
+                    endIndent: 8,
+                    color: Colors.grey,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const ParagraphMontserratLarger2(
+                    'Donation Status',
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            ProgressBar(
+                              value: counters[0] / (counters[2] / 100),
+                              size: counters[2] / (counters[2] / 100),
+                              counts: counters[0],
+                              total: counters[2],
+                            ),
+                            ParagraphMontserrat("Donated meals " +
+                                counters[0].toString() +
+                                "/" +
+                                counters[2].toString()),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Column(
+                          children: [
+                            ProgressBar(
+                              value: 1.0 * counters[1] / (counters[0] / 100),
+                              size: 3.0 * counters[0] / (counters[0] / 100),
+                              counts: counters[1],
+                              total: counters[0],
+                            ),
+                            ParagraphMontserrat("Served meals " +
+                                counters[1].toString() +
+                                "/" +
+                                counters[0].toString()),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                      ],
+                    ),
+                  )
+                ])
+              : const ParagraphMontserrat("Loading Mess Data"),
           const SizedBox(
             width: 100,
           ),
@@ -296,13 +307,127 @@ class _AHomeScreen extends State<AHomeScreen> {
             endIndent: 8,
             color: Colors.grey,
           ),
+          const SizedBox(height: 40),
+          const Align(
+            alignment: Alignment.center,
+            child: ParagraphMontserratLarger2(
+              'Donation Record',
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
           dataFetched
               ? Align(
                   alignment: Alignment.center,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const HeaderMontserrat("Breakfast Table"),
-                      createTableBreakfast(),
+                      ExpansionTile(
+                        backgroundColor: bgExpand,
+                        expandedAlignment: Alignment.center,
+                        title: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            const SizedBox(
+                              height: 70,
+                            ),
+                            Container(
+                              height: 50.0,
+                              width: 180.0,
+                              decoration: const BoxDecoration(
+                                  color: mustard,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const [
+                                  HeaderMontserrat("Breakfast"),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: createTableBreakfast(),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      ExpansionTile(
+                        backgroundColor: bgExpand,
+                        expandedAlignment: Alignment.center,
+                        title: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            const SizedBox(
+                              height: 70,
+                            ),
+                            Container(
+                              height: 50.0,
+                              width: 180.0,
+                              decoration: const BoxDecoration(
+                                  color: mustard,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const [
+                                  HeaderMontserrat("Lunch"),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: createTableLunch(),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      ExpansionTile(
+                        backgroundColor: bgExpand,
+                        expandedAlignment: Alignment.center,
+                        title: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            const SizedBox(
+                              height: 70,
+                            ),
+                            Container(
+                              height: 50.0,
+                              width: 180.0,
+                              decoration: const BoxDecoration(
+                                  color: mustard,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: const [
+                                  HeaderMontserrat("Dinner"),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: createTableDinner(),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                     ],
                   ))
               : const SpinKitHourGlass(
@@ -312,35 +437,6 @@ class _AHomeScreen extends State<AHomeScreen> {
           const SizedBox(
             height: 30,
           ),
-          dataFetched
-              ? Align(
-                  alignment: Alignment.center,
-                  child: Column(
-                    children: [
-                      const HeaderMontserrat("Lunch Table"),
-                      createTableLunch(),
-                    ],
-                  ))
-              : const SpinKitHourGlass(
-                  color: Colors.greenAccent,
-                  size: 50.0,
-                ),
-          const SizedBox(
-            height: 30,
-          ),
-          dataFetched
-              ? Align(
-                  alignment: Alignment.center,
-                  child: Column(
-                    children: [
-                      const HeaderMontserrat("Dinner Table"),
-                      createTableDinner(),
-                    ],
-                  ))
-              : const SpinKitHourGlass(
-                  color: Colors.greenAccent,
-                  size: 50.0,
-                ),
           const SizedBox(
             height: 30,
           ),

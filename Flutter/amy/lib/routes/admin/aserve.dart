@@ -94,7 +94,41 @@ class _AServeScreen extends State<AServeScreen> {
       ),
       body: ListView(
         children: <Widget>[
-          const HeaderMontserrat("Serve Meal"),
+          const SizedBox(
+            height: 30,
+          ),
+          const Divider(
+            height: 8,
+            thickness: 1,
+            indent: 8,
+            endIndent: 8,
+            color: Colors.grey,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              const SizedBox(
+                height: 30,
+              ),
+              Container(
+                height: 60.0,
+                width: 200.0,
+                decoration: const BoxDecoration(
+                    color: bgExpand,
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [HeaderMontserrat("Serve Meal")],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
           const Divider(
             height: 8,
             thickness: 1,
@@ -107,20 +141,40 @@ class _AServeScreen extends State<AServeScreen> {
           ),
           Column(
             children: [
-              StyledButtonMonterrsat(
-                  text: "Serve Breakfast",
+              Image.asset(
+                'assets/Food/breakfast.png',
+                height: 130.0,
+                fit: BoxFit.scaleDown,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              StyledButtonMonterrsatBig(
+                  text: "Breakfast",
                   onPressed: () => serveMeal('adminBreakfast')),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
-              StyledButtonMonterrsat(
-                  text: "Serve Lunch",
-                  onPressed: () => serveMeal('adminLunch')),
+              Image.asset(
+                'assets/Food/lunch.png',
+                height: 130.0,
+                fit: BoxFit.scaleDown,
+              ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
-              StyledButtonMonterrsat(
-                  text: "Serve Dinner",
+              StyledButtonMonterrsatBig(
+                  text: "  Lunch  ", onPressed: () => serveMeal('adminLunch')),
+              const SizedBox(
+                height: 30,
+              ),
+              Image.asset(
+                'assets/Food/dinner.png',
+                height: 130.0,
+                fit: BoxFit.scaleDown,
+              ),
+              StyledButtonMonterrsatBig(
+                  text: "  Dinner  ",
                   onPressed: () => serveMeal('adminDinner')),
               availability
                   ? const Text("")

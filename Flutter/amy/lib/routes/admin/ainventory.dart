@@ -58,7 +58,7 @@ class _AInventoryScreen extends State<AInventoryScreen> {
 
   Future<void> getDataFromFirebase() async {
     inventoryData = await FirebaseAdminClass.getAdminInventory();
-    print(inventoryData);
+    // print(inventoryData);
     setState(() {
       dataFetched = true;
     });
@@ -105,7 +105,7 @@ class _AInventoryScreen extends State<AInventoryScreen> {
           ),
           DataColumn(
             label: Text(
-              'Meal',
+              'Meal Type',
               style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),
@@ -131,13 +131,50 @@ class _AInventoryScreen extends State<AInventoryScreen> {
       ),
       body: ListView(
         children: <Widget>[
-          const HeaderMontserrat("List items"),
+          const SizedBox(
+            height: 30,
+          ),
           const Divider(
             height: 8,
             thickness: 1,
             indent: 8,
             endIndent: 8,
             color: Colors.grey,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 60.0,
+                width: 200.0,
+                decoration: const BoxDecoration(
+                    color: bgExpand,
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [HeaderMontserrat("Stock Details")],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const Divider(
+            height: 8,
+            thickness: 1,
+            indent: 8,
+            endIndent: 8,
+            color: Colors.grey,
+          ),
+          const SizedBox(
+            height: 100,
           ),
           dataFetched
               ? Align(
@@ -148,6 +185,39 @@ class _AInventoryScreen extends State<AInventoryScreen> {
                   color: Colors.greenAccent,
                   size: 50.0,
                 ),
+          const SizedBox(
+            height: 30,
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/Food/breakfast3.png',
+                  height: 110.0,
+                  fit: BoxFit.scaleDown,
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Image.asset(
+                  'assets/Food/lunch 3.png',
+                  height: 110.0,
+                  fit: BoxFit.scaleDown,
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                Image.asset(
+                  'assets/Food/dinner 3.png',
+                  height: 110.0,
+                  fit: BoxFit.scaleDown,
+                ),
+              ],
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

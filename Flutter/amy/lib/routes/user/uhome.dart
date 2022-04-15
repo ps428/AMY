@@ -194,8 +194,11 @@ class _UHomeScreen extends State<UHomeScreen> {
                           const SizedBox(
                             height: 20,
                           ),
-                          const ParagraphMontserrat(
+                          const ParagraphMontserratLarger(
                             'Donation Status',
+                          ),
+                          const SizedBox(
+                            height: 20,
                           ),
                           Align(
                             alignment: Alignment.center,

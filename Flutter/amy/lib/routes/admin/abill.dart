@@ -16,7 +16,7 @@ class ABillScreen extends StatefulWidget {
 }
 
 class _ABillScreen extends State<ABillScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   late User _currentUser;
   late Map<String, dynamic> details;
 
@@ -67,6 +67,7 @@ class _ABillScreen extends State<ABillScreen> {
       body: ListView(
         children: <Widget>[
           const Header("Billing"),
+          const ParagraphMontserrat("That cool table"),
           const Divider(
             height: 8,
             thickness: 1,
@@ -76,30 +77,11 @@ class _ABillScreen extends State<ABillScreen> {
           ),
           Text(details.toString()),
           StyledButtonMonterrsat(
-              text: 'Serve Again',
+              text: 'Print',
               onPressed: () => {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => AServeScreen(user: _currentUser),
-                      ),
-                    )
-                  }),
-          StyledButtonMonterrsat(
-              text: 'Show Records',
-              onPressed: () => {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => AHomeScreen(user: _currentUser),
-                      ),
-                    )
-                  }),
-          StyledButtonMonterrsat(
-              text: 'Show Inventory',
-              onPressed: () => {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            AInventoryScreen(user: _currentUser),
                       ),
                     )
                   }),

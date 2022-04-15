@@ -9,7 +9,7 @@ class FirebaseAdminClass {
     // [[b,l,d,time],[b,l,d,time]]
     List<List<int>> tmpReturnList = [];
     // var tmp;
-    print("generating records....");
+    // print("generating records....");
     var donationData = await FirebaseFirestore.instance
         .collection('userDonations')
         .doc(uID)
@@ -212,11 +212,13 @@ class FirebaseAdminClass {
             .split(", ")
           ..sort();
         // listData.sort();
+        // print(listData);
 
         var donationTime = listData[0].split(": ")[1];
         var messID = listData[1].split(": ")[1];
         var name = listData[2].split(": ")[1];
         var servingTime = listData[3].split(": ")[1];
+        var UID = listData[5].split(": ")[1];
 
         Map<String, dynamic> tmp = {};
 
@@ -224,6 +226,7 @@ class FirebaseAdminClass {
         tmp['messID'] = messID;
         tmp['name'] = name;
         tmp['servingTime'] = servingTime;
+        tmp['UID'] = UID;
         tmp['mealType'] = s;
         returnData[servingTime] = tmp;
         // var finalList = [

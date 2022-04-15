@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+const bgExpand = Color(0xffD3ffbf);
 const bgThanksLight = Color(0x78adebad);
 const bgThanks = Color(0xffadebad);
 const fgThanks = Color(0xff1f7a1f);
@@ -180,6 +181,38 @@ class ParagraphMontserrat extends StatelessWidget {
       );
 }
 
+class ParagraphMontserratLarger extends StatelessWidget {
+  const ParagraphMontserratLarger(this.content);
+  final String content;
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: Text(
+          content,
+          style: const TextStyle(
+              fontSize: 22,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.bold),
+        ),
+      );
+}
+
+class ParagraphMontserratLarger2 extends StatelessWidget {
+  const ParagraphMontserratLarger2(this.content);
+  final String content;
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: Text(
+          content,
+          style: const TextStyle(
+              fontSize: 28,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.bold),
+        ),
+      );
+}
+
 class ParagraphOpenSans extends StatelessWidget {
   const ParagraphOpenSans(this.content);
   final String content;
@@ -299,6 +332,30 @@ class StyledButtonMonterrsat extends StatelessWidget {
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.bold,
               fontSize: 18,
+              color: apricotWhite),
+        ),
+      );
+}
+
+class StyledButtonMonterrsatBig extends StatelessWidget {
+  const StyledButtonMonterrsatBig(
+      {required this.text, required this.onPressed});
+  final String text;
+  final void Function() onPressed;
+
+  @override
+  Widget build(BuildContext context) => ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: pineGreen, // background (button) color
+          onPrimary: apricotWhite, // foreground (text) color
+        ),
+        onPressed: onPressed,
+        child: Text(
+          text,
+          style: const TextStyle(
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
               color: apricotWhite),
         ),
       );
