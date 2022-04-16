@@ -50,6 +50,15 @@ class _AServeScreen extends State<AServeScreen> {
   //   });
   // }
 
+  Future<void> checkMeal(String meal, BuildContext context) async {
+    availability = await checkMealAvailability(meal);
+    if (availability) {
+      showAlertDialog(context, meal);
+    } else {
+      showWarning(context);
+    }
+  }
+
   @override
   void initState() {
     _currentUser = widget.user;
@@ -63,12 +72,12 @@ class _AServeScreen extends State<AServeScreen> {
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => ABillScreen(user: _currentUser, details: details),
       ));
-    }
+    } else {}
   }
 
   Future<bool> checkMealAvailability(String meal) async {
     List<int> inventoryData = await FirebaseAdminClass.getAdminInventory();
-
+    // print(inventoryData);
     if (meal == 'adminBreakfast') {
       if (inventoryData[0] == 0) return false;
     }
@@ -88,7 +97,7 @@ class _AServeScreen extends State<AServeScreen> {
       backgroundColor: lightGreen,
       appBar: AppBar(
         title: const TitleMonterrsat(
-          'Serve',
+          'Serve Meal',
         ),
         backgroundColor: pineGreen,
       ),
@@ -151,7 +160,7 @@ class _AServeScreen extends State<AServeScreen> {
               ),
               StyledButtonMonterrsatBig(
                   text: "Breakfast",
-                  onPressed: () => showAlertDialog(context, 'adminBreakfast')),
+                  onPressed: () => {checkMeal('adminBreakfast', context)}),
               const SizedBox(
                 height: 40,
               ),
@@ -165,7 +174,7 @@ class _AServeScreen extends State<AServeScreen> {
               ),
               StyledButtonMonterrsatBig(
                   text: "  Lunch  ",
-                  onPressed: () => showAlertDialog(context, 'adminLunch')),
+                  onPressed: () => {checkMeal('adminLunch', context)}),
               const SizedBox(
                 height: 30,
               ),
@@ -176,10 +185,7 @@ class _AServeScreen extends State<AServeScreen> {
               ),
               StyledButtonMonterrsatBig(
                   text: "  Dinner  ",
-                  onPressed: () => showAlertDialog(context, 'adminDinner')),
-              availability
-                  ? const Text("")
-                  : const HeaderMontserratWarning('WARNING! OUT OF STOCKS'),
+                  onPressed: () => {checkMeal('adminDinner', context)}),
             ],
           ),
         ],
@@ -225,6 +231,33 @@ class _AServeScreen extends State<AServeScreen> {
       actions: [
         cancelButton,
         continueButton,
+      ],
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+  showWarning(BuildContext context) {
+    // set up the buttons
+    Widget cancelButton = StyledButtonMonterrsat(
+        text: "OK",
+        onPressed: () => {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => AServeScreen(user: _currentUser),
+              ))
+            });
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: const HeaderMontserrat("Error!"),
+      content: const HeaderMontserratWarning("Inventory Underflow"),
+      actions: [
+        cancelButton,
       ],
     );
     // show the dialog

@@ -2,6 +2,7 @@ import 'dart:collection';
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAdminClass {
   static Future<List<List<int>>> getUserRecords(String uID) async {
@@ -90,7 +91,7 @@ class FirebaseAdminClass {
     addToBillRecords(details, s);
 
     //notify user:TODO cloud messenging
-
+    sendNotification(details['UID']);
     //counter ++
     updateCountersDonated();
     // DONE:**keep track of this data returned in first step to print this in the bill */
@@ -164,6 +165,15 @@ class FirebaseAdminClass {
     returnList.add(tmp['targetDonation']);
 
     return returnList;
+  }
+
+  static void sendNotification(String UID) async {
+    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+    var data =
+        await FirebaseFirestore.instance.collection("users").doc(UID).get();
+    var userData = data.data();
+    // TODO Add custom mail
+    _firebaseAuth.sendPasswordResetEmail(email: userData!['email']);
   }
 
   static void updateCountersDonated() async {

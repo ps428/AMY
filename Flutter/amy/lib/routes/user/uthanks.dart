@@ -29,7 +29,7 @@ class _UThanksScreen extends State<UThanksScreen> {
   late User _currentUser;
   late ConfettiController _topController;
 
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
     setState(() {

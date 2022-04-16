@@ -197,9 +197,6 @@ class _UHomeScreen extends State<UHomeScreen> {
                           Stack(
                             alignment: Alignment.center,
                             children: [
-                              const SizedBox(
-                                height: 10,
-                              ),
                               Container(
                                 height: 290.0,
                                 width: 300.0,
@@ -211,6 +208,9 @@ class _UHomeScreen extends State<UHomeScreen> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     const HeaderMontserrat("Donation Status"),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
                                     Align(
                                       alignment: Alignment.center,
                                       child: Column(

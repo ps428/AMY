@@ -381,6 +381,7 @@ class _AHomeScreen extends State<AHomeScreen> {
                         height: 20,
                       ),
                       ExpansionTile(
+                        textColor: black,
                         backgroundColor: bgExpand,
                         expandedAlignment: Alignment.center,
                         title: Stack(
@@ -416,6 +417,7 @@ class _AHomeScreen extends State<AHomeScreen> {
                         height: 20,
                       ),
                       ExpansionTile(
+                        textColor: black,
                         backgroundColor: bgExpand,
                         expandedAlignment: Alignment.center,
                         title: Stack(
