@@ -147,13 +147,13 @@ class _LoginScreen extends State<LoginScreen> {
                                   hintText: "Email",
                                   errorBorder: UnderlineInputBorder(
                                     borderRadius: BorderRadius.circular(6.0),
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Colors.red,
                                     ),
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 8.0),
+                              const SizedBox(height: 8.0),
                               TextFormField(
                                 controller: _passwordTextController,
                                 focusNode: _focusPassword,
@@ -172,7 +172,7 @@ class _LoginScreen extends State<LoginScreen> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 24.0),
+                              const SizedBox(height: 24.0),
                               isEmailVerified
                                   ? _attempetd
                                       ? const ParagraphMontserrat(
@@ -182,7 +182,7 @@ class _LoginScreen extends State<LoginScreen> {
                                   : const ParagraphMontserrat(
                                       "Error! Mail not verified"),
                               _isProcessing
-                                  ? CircularProgressIndicator()
+                                  ? const CircularProgressIndicator()
                                   : Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -206,7 +206,7 @@ class _LoginScreen extends State<LoginScreen> {
                                                     _passwordTextController
                                                             .text ==
                                                         "admin123") {
-                                                  print("admin getting");
+                                                  // print("admin getting");
                                                   User? adminUser = await FireAuth
                                                       .signInUsingEmailPassword(
                                                           email:
@@ -261,7 +261,7 @@ class _LoginScreen extends State<LoginScreen> {
                                             text: 'Log In',
                                           ),
                                         ),
-                                        SizedBox(width: 24.0),
+                                        const SizedBox(width: 24.0),
                                         Expanded(
                                           child: StyledButtonMonterrsat(
                                             onPressed: () {
@@ -285,7 +285,7 @@ class _LoginScreen extends State<LoginScreen> {
                   );
                 }
 
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               },

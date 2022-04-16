@@ -194,58 +194,79 @@ class _UHomeScreen extends State<UHomeScreen> {
                           const SizedBox(
                             height: 20,
                           ),
-                          const ParagraphMontserratLarger(
-                            'Donation Status',
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                height: 290.0,
+                                width: 300.0,
+                                decoration: const BoxDecoration(
+                                    color: lavendar,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const HeaderMontserrat("Donation Status"),
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Column(
+                                            children: [
+                                              ProgressBar(
+                                                value: counters[0] /
+                                                    (counters[2] / 100),
+                                                size: counters[2] /
+                                                    (counters[2] / 100),
+                                                counts: counters[0],
+                                                total: counters[2],
+                                              ),
+                                              ParagraphMontserrat(
+                                                  "Donated meals " +
+                                                      counters[0].toString() +
+                                                      "/" +
+                                                      counters[2].toString()),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 20,
+                                          ),
+                                          Column(
+                                            children: [
+                                              ProgressBar(
+                                                value: 1.0 *
+                                                    counters[1] /
+                                                    (counters[0] / 100),
+                                                size: 3.0 *
+                                                    counters[0] /
+                                                    (counters[0] / 100),
+                                                counts: counters[1],
+                                                total: counters[0],
+                                              ),
+                                              ParagraphMontserrat(
+                                                  "Served meals " +
+                                                      counters[1].toString() +
+                                                      "/" +
+                                                      counters[0].toString()),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                           const SizedBox(
                             height: 20,
                           ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Column(
-                                  children: [
-                                    ProgressBar(
-                                      value: counters[0] / (counters[2] / 100),
-                                      size: counters[2] / (counters[2] / 100),
-                                      counts: counters[0],
-                                      total: counters[2],
-                                    ),
-                                    ParagraphMontserrat("Donated meals " +
-                                        counters[0].toString() +
-                                        "/" +
-                                        counters[2].toString()),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Column(
-                                  children: [
-                                    ProgressBar(
-                                      value: 1.0 *
-                                          counters[1] /
-                                          (counters[0] / 100),
-                                      size: 3.0 *
-                                          counters[0] /
-                                          (counters[0] / 100),
-                                      counts: counters[1],
-                                      total: counters[0],
-                                    ),
-                                    ParagraphMontserrat("Served meals " +
-                                        counters[1].toString() +
-                                        "/" +
-                                        counters[0].toString()),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                              ],
-                            ),
-                          )
                         ])
                       : const ParagraphMontserrat("Loading user data"),
                   // StyledButtonPlayfair(

@@ -86,10 +86,10 @@ class _AHomeScreen extends State<AHomeScreen> {
       dataRows.add(
         DataRow(
           cells: <DataCell>[
-            DataCell(Text((i + 1).toString())),
-            DataCell(Text(value!['messID'].toString())),
-            DataCell(Text(value!['donationTime'].toString())),
-            DataCell(Text(value!['servingTime'].toString())),
+            DataCell(Center(child: Text((i + 1).toString()))),
+            DataCell(Center(child: Text(value!['messID'].toString()))),
+            DataCell(Center(child: Text(value!['donationTime'].toString()))),
+            DataCell(Center(child: Text(value!['servingTime'].toString()))),
           ],
         ),
       );
@@ -133,10 +133,10 @@ class _AHomeScreen extends State<AHomeScreen> {
       dataRows.add(
         DataRow(
           cells: <DataCell>[
-            DataCell(Text((i + 1).toString())),
-            DataCell(Text(value!['messID'].toString())),
-            DataCell(Text(value!['donationTime'].toString())),
-            DataCell(Text(value!['servingTime'].toString())),
+            DataCell(Center(child: Text((i + 1).toString()))),
+            DataCell(Center(child: Text(value!['messID'].toString()))),
+            DataCell(Center(child: Text(value!['donationTime'].toString()))),
+            DataCell(Center(child: Text(value!['servingTime'].toString()))),
           ],
         ),
       );
@@ -180,10 +180,10 @@ class _AHomeScreen extends State<AHomeScreen> {
       dataRows.add(
         DataRow(
           cells: <DataCell>[
-            DataCell(Text((i + 1).toString())),
-            DataCell(Text(value!['messID'].toString())),
-            DataCell(Text(value!['donationTime'].toString())),
-            DataCell(Text(value!['servingTime'].toString())),
+            DataCell(Center(child: Text((i + 1).toString()))),
+            DataCell(Center(child: Text(value!['messID'].toString()))),
+            DataCell(Center(child: Text(value!['donationTime'].toString()))),
+            DataCell(Center(child: Text(value!['servingTime'].toString()))),
           ],
         ),
       );
@@ -368,10 +368,13 @@ class _AHomeScreen extends State<AHomeScreen> {
                           ],
                         ),
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: createTableBreakfast(),
-                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: createTableBreakfast(),
+                            ),
+                          )
                         ],
                       ),
                       const SizedBox(

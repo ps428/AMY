@@ -71,27 +71,27 @@ class _AInventoryScreen extends State<AInventoryScreen> {
     dataRows.add(
       DataRow(
         cells: <DataCell>[
-          const DataCell(Text("1.")),
-          const DataCell(Text("Breakfast")),
-          DataCell(Text(inventoryData[0].toString())),
+          const DataCell(Center(child: Text("1."))),
+          const DataCell(Center(child: Text("Breakfast"))),
+          DataCell(Center(child: Text(inventoryData[0].toString()))),
         ],
       ),
     );
     dataRows.add(
       DataRow(
         cells: <DataCell>[
-          const DataCell(Text("2.")),
-          const DataCell(Text("Lunch")),
-          DataCell(Text(inventoryData[1].toString())),
+          const DataCell(Center(child: Text("2."))),
+          const DataCell(Center(child: Text("Lunch"))),
+          DataCell(Center(child: Text(inventoryData[1].toString()))),
         ],
       ),
     );
     dataRows.add(
       DataRow(
         cells: <DataCell>[
-          const DataCell(Text("3.")),
-          const DataCell(Text("Dinner")),
-          DataCell(Text(inventoryData[2].toString())),
+          const DataCell(Center(child: Text("3."))),
+          const DataCell(Center(child: Text("Dinner"))),
+          DataCell(Center(child: Text(inventoryData[2].toString()))),
         ],
       ),
     );

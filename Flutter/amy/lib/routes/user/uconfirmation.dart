@@ -66,27 +66,27 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
     dataRows.add(
       DataRow(
         cells: <DataCell>[
-          const DataCell(Text("Breakfast")),
-          DataCell(Text(l[2].toString())),
-          DataCell(Text((l[2] * 40).toString())),
+          const DataCell(Center(child: Text("Breakfast"))),
+          DataCell(Center(child: Text(l[2].toString()))),
+          DataCell(Center(child: Text((l[2] * 40).toString()))),
         ],
       ),
     );
     dataRows.add(
       DataRow(
         cells: <DataCell>[
-          const DataCell(Text("Lunch")),
-          DataCell(Text(l[3].toString())),
-          DataCell(Text((l[3] * 70).toString())),
+          const DataCell(Center(child: Text("Lunch"))),
+          DataCell(Center(child: Text(l[3].toString()))),
+          DataCell(Center(child: Text((l[3] * 70).toString()))),
         ],
       ),
     );
     dataRows.add(
       DataRow(
         cells: <DataCell>[
-          const DataCell(Text("Dinner")),
-          DataCell(Text(l[4].toString())),
-          DataCell(Text((l[4] * 70).toString())),
+          const DataCell(Center(child: Text("Dinner"))),
+          DataCell(Center(child: Text(l[4].toString()))),
+          DataCell(Center(child: Text((l[4] * 70).toString()))),
         ],
       ),
     );
@@ -94,18 +94,21 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
       DataRow(
         color: MaterialStateProperty.all(lavendar),
         cells: <DataCell>[
-          const DataCell(Text(
+          const DataCell(Center(
+              child: Text(
             "Total",
             style: TextStyle(fontWeight: FontWeight.bold),
-          )),
-          DataCell(Text(
+          ))),
+          DataCell(Center(
+              child: Text(
             (l[2] + l[3] + l[4]).toString(),
             style: const TextStyle(fontWeight: FontWeight.bold),
-          )),
-          DataCell(Text(
+          ))),
+          DataCell(Center(
+              child: Text(
             (l[2] * 40 + l[3] * 70 + l[4] * 70).toString(),
             style: const TextStyle(fontWeight: FontWeight.bold),
-          )),
+          ))),
         ],
       ),
     );
