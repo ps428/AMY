@@ -30,6 +30,7 @@ class _AHomeScreen extends State<AHomeScreen> {
   int _selectedIndex = 0;
   var counters;
   Map<String, Map> billData = {};
+  var billID;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -87,6 +88,7 @@ class _AHomeScreen extends State<AHomeScreen> {
         DataRow(
           cells: <DataCell>[
             DataCell(Center(child: Text((i + 1).toString()))),
+            DataCell(Center(child: Text(value!['billID'].toString()))),
             DataCell(Center(child: Text(value!['messID'].toString()))),
             DataCell(Center(child: Text(value!['donationTime'].toString()))),
             DataCell(Center(child: Text(value!['servingTime'].toString()))),
@@ -101,6 +103,12 @@ class _AHomeScreen extends State<AHomeScreen> {
           DataColumn(
             label: Text(
               'S. No.',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Bill ID.',
               style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),
@@ -134,6 +142,7 @@ class _AHomeScreen extends State<AHomeScreen> {
         DataRow(
           cells: <DataCell>[
             DataCell(Center(child: Text((i + 1).toString()))),
+            DataCell(Center(child: Text(value!['billID'].toString()))),
             DataCell(Center(child: Text(value!['messID'].toString()))),
             DataCell(Center(child: Text(value!['donationTime'].toString()))),
             DataCell(Center(child: Text(value!['servingTime'].toString()))),
@@ -148,6 +157,12 @@ class _AHomeScreen extends State<AHomeScreen> {
           DataColumn(
             label: Text(
               'S. No.',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Bill ID',
               style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),
@@ -181,6 +196,7 @@ class _AHomeScreen extends State<AHomeScreen> {
         DataRow(
           cells: <DataCell>[
             DataCell(Center(child: Text((i + 1).toString()))),
+            DataCell(Center(child: Text(value!['billID'].toString()))),
             DataCell(Center(child: Text(value!['messID'].toString()))),
             DataCell(Center(child: Text(value!['donationTime'].toString()))),
             DataCell(Center(child: Text(value!['servingTime'].toString()))),
@@ -195,6 +211,12 @@ class _AHomeScreen extends State<AHomeScreen> {
           DataColumn(
             label: Text(
               'S. No.',
+              style: TextStyle(fontFamily: 'Monterrsat'),
+            ),
+          ),
+          DataColumn(
+            label: Text(
+              'Bill ID',
               style: TextStyle(fontFamily: 'Monterrsat'),
             ),
           ),

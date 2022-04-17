@@ -58,14 +58,20 @@ class _ABillScreen extends State<ABillScreen> {
   }
 
   void preProcess() {
-    var today = DateTime.now();
+    // var today = DateTime.now();
 
-    var validTime = today.add(const Duration(minutes: 30)).toString();
+    // var validTime = today.add(const Duration(minutes: 30)).toString();
+    // Timestamp now = Timestamp.now();
+    // print(now.seconds);
+
+    var parsedDate = DateTime.parse(details['Serving Time']);
+    var validTime = parsedDate.add(const Duration(minutes: 30)).toString();
     details['Current Time'] = validTime;
 
-    Timestamp now = Timestamp.now();
-    // print(now.seconds);
-    details['Bill ID'] = now.seconds.toString();
+    // Timestamp now = Timestamp.fromDate(parsedDate);
+    // details['Bill ID'] = now.seconds.toString();
+
+    // print(details['Bill ID'] + " " + validTime + " " + details['Serving Time']);
 
     details['Meal'] = details['Meal Type'].split('admin')[1];
     // print(details['Meal Type'].split('admin'));
@@ -131,8 +137,7 @@ class _ABillScreen extends State<ABillScreen> {
                     ),
                     Column(
                       children: [
-                        ParagraphMontserrat(
-                            'Meal Validity: 1 ' + details['Meal']),
+                        ParagraphMontserrat('Meal Type: 1 ' + details['Meal']),
                         const SizedBox(
                           height: 15,
                         ),

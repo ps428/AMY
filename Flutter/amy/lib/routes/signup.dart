@@ -1,3 +1,4 @@
+import 'package:amy/routes/login.dart';
 import 'package:amy/routes/user/donation_page.dart';
 import 'package:amy/routes/user/uhome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -82,13 +83,13 @@ class _RegisterPageState extends State<SignupScreen> {
                             hintText: "Name",
                             errorBorder: UnderlineInputBorder(
                               borderRadius: BorderRadius.circular(6.0),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.red,
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(height: 16.0),
+                        const SizedBox(height: 16.0),
                         TextFormField(
                           controller: _emailTextController,
                           focusNode: _focusEmail,
@@ -99,13 +100,13 @@ class _RegisterPageState extends State<SignupScreen> {
                             hintText: "Email",
                             errorBorder: UnderlineInputBorder(
                               borderRadius: BorderRadius.circular(6.0),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.red,
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(height: 16.0),
+                        const SizedBox(height: 16.0),
                         TextFormField(
                           controller: _passwordTextController,
                           focusNode: _focusPassword,
@@ -123,7 +124,6 @@ class _RegisterPageState extends State<SignupScreen> {
                             ),
                           ),
                         ),
-                        //TODO from here make the variable changes and all
                         const SizedBox(height: 16.0),
                         TextFormField(
                           controller: _messIDTextController,
@@ -152,23 +152,23 @@ class _RegisterPageState extends State<SignupScreen> {
                             hintText: "Phone Number",
                             errorBorder: UnderlineInputBorder(
                               borderRadius: BorderRadius.circular(6.0),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.red,
                               ),
                             ),
                           ),
                         ),
-                        //TODO above this
-                        SizedBox(height: 32.0),
+                        const SizedBox(height: 32.0),
                         _isDuplicateID
-                            ? HeaderMontserrat(
+                            ? const HeaderMontserrat(
                                 "Error! This email id is already taken.")
                             : _attemptedSignUp
-                                ? HeaderMontserrat("Please verify your id!")
-                                : ParagraphMontserrat(
+                                ? const HeaderMontserrat(
+                                    "Please verify your id on mail!")
+                                : const ParagraphMontserrat(
                                     "Please enter Your details."),
                         _isProcessing
-                            ? CircularProgressIndicator()
+                            ? const CircularProgressIndicator()
                             : Row(
                                 children: [
                                   Expanded(
@@ -203,7 +203,6 @@ class _RegisterPageState extends State<SignupScreen> {
 
                                           if (user != null &&
                                               _isDuplicateID == false) {
-                                            //TODO update user details on firebase db
                                             FirebaseUser.addUser(
                                                 user.uid,
                                                 _nameTextController.text,
@@ -227,14 +226,13 @@ class _RegisterPageState extends State<SignupScreen> {
                                             setState(() {
                                               _isSendingVerification = false;
                                             });
-                                            if (_isDuplicateID == false &&
-                                                user.emailVerified) {
+                                            if (_isDuplicateID == false) {
                                               Navigator.of(context)
                                                   .pushReplacement(
                                                 MaterialPageRoute(
                                                   builder: (context) =>
                                                       // HomeScreen()
-                                                      UHomeScreen(user: user),
+                                                      const LoginScreen(),
                                                   // builder: (context) =>
                                                   //     const SignupScreen(),
                                                 ),

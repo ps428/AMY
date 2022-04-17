@@ -136,11 +136,15 @@ class FirebaseAdminClass {
 
   static Future<void> addToBillRecords(
       Map<String, dynamic> details, String s) async {
-    var currentTime = DateTime.now().toString();
+    var currentTime = DateTime.now();
     Map<String, dynamic> data = {};
-    details['Serving Time'] = currentTime;
+    details['Serving Time'] = currentTime.toString();
     details['Meal Type'] = s;
-    data[currentTime] = details;
+    Timestamp now = Timestamp.fromDate(currentTime);
+
+    details['Bill ID'] = now.seconds.toString();
+
+    data[currentTime.toString()] = details;
 
     await FirebaseFirestore.instance
         .collection("adminBills")
@@ -225,14 +229,16 @@ class FirebaseAdminClass {
         // listData.sort();
         // print(listData);
         // for (int i = 0; i < listData.length; i++) print(listData[i]);
-        var donationTime = listData[0].split(": ")[1];
-        var messID = listData[2].split(": ")[1];
-        var name = listData[3].split(": ")[1];
-        var servingTime = listData[4].split(": ")[1];
-        var UID = listData[6].split(": ")[1];
+        var billID = listData[0].split(": ")[1];
+        var donationTime = listData[1].split(": ")[1];
+        var messID = listData[3].split(": ")[1];
+        var name = listData[4].split(": ")[1];
+        var servingTime = listData[5].split(": ")[1];
+        var UID = listData[7].split(": ")[1];
 
         Map<String, dynamic> tmp = {};
 
+        tmp['billID'] = billID;
         tmp['donationTime'] = donationTime;
         tmp['messID'] = messID;
         tmp['name'] = name;
