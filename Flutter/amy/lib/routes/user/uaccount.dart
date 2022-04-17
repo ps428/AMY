@@ -60,6 +60,7 @@ class _UAccountScreen extends State<UAccountScreen> {
   //     _selectedIndex = index;
   //   });
   // }
+  final ScrollController _controllerOne = ScrollController();
 
   @override
   void initState() {
@@ -138,6 +139,15 @@ class _UAccountScreen extends State<UAccountScreen> {
         ], rows: dataRows));
   }
 
+  Future<void> signOut(BuildContext context) async {
+    await FireAuth.signOut();
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+      builder: (context) => const HomeScreen(),
+      // builder: (context) =>
+      //     const SignupScreen(),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,17 +175,7 @@ class _UAccountScreen extends State<UAccountScreen> {
                   width: 100,
                 ),
                 StyledButtonMonterrsat(
-                    text: "Sign Out",
-                    onPressed: () => {
-                          FireAuth.signOut(),
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (context) => const HomeScreen(),
-                              // builder: (context) =>
-                              //     const SignupScreen(),
-                            ),
-                          )
-                        }),
+                    text: "Sign Out", onPressed: () => {signOut(context)}),
               ],
             ),
             const SizedBox(
@@ -191,8 +191,14 @@ class _UAccountScreen extends State<UAccountScreen> {
             dataFetched
                 ? Align(
                     alignment: Alignment.center,
-                    child: createTable(),
-                  )
+                    child: Scrollbar(
+                      isAlwaysShown: true,
+                      controller: _controllerOne,
+                      child: SingleChildScrollView(
+                          controller: _controllerOne,
+                          child: createTable(),
+                          scrollDirection: Axis.horizontal),
+                    ))
                 : const SpinKitHourGlass(
                     color: Colors.greenAccent,
                     size: 50.0,

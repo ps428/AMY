@@ -36,6 +36,8 @@ class _UDonateScreen extends State<UDonateScreen> {
   final dinnerPrice = 70;
 
   bool estimate = false;
+  bool errorNegative = false;
+  bool errorInteger = false;
   bool notEnoughFunds = false;
 
   int breakfastCounts = 0;
@@ -89,6 +91,13 @@ class _UDonateScreen extends State<UDonateScreen> {
   //     _selectedIndex = index;
   //   });
   // }
+
+  bool isNumeric(String s) {
+    if (s == '') {
+      return true;
+    }
+    return double.tryParse(s) != null;
+  }
 
   @override
   void initState() {
@@ -208,39 +217,84 @@ class _UDonateScreen extends State<UDonateScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 StyledButtonMonterrsat(
-                    text: "Get Estimate",
-                    onPressed: () => {
-                          if (_breakfastCounts.text == '') breakfastCounts = 0,
-                          if (_lunchCounts.text == '') lunchCounts = 0,
-                          if (_dinnerCounts.text == '') dinnerCounts = 0,
-
-                          if (_breakfastCounts.text != '')
-                            breakfastCounts = int.parse(_breakfastCounts.text),
-                          if (_lunchCounts.text != '')
-                            lunchCounts = int.parse(_lunchCounts.text),
-                          if (_dinnerCounts.text != '')
-                            dinnerCounts = int.parse(_dinnerCounts.text),
-
+                  text: "Get Estimate",
+                  onPressed: () => {
+                    if (!isNumeric(_breakfastCounts.text) ||
+                        !isNumeric(_lunchCounts.text) ||
+                        !isNumeric(_dinnerCounts.text))
+                      {
+                        setState(() {
+                          errorInteger = true;
+                          estimate = true;
+                        }),
+                      }
+                    else
+                      {
+                        if (_breakfastCounts.text == '') breakfastCounts = 0,
+                        if (_lunchCounts.text == '') lunchCounts = 0,
+                        if (_dinnerCounts.text == '') dinnerCounts = 0,
+                        if (_breakfastCounts.text != '')
+                          breakfastCounts = int.parse(_breakfastCounts.text),
+                        if (_lunchCounts.text != '')
+                          lunchCounts = int.parse(_lunchCounts.text),
+                        if (_dinnerCounts.text != '')
+                          dinnerCounts = int.parse(_dinnerCounts.text),
+                        setState(() {
+                          cost = 0;
+                          estimate = true;
+                          errorNegative = false;
+                        }),
+                        if (breakfastCounts < 0 ||
+                            lunchCounts < 0 ||
+                            dinnerCounts < 0)
+                          {
+                            setState(() {
+                              cost = 0;
+                              estimate = true;
+                              errorNegative = true;
+                              errorInteger = false;
+                            }),
+                          }
+                        else
+                          {errorNegative = false},
+                        if (!errorNegative)
                           setState(() {
                             cost = breakfastCounts * breakfastPrice +
                                 lunchCounts * lunchPrice +
                                 dinnerCounts * dinnerPrice;
                             estimate = true;
+                            errorInteger = false;
                           }),
-                          if (int.parse(messData[2].toString()) - cost < 0)
+                        if (int.parse(messData[2].toString()) - cost < 0)
+                          setState(() {
+                            notEnoughFunds = true;
+                          }),
+                        if (int.parse(messData[2].toString()) - cost >= 0)
+                          setState(() {
+                            notEnoughFunds = false;
+                          }),
+                        if (errorNegative)
+                          {
+                            const SnackBar(
+                              content: Text(
+                                  'Error! Negative donations is invalid, can not proceed!'),
+                            ),
                             setState(() {
-                              notEnoughFunds = true;
+                              cost = 0;
+                              estimate = true;
+                              errorNegative = true;
                             }),
-                          if (int.parse(messData[2].toString()) - cost >= 0)
-                            setState(() {
-                              notEnoughFunds = false;
-                            }),
-                          // print("----------"),
-                          // print(cost),
-                          // print('b ' + breakfastCounts.toString()),
-                          // print('l ' + lunchCounts.toString()),
-                          // print('d ' + dinnerCounts.toString())
-                        }),
+                          }
+                      },
+                    // print(errorInteger)
+
+                    // print("----------"),
+                    // print(cost),
+                    // print('b ' + breakfastCounts.toString()),
+                    // print('l ' + lunchCounts.toString()),
+                    // print('d ' + dinnerCounts.toString())
+                  },
+                ),
                 const SizedBox(
                   width: 80,
                 ),
@@ -248,52 +302,102 @@ class _UDonateScreen extends State<UDonateScreen> {
                     text: "Donate",
                     onPressed: () => {
                           //so test by branch not by node
-                          if (_breakfastCounts.text == '') breakfastCounts = 0,
-                          if (_breakfastCounts.text != '')
-                            breakfastCounts = int.parse(_breakfastCounts.text),
-                          if (_lunchCounts.text == '') lunchCounts = 0,
-                          if (_lunchCounts.text != '')
-                            lunchCounts = int.parse(_lunchCounts.text),
-                          if (_dinnerCounts.text == '') dinnerCounts = 0,
-                          if (_dinnerCounts.text != '')
-                            dinnerCounts = int.parse(_dinnerCounts.text),
-                          setState(() {
-                            cost = breakfastCounts * breakfastPrice +
-                                lunchCounts * lunchPrice +
-                                dinnerCounts * dinnerPrice;
-                            estimate = true;
-                          }),
-                          if (int.parse(messData[2].toString()) - cost < 0)
-                            setState(() {
-                              notEnoughFunds = true;
-                            }),
-                          if (int.parse(messData[2].toString()) - cost >= 0)
-                            setState(() {
-                              notEnoughFunds = false;
-                            }),
-                          if (notEnoughFunds)
+                          if (!isNumeric(_breakfastCounts.text) ||
+                              !isNumeric(_lunchCounts.text) ||
+                              !isNumeric(_dinnerCounts.text))
                             {
-                              const SnackBar(
-                                content:
-                                    Text('Not enough funds, can not proceed!'),
-                              )
-                            },
-                          if (!notEnoughFunds)
-                            {
-                              l.add(int.parse(messData[2].toString()) - cost),
-                              l.add(cost),
-                              l.add(breakfastCounts),
-                              l.add(lunchCounts),
-                              l.add(dinnerCounts),
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => UConfirmationScreen(
-                                    user: _currentUser,
-                                    l: l,
-                                  ),
-                                ),
-                              )
+                              setState(() {
+                                errorInteger = true;
+                                estimate = true;
+                              }),
                             }
+                          else
+                            {
+                              if (_breakfastCounts.text == '')
+                                breakfastCounts = 0,
+                              if (_breakfastCounts.text != '')
+                                breakfastCounts =
+                                    int.parse(_breakfastCounts.text),
+
+                              if (_lunchCounts.text == '') lunchCounts = 0,
+                              if (_lunchCounts.text != '')
+                                lunchCounts = int.parse(_lunchCounts.text),
+
+                              if (_dinnerCounts.text == '') dinnerCounts = 0,
+                              if (_dinnerCounts.text != '')
+                                dinnerCounts = int.parse(_dinnerCounts.text),
+
+                              if (breakfastCounts < 0 ||
+                                  lunchCounts < 0 ||
+                                  dinnerCounts < 0)
+                                {
+                                  setState(() {
+                                    cost = 0;
+                                    estimate = true;
+                                    errorInteger = false;
+                                    errorNegative = true;
+                                  }),
+                                }
+                              else
+                                {errorNegative = false},
+
+                              // print(estimate),
+                              // print(errorNegative),
+                              if (!errorNegative)
+                                setState(() {
+                                  cost = breakfastCounts * breakfastPrice +
+                                      lunchCounts * lunchPrice +
+                                      dinnerCounts * dinnerPrice;
+                                  errorInteger = false;
+                                  estimate = true;
+                                }),
+
+                              if (int.parse(messData[2].toString()) - cost < 0)
+                                setState(() {
+                                  notEnoughFunds = true;
+                                }),
+                              if (int.parse(messData[2].toString()) - cost >= 0)
+                                setState(() {
+                                  notEnoughFunds = false;
+                                }),
+                              if (notEnoughFunds)
+                                {
+                                  const SnackBar(
+                                    content: Text(
+                                        'Not enough funds, can not proceed!'),
+                                  )
+                                },
+                              if (!notEnoughFunds && errorNegative == false)
+                                {
+                                  l.add(
+                                      int.parse(messData[2].toString()) - cost),
+                                  l.add(cost),
+                                  l.add(breakfastCounts),
+                                  l.add(lunchCounts),
+                                  l.add(dinnerCounts),
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => UConfirmationScreen(
+                                        user: _currentUser,
+                                        l: l,
+                                      ),
+                                    ),
+                                  )
+                                },
+                              if (errorNegative)
+                                {
+                                  const SnackBar(
+                                    content: Text(
+                                        'Error! Negative donations are invalid, can not proceed!'),
+                                  ),
+                                  setState(() {
+                                    cost = 0;
+                                    estimate = true;
+                                    errorNegative = true;
+                                  }),
+                                },
+                            },
+                          // print(errorInteger)
                         })
               ],
             ),
@@ -301,102 +405,121 @@ class _UDonateScreen extends State<UDonateScreen> {
               height: 40,
             ),
             estimate
-                ? notEnoughFunds
-                    ? Column(children: [
-                        const Text(
-                          "OUT OF FUNDS!",
-                          style: TextStyle(
-                              fontFamily: 'Montserrat',
-                              color: red,
-                              fontSize: 40),
-                        ),
-                        ParagraphMontserrat(
-                            "Current Donation value is: " + cost.toString()),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        ParagraphMontserrat("Your balance post donation is: " +
-                            (int.parse(messData[2].toString()) - cost)
-                                .toString()),
-                        const Icon(
-                          Icons.not_interested_rounded,
-                          color: red,
-                        )
+                ? errorInteger
+                    ? Column(children: const [
+                        HeaderMontserratWarning("Enter valid integral values!")
                       ])
-                    : Column(
-                        children: [
-                          ParagraphMontserrat(
-                              "Current Donation value is: \u{20B9}" +
-                                  cost.toString()),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          ParagraphMontserrat(
-                              "Your balance post donation is: \u{20B9}" +
-                                  (int.parse(messData[2].toString()) - cost)
-                                      .toString()),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment
-                                .center, //Center Row contents horizontally,
-                            crossAxisAlignment: CrossAxisAlignment
-                                .center, //Center Row contents vertically,
+                    : errorNegative
+                        ? Column(children: const [
+                            HeaderMontserratWarning(
+                                "Invalid negative donations"),
+                          ])
+                        : notEnoughFunds
+                            ? Column(children: [
+                                const Text(
+                                  "OUT OF FUNDS!",
+                                  style: TextStyle(
+                                      fontFamily: 'Montserrat',
+                                      color: red,
+                                      fontSize: 40),
+                                ),
+                                ParagraphMontserrat(
+                                    "Current Donation value is: " +
+                                        cost.toString()),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                ParagraphMontserrat(
+                                    "Your balance post donation is: " +
+                                        (int.parse(messData[2].toString()) -
+                                                cost)
+                                            .toString()),
+                                const Icon(
+                                  Icons.not_interested_rounded,
+                                  color: red,
+                                )
+                              ])
+                            : Column(
+                                children: [
+                                  ParagraphMontserrat(
+                                      "Current Donation value is: \u{20B9}" +
+                                          cost.toString()),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  ParagraphMontserrat(
+                                      "Your balance post donation is: \u{20B9}" +
+                                          (int.parse(messData[2].toString()) -
+                                                  cost)
+                                              .toString()),
+                                  const SizedBox(
+                                    height: 40,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment
+                                        .center, //Center Row contents horizontally,
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .center, //Center Row contents vertically,
 
-                            children: [
-                              breakfastCounts > 5
-                                  ? const FoodImage(
-                                      location: "assets/Food/breakfast3.png",
-                                    )
-                                  : breakfastCounts > 2
-                                      ? const FoodImage(
-                                          location:
-                                              "assets/Food/breakfast2.png",
-                                        )
-                                      : breakfastCounts > 0
+                                    children: [
+                                      breakfastCounts > 5
                                           ? const FoodImage(
                                               location:
-                                                  "assets/Food/breakfast.png",
+                                                  "assets/Food/breakfast3.png",
                                             )
-                                          : const Paragraph(""),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              lunchCounts > 5
-                                  ? const FoodImage(
-                                      location: "assets/Food/lunch 3.png",
-                                    )
-                                  : lunchCounts > 2
-                                      ? const FoodImage(
-                                          location: "assets/Food/lunch 2.png",
-                                        )
-                                      : lunchCounts > 0
-                                          ? const FoodImage(
-                                              location: "assets/Food/lunch.png",
-                                            )
-                                          : const Paragraph(""),
-                              const SizedBox(
-                                width: 15,
-                              ),
-                              dinnerCounts > 5
-                                  ? const FoodImage(
-                                      location: "assets/Food/dinner 3.png",
-                                    )
-                                  : dinnerCounts > 2
-                                      ? const FoodImage(
-                                          location: "assets/Food/dinner 2.png",
-                                        )
-                                      : dinnerCounts > 0
+                                          : breakfastCounts > 2
+                                              ? const FoodImage(
+                                                  location:
+                                                      "assets/Food/breakfast2.png",
+                                                )
+                                              : breakfastCounts > 0
+                                                  ? const FoodImage(
+                                                      location:
+                                                          "assets/Food/breakfast.png",
+                                                    )
+                                                  : const Paragraph(""),
+                                      const SizedBox(
+                                        width: 15,
+                                      ),
+                                      lunchCounts > 5
                                           ? const FoodImage(
                                               location:
-                                                  "assets/Food/dinner.png",
+                                                  "assets/Food/lunch 3.png",
                                             )
-                                          : const Paragraph(""),
-                            ],
-                          )
-                        ],
-                      )
+                                          : lunchCounts > 2
+                                              ? const FoodImage(
+                                                  location:
+                                                      "assets/Food/lunch 2.png",
+                                                )
+                                              : lunchCounts > 0
+                                                  ? const FoodImage(
+                                                      location:
+                                                          "assets/Food/lunch.png",
+                                                    )
+                                                  : const Paragraph(""),
+                                      const SizedBox(
+                                        width: 15,
+                                      ),
+                                      dinnerCounts > 5
+                                          ? const FoodImage(
+                                              location:
+                                                  "assets/Food/dinner 3.png",
+                                            )
+                                          : dinnerCounts > 2
+                                              ? const FoodImage(
+                                                  location:
+                                                      "assets/Food/dinner 2.png",
+                                                )
+                                              : dinnerCounts > 0
+                                                  ? const FoodImage(
+                                                      location:
+                                                          "assets/Food/dinner.png",
+                                                    )
+                                                  : const Paragraph(""),
+                                    ],
+                                  )
+                                ],
+                              )
                 :
                 // const ParagraphMontserrat(""),
                 CarouselSlider(

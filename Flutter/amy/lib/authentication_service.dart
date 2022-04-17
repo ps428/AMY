@@ -85,7 +85,7 @@ class FireAuth {
     return refreshedUser;
   }
 
-  static void signOut() async {
+  static Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
   }
 }
