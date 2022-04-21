@@ -92,47 +92,47 @@ class _LoginScreen extends State<LoginScreen> {
                             'Log In',
                           ),
                         ),
-                        StyledButtonMonterrsat(
-                            text: "Admin Login",
-                            onPressed: () async => {
-                                  adminUser =
-                                      (await FireAuth.signInUsingEmailPassword(
-                                    email: 'ps205@snu.edu.in',
-                                    password: '123456',
-                                  ))!,
-                                  if (adminUser != null)
-                                    {
-                                      Navigator.of(context).pushReplacement(
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              AHomeScreen(user: adminUser),
-                                          // builder: (context) =>
-                                          //     const SignupScreen(),
-                                        ),
-                                      )
-                                    }
-                                }),
-                        StyledButtonMonterrsat(
-                            text: "Default login",
-                            onPressed: () async => {
-                                  default_user =
-                                      (await FireAuth.signInUsingEmailPassword(
-                                    email: 'ps205@snu.edu.in',
-                                    password: '123456',
-                                  ))!,
-                                  if (default_user != null)
-                                    {
-                                      Navigator.of(context).pushReplacement(
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              // HomeScreen()
-                                              UHomeScreen(user: default_user),
-                                          // builder: (context) =>
-                                          //     const SignupScreen(),
-                                        ),
-                                      )
-                                    }
-                                }),
+                        // StyledButtonMonterrsat(
+                        //     text: "Admin Login",
+                        //     onPressed: () async => {
+                        //           adminUser =
+                        //               (await FireAuth.signInUsingEmailPassword(
+                        //             email: 'ps205@snu.edu.in',
+                        //             password: '123456',
+                        //           ))!,
+                        //           if (adminUser != null)
+                        //             {
+                        //               Navigator.of(context).pushReplacement(
+                        //                 MaterialPageRoute(
+                        //                   builder: (context) =>
+                        //                       AHomeScreen(user: adminUser),
+                        //                   // builder: (context) =>
+                        //                   //     const SignupScreen(),
+                        //                 ),
+                        //               )
+                        //             }
+                        //         }),
+                        // StyledButtonMonterrsat(
+                        //     text: "Default login",
+                        //     onPressed: () async => {
+                        //           default_user =
+                        //               (await FireAuth.signInUsingEmailPassword(
+                        //             email: 'ps205@snu.edu.in',
+                        //             password: '123456',
+                        //           ))!,
+                        //           if (default_user != null)
+                        //             {
+                        //               Navigator.of(context).pushReplacement(
+                        //                 MaterialPageRoute(
+                        //                   builder: (context) =>
+                        //                       // HomeScreen()
+                        //                       UHomeScreen(user: default_user),
+                        //                   // builder: (context) =>
+                        //                   //     const SignupScreen(),
+                        //                 ),
+                        //               )
+                        //             }
+                        //         }),
                         Form(
                           key: _formKey,
                           child: Column(
@@ -176,7 +176,7 @@ class _LoginScreen extends State<LoginScreen> {
                               isEmailVerified
                                   ? _attempetd
                                       ? const ParagraphMontserrat(
-                                          "Error! Plese enter correct credentials.")
+                                          "Error! Please enter correct credentials.")
                                       : const ParagraphMontserrat(
                                           "Please enter your credentials.")
                                   : const ParagraphMontserrat(

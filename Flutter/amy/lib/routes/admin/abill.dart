@@ -163,8 +163,12 @@ class _ABillScreen extends State<ABillScreen> {
                         const SizedBox(
                           height: 10,
                         ),
-                        ParagraphMontserrat("Valid upto 30 minutes till: " +
-                            details['Current Time'])
+                        Align(
+                          alignment: Alignment.center,
+                          child: ParagraphMontserrat(
+                              "Valid upto 30 minutes till:\n  " +
+                                  details['Current Time']),
+                        ),
                       ],
                     ),
                   ],

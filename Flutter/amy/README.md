@@ -100,7 +100,7 @@ samples, guidance on mobile development, and a full API reference.
 - [X] Serve: Add confirmation popup
 - [X] Bill: Add bill from keep
 - [X] Inventory: Add lavendar color to header row {this has been done before somewhere in user}
-- [ ] Notification to user on meal confirmation
+- [X] Notification to user on meal confirmation
 
 
 
