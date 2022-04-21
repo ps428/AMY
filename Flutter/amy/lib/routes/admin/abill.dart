@@ -166,7 +166,7 @@ class _ABillScreen extends State<ABillScreen> {
                         Align(
                           alignment: Alignment.center,
                           child: ParagraphMontserrat(
-                              "Valid upto 30 minutes till:\n  " +
+                              "Valid upto 30 minutes till:\n " +
                                   details['Current Time']),
                         ),
                       ],

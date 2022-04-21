@@ -26,7 +26,7 @@ class _LoginScreen extends State<LoginScreen> {
 
   bool isEmailVerified = true;
   bool _attempetd = false;
-
+  bool _wrongCredentials = false;
   late User default_user;
   late User adminUser;
 
@@ -174,11 +174,8 @@ class _LoginScreen extends State<LoginScreen> {
                               ),
                               const SizedBox(height: 24.0),
                               isEmailVerified
-                                  ? _attempetd
-                                      ? const ParagraphMontserrat(
-                                          "Error! Please enter correct credentials.")
-                                      : const ParagraphMontserrat(
-                                          "Please enter your credentials.")
+                                  ? const ParagraphMontserrat(
+                                      "Please enter your credentials.")
                                   : const ParagraphMontserrat(
                                       "Error! Mail not verified"),
                               _isProcessing
@@ -225,6 +222,10 @@ class _LoginScreen extends State<LoginScreen> {
                                                           //     const SignupScreen(),
                                                           ),
                                                     );
+                                                  } else {
+                                                    setState(() {
+                                                      _wrongCredentials = true;
+                                                    });
                                                   }
                                                 } else {
                                                   User? user = await FireAuth
@@ -253,7 +254,11 @@ class _LoginScreen extends State<LoginScreen> {
                                                           //     const SignupScreen(),
                                                         ),
                                                       );
-                                                    } else {}
+                                                    }
+                                                  } else {
+                                                    setState(() {
+                                                      _wrongCredentials = true;
+                                                    });
                                                   }
                                                 }
                                               }

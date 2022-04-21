@@ -22,7 +22,7 @@ class _UConfirmationScreen extends State<UConfirmationScreen> {
   late User _currentUser;
   late List l;
 
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
     setState(() {
