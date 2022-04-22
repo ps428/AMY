@@ -166,7 +166,7 @@ class _RegisterPageState extends State<SignupScreen> {
                                 ? const HeaderMontserrat(
                                     "Please verify your id on mail!")
                                 : const ParagraphMontserrat(
-                                    "Please enter Your details."),
+                                    "Please enter your details."),
                         _isProcessing
                             ? const CircularProgressIndicator()
                             : Row(
