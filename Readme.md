@@ -1,5 +1,9 @@
 # AMY: A Meal by You
 
+<p align="center">
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/amy_logo.png" width=300>
+</p>
+  
 AMY is an innovative food bank app designed by keeping SNU’s current mess ecosystem in consideration. AMY allows the students to make efficient use of their about to be lapsed mess card balance by making meal donations for the people for whom affording the meals is not that simple, eg. gardeners, nurserymen, guards working in night shifts etc.
 
 AMY helps in efficient exhaustion of the almost lapsing mess card balance while making an effort to encourage the value of sharing among the student community and makes it more caring. It even gives a sense of warmth to the workers who then would feel more attached to their workplace. 
@@ -17,8 +21,64 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-## App Screenshots:
+# App Screenshots:
+## Public:
+### Loading page
+<p align="center">
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/load.jpg" width=300>
+</p>
+  
+### Home Page
+<p align="center">
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/home.jpg" width=300>
+</p>
+  
+### Login Page
+<p align="center">
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/login.jpg" width=300>
+</p>
+  
+  
+### Sign up page
+<p align="center">
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/signup.jpg" width=300>
+</p>
+  
+  
+## User Side Pages:
+### User home
+<p align="center">
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/uhom1.jpg" width=300>
+</p>
 
+<p align="center">
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/uhome2.jpg" width=300>
+</p>
+
+### User Donate
+<p align="center">
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/udonate1.jpg" width=300>
+</p>
+
+<p align="center">
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/udonate2.jpg" width=300>
+</p>
+
+###
+<p align="center">
+    <img src="" width=300>
+</p>
+
+###
+<p align="center">
+    <img src="" width=300>
+</p>
+
+
+###
+<p align="center">
+    <img src="" width=300>
+</p>
 
 ## File Structure
 ### 1. Public
