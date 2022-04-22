@@ -17,6 +17,9 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+## App Screenshots:
+
+
 ## File Structure
 ### 1. Public
 * Loading page: main.dart -> LoadingScreen => DONE
@@ -25,17 +28,19 @@ samples, guidance on mobile development, and a full API reference.
 * Sign Up Page: signin.dart -> SignupScreen => DONE
 
 ### 2. User
-* User Home: uhome.dart -> UHomeScreen => Backend fine UI Needs to be adjusted
-* Donate Now: udonate.dart -> UDonateScreen => Backend fine UI Needs to be adjusted
-* Confirm Donation: a pop up kind of somthing will be done
-* My Account: uaccount.dart -> UAccountScreen => Backend fine UI Needs to be adjusted
-* Confetti / Thanks page: uthanks.dart -> UThanksScreen => Backend fine UI Needs to be adjusted
+* User Home: uhome.dart -> UHomeScreen => DONE
+* Donate Now: udonate.dart -> UDonateScreen => DONE
+* Confirm Donation: uconfimation.dart -> DONE
+* Bagde: uthanks.dart -> DONE
+* My Account: uaccount.dart -> UAccountScreen => DONE
+* Confetti / Thanks page: uthanks.dart -> UThanksScreen => DONE
+* About page: about.dart -> DONE
 
 ### 3. Admin
-* Admin Home: ahome.dart -> AHomeScreen => Backend fine UI Needs to be adjusted
-* Serve Meal: aserve.dart -> AServeScreen => Backend fine UI Needs to be adjusted
-* Bill: abill -> ABillScreen => Backend fine UI Needs to be adjusted
-* Inventory: ainventory.dart -> AInventoryScreen => Backend fine UI Needs to be adjusted
+* Admin Home: ahome.dart -> AHomeScreen => DONE
+* Serve Meal: aserve.dart -> AServeScreen => DONE
+* Bill: abill.dart -> ABillScreen => DONE
+* Inventory: ainventory.dart -> AInventoryScreen => DONE
 
 ### 4. Backend Pages
 * To access all pages: all.dart
