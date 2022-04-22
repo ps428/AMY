@@ -82,11 +82,11 @@ samples, guidance on mobile development, and a full API reference.
 
 ### User Records 
 <p align="center">
-    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/urecords.jpg" width=300>
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/urecord.jpg" width=300>
 </p>
 
 <p align="center">
-    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/urecords2.jpg" width=300>
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/urecord2.jpg" width=300>
 </p>
 
 
