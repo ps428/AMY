@@ -64,20 +64,50 @@ samples, guidance on mobile development, and a full API reference.
     <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/udonate2.jpg" width=300>
 </p>
 
-###
+### User Confirm 
 <p align="center">
-    <img src="" width=300>
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/uconfirm.jpg" width=300>
 </p>
 
-###
+### User Confirm 
 <p align="center">
-    <img src="" width=300>
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/uthanks.jpg" width=300>
 </p>
 
 
-###
+### User Records 
 <p align="center">
-    <img src="" width=300>
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/urecords.jpg" width=300>
+</p>
+
+
+## Admin Pages
+### Admin Home
+<p align="center">
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/ahome.jpg" width=300>
+</p>
+
+<p align="center">
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/ahome2.jpg" width=300>
+</p>
+
+### Admin Serve
+<p align="center">
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/aserve.jpg" width=300>
+</p>
+
+<p align="center">
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/aserve2.jpg" width=300>
+</p>
+
+### Admin Bill
+<p align="center">
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/abill.jpg" width=300>
+</p>
+
+### Admin Inventory
+<p align="center">
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/ainventory.jpg" width=300>
 </p>
 
 ## File Structure
