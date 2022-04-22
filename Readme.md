@@ -25,7 +25,7 @@ samples, guidance on mobile development, and a full API reference.
 ## Public:
 ### App logo in mobile
 <p align="center">
-    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/app.jpg" width=300>
+    <img src="https://github.com/ps428/AMY/blob/master/Flutter/amy/assets/screenshots/app2.jpg" width=300>
 </p>
 
 ### Loading page
