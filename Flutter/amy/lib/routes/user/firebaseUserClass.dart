@@ -49,6 +49,7 @@ class FirebaseUserClass {
   }
 
   static void updateDonations(String uID, List l) async {
+    // print(l);
     updateUserRecord(uID, l);
     updateAdminInventory(uID, l);
     updateUserMessData(uID, l);
@@ -89,11 +90,11 @@ class FirebaseUserClass {
 
     var messData = await getUserMessDeatils(uID);
 
-    var currentTime = DateTime.now().toString();
-
+    var currentTime = DateTime.now();
+    // print(currentTime);
     for (int i = 0; i < l[2]; i++) {
       Map<String, dynamic>? newEntryBf = {
-        currentTime: {
+        currentTime.add(Duration(seconds: i)).toString(): {
           'Donation Time': DateTime.now().toString(),
           'UID': uID,
           'Status': 'Available',
@@ -105,7 +106,7 @@ class FirebaseUserClass {
     }
     for (int i = 0; i < l[3]; i++) {
       Map<String, dynamic>? newEntryLunch = {
-        currentTime: {
+        currentTime.add(Duration(seconds: i)).toString(): {
           'Donation Time': DateTime.now().toString(),
           'UID': uID,
           'Status': 'Available',
@@ -117,7 +118,7 @@ class FirebaseUserClass {
     }
     for (int i = 0; i < l[4]; i++) {
       Map<String, dynamic>? newEntryDinner = {
-        currentTime: {
+        currentTime.add(Duration(seconds: i)).toString(): {
           'Donation Time': DateTime.now().toString(),
           'UID': uID,
           'Status': 'Available',
